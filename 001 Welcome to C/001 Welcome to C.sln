@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "003 printf format 2", "003 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HomeAssignment", "HomeAssignment\HomeAssignment.vcxproj", "{0FD0E744-FD9D-4CCE-A0C3-2DBCE44B564A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "h001-printfhw", "001-003 printf homework\h001-printfhw.vcxproj", "{3EEE9A8A-3B39-4904-A4F9-7AF0D31B2D20}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -33,6 +35,10 @@ Global
 		{0FD0E744-FD9D-4CCE-A0C3-2DBCE44B564A}.Debug|Win32.Build.0 = Debug|Win32
 		{0FD0E744-FD9D-4CCE-A0C3-2DBCE44B564A}.Release|Win32.ActiveCfg = Release|Win32
 		{0FD0E744-FD9D-4CCE-A0C3-2DBCE44B564A}.Release|Win32.Build.0 = Release|Win32
+		{3EEE9A8A-3B39-4904-A4F9-7AF0D31B2D20}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3EEE9A8A-3B39-4904-A4F9-7AF0D31B2D20}.Debug|Win32.Build.0 = Debug|Win32
+		{3EEE9A8A-3B39-4904-A4F9-7AF0D31B2D20}.Release|Win32.ActiveCfg = Release|Win32
+		{3EEE9A8A-3B39-4904-A4F9-7AF0D31B2D20}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
