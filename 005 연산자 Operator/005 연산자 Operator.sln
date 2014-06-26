@@ -11,6 +11,16 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "003 복합 대입 연산자
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "004 증감연산자", "004 증감연산자\004 증감연산자.vcxproj", "{A4DD6553-0EE0-4A2F-B941-8203EA5D5FFA}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "005 관계연산자", "005 관계연산자\005 관계연산자.vcxproj", "{15F816EC-BF21-4989-8830-06A8B4675231}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "006 논리연산자", "006 논리연산자\006 논리연산자.vcxproj", "{4DE88D7C-A0F6-4647-9F6E-8767CA62386F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "007 조건연산자", "007 조건연산자\007 조건연산자.vcxproj", "{2E4104A4-C03B-4A3D-B8DC-BE171D99E9FD}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "008 연습문제 나누어 떨어지는 수", "008 연습문제 나누어 떨어지는 수\008 연습문제 나누어 떨어지는 수.vcxproj", "{17C752F9-A6F7-459B-9BCB-3ED3D7BAAB2B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "009 비트연산자", "009 비트연산자\009 비트연산자.vcxproj", "{60847F0E-A8D1-4658-B350-3BB65A1F110E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -33,6 +43,26 @@ Global
 		{A4DD6553-0EE0-4A2F-B941-8203EA5D5FFA}.Debug|Win32.Build.0 = Debug|Win32
 		{A4DD6553-0EE0-4A2F-B941-8203EA5D5FFA}.Release|Win32.ActiveCfg = Release|Win32
 		{A4DD6553-0EE0-4A2F-B941-8203EA5D5FFA}.Release|Win32.Build.0 = Release|Win32
+		{15F816EC-BF21-4989-8830-06A8B4675231}.Debug|Win32.ActiveCfg = Debug|Win32
+		{15F816EC-BF21-4989-8830-06A8B4675231}.Debug|Win32.Build.0 = Debug|Win32
+		{15F816EC-BF21-4989-8830-06A8B4675231}.Release|Win32.ActiveCfg = Release|Win32
+		{15F816EC-BF21-4989-8830-06A8B4675231}.Release|Win32.Build.0 = Release|Win32
+		{4DE88D7C-A0F6-4647-9F6E-8767CA62386F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4DE88D7C-A0F6-4647-9F6E-8767CA62386F}.Debug|Win32.Build.0 = Debug|Win32
+		{4DE88D7C-A0F6-4647-9F6E-8767CA62386F}.Release|Win32.ActiveCfg = Release|Win32
+		{4DE88D7C-A0F6-4647-9F6E-8767CA62386F}.Release|Win32.Build.0 = Release|Win32
+		{2E4104A4-C03B-4A3D-B8DC-BE171D99E9FD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2E4104A4-C03B-4A3D-B8DC-BE171D99E9FD}.Debug|Win32.Build.0 = Debug|Win32
+		{2E4104A4-C03B-4A3D-B8DC-BE171D99E9FD}.Release|Win32.ActiveCfg = Release|Win32
+		{2E4104A4-C03B-4A3D-B8DC-BE171D99E9FD}.Release|Win32.Build.0 = Release|Win32
+		{17C752F9-A6F7-459B-9BCB-3ED3D7BAAB2B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{17C752F9-A6F7-459B-9BCB-3ED3D7BAAB2B}.Debug|Win32.Build.0 = Debug|Win32
+		{17C752F9-A6F7-459B-9BCB-3ED3D7BAAB2B}.Release|Win32.ActiveCfg = Release|Win32
+		{17C752F9-A6F7-459B-9BCB-3ED3D7BAAB2B}.Release|Win32.Build.0 = Release|Win32
+		{60847F0E-A8D1-4658-B350-3BB65A1F110E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{60847F0E-A8D1-4658-B350-3BB65A1F110E}.Debug|Win32.Build.0 = Debug|Win32
+		{60847F0E-A8D1-4658-B350-3BB65A1F110E}.Release|Win32.ActiveCfg = Release|Win32
+		{60847F0E-A8D1-4658-B350-3BB65A1F110E}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

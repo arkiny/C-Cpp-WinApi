@@ -32,5 +32,8 @@ void main(){
 	//num1++++은 불가하지만
 	// ----num1은 가능
 	--num1;
-	
+
+	// 여기서 문제!
+	num1 -= ++num1 + num1--;
+	printf("num1 = %d\n",num1);
 }
