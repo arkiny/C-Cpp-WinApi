@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BinaryConverter", "BinaryConverter2\BinaryConverter2.vcxproj", "{CF2013D5-B114-46C9-9064-60AA76F77163}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CF2013D5-B114-46C9-9064-60AA76F77163}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CF2013D5-B114-46C9-9064-60AA76F77163}.Debug|Win32.Build.0 = Debug|Win32
+		{CF2013D5-B114-46C9-9064-60AA76F77163}.Release|Win32.ActiveCfg = Release|Win32
+		{CF2013D5-B114-46C9-9064-60AA76F77163}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
