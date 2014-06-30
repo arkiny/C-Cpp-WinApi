@@ -7,6 +7,14 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "001 while", "001 while\001 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "002 while 구구단 출력", "002 while 구구단 출력\002 while 구구단 출력.vcxproj", "{25EFFB88-74FD-4A49-B3C0-B655390B52D0}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "003 while문으로 7의 배수 구하기", "003 while문으로 7의 배수 구하기\003 while문으로 7의 배수 구하기.vcxproj", "{055A284D-F992-4555-87C9-BFA95E064107}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "004 for", "004 for\004 for.vcxproj", "{685A4E31-2DF5-4699-8069-555D258623A8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "005 for 이자 구하기", "005 for 이자 구하기\005 for 이자 구하기.vcxproj", "{1596465B-CF6E-4138-A656-26631ABC17DD}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "006 tilemap 그리기", "006 tilemap 그리기\006 tilemap 그리기.vcxproj", "{33F60E34-AFC3-445D-997D-AFB2CF42D8A9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -21,6 +29,22 @@ Global
 		{25EFFB88-74FD-4A49-B3C0-B655390B52D0}.Debug|Win32.Build.0 = Debug|Win32
 		{25EFFB88-74FD-4A49-B3C0-B655390B52D0}.Release|Win32.ActiveCfg = Release|Win32
 		{25EFFB88-74FD-4A49-B3C0-B655390B52D0}.Release|Win32.Build.0 = Release|Win32
+		{055A284D-F992-4555-87C9-BFA95E064107}.Debug|Win32.ActiveCfg = Debug|Win32
+		{055A284D-F992-4555-87C9-BFA95E064107}.Debug|Win32.Build.0 = Debug|Win32
+		{055A284D-F992-4555-87C9-BFA95E064107}.Release|Win32.ActiveCfg = Release|Win32
+		{055A284D-F992-4555-87C9-BFA95E064107}.Release|Win32.Build.0 = Release|Win32
+		{685A4E31-2DF5-4699-8069-555D258623A8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{685A4E31-2DF5-4699-8069-555D258623A8}.Debug|Win32.Build.0 = Debug|Win32
+		{685A4E31-2DF5-4699-8069-555D258623A8}.Release|Win32.ActiveCfg = Release|Win32
+		{685A4E31-2DF5-4699-8069-555D258623A8}.Release|Win32.Build.0 = Release|Win32
+		{1596465B-CF6E-4138-A656-26631ABC17DD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1596465B-CF6E-4138-A656-26631ABC17DD}.Debug|Win32.Build.0 = Debug|Win32
+		{1596465B-CF6E-4138-A656-26631ABC17DD}.Release|Win32.ActiveCfg = Release|Win32
+		{1596465B-CF6E-4138-A656-26631ABC17DD}.Release|Win32.Build.0 = Release|Win32
+		{33F60E34-AFC3-445D-997D-AFB2CF42D8A9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{33F60E34-AFC3-445D-997D-AFB2CF42D8A9}.Debug|Win32.Build.0 = Debug|Win32
+		{33F60E34-AFC3-445D-997D-AFB2CF42D8A9}.Release|Win32.ActiveCfg = Release|Win32
+		{33F60E34-AFC3-445D-997D-AFB2CF42D8A9}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

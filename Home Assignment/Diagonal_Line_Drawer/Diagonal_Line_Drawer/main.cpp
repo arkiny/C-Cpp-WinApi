@@ -34,7 +34,7 @@ int main(){
 	int i = 0;
 	int j = 0;
 	printf("\nUsing Solution 1 : Absolute O(n^2)\n");
-	printf("1번 답안 : 무조건 n^n번의 처리를 하는 코드\n");
+	printf("1번 답안 : 무조건 n^2번의 처리를 하는 코드\n");
 
 	// O(n^2)
 	// 이하 코드는 조건 연산을 이용한 코드로, 위의 코드보다는 약간 더 프로세스타임을 잡아먹는 방법입니다.
