@@ -15,6 +15,14 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "005 for 이자 구하기", 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "006 tilemap 그리기", "006 tilemap 그리기\006 tilemap 그리기.vcxproj", "{33F60E34-AFC3-445D-997D-AFB2CF42D8A9}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "007 for 무한 문자 입력", "007 for 무한 문자 입력\007 for 무한 문자 입력.vcxproj", "{DF1A9708-5810-4B5D-9399-7DAD8DF7ACD6}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "008 do while", "008 do while\008 do while.vcxproj", "{20A005A1-3D5C-4564-9602-18722AE2D001}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "009 do while AsciiCode 출력", "009 do while AsciiCode 출력\009 do while AsciiCode 출력.vcxproj", "{84A6813A-32A0-4C16-985D-13A18CEF9F6C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "010 과제 tilemap에서 별 이동하기", "010 과제 tilemap에서 별 이동하기\010 과제 tilemap에서 별 이동하기.vcxproj", "{14CBC53F-EF85-4F90-83A4-07F122F6346A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -45,6 +53,22 @@ Global
 		{33F60E34-AFC3-445D-997D-AFB2CF42D8A9}.Debug|Win32.Build.0 = Debug|Win32
 		{33F60E34-AFC3-445D-997D-AFB2CF42D8A9}.Release|Win32.ActiveCfg = Release|Win32
 		{33F60E34-AFC3-445D-997D-AFB2CF42D8A9}.Release|Win32.Build.0 = Release|Win32
+		{DF1A9708-5810-4B5D-9399-7DAD8DF7ACD6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DF1A9708-5810-4B5D-9399-7DAD8DF7ACD6}.Debug|Win32.Build.0 = Debug|Win32
+		{DF1A9708-5810-4B5D-9399-7DAD8DF7ACD6}.Release|Win32.ActiveCfg = Release|Win32
+		{DF1A9708-5810-4B5D-9399-7DAD8DF7ACD6}.Release|Win32.Build.0 = Release|Win32
+		{20A005A1-3D5C-4564-9602-18722AE2D001}.Debug|Win32.ActiveCfg = Debug|Win32
+		{20A005A1-3D5C-4564-9602-18722AE2D001}.Debug|Win32.Build.0 = Debug|Win32
+		{20A005A1-3D5C-4564-9602-18722AE2D001}.Release|Win32.ActiveCfg = Release|Win32
+		{20A005A1-3D5C-4564-9602-18722AE2D001}.Release|Win32.Build.0 = Release|Win32
+		{84A6813A-32A0-4C16-985D-13A18CEF9F6C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{84A6813A-32A0-4C16-985D-13A18CEF9F6C}.Debug|Win32.Build.0 = Debug|Win32
+		{84A6813A-32A0-4C16-985D-13A18CEF9F6C}.Release|Win32.ActiveCfg = Release|Win32
+		{84A6813A-32A0-4C16-985D-13A18CEF9F6C}.Release|Win32.Build.0 = Release|Win32
+		{14CBC53F-EF85-4F90-83A4-07F122F6346A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{14CBC53F-EF85-4F90-83A4-07F122F6346A}.Debug|Win32.Build.0 = Debug|Win32
+		{14CBC53F-EF85-4F90-83A4-07F122F6346A}.Release|Win32.ActiveCfg = Release|Win32
+		{14CBC53F-EF85-4F90-83A4-07F122F6346A}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
