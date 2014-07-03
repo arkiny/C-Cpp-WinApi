@@ -5,6 +5,16 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "001 if", "001 if\001 if.vcxproj", "{FD421148-1455-4174-A8A4-D1C591DC8B5A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "002 if else", "002 if else\002 if else.vcxproj", "{9DD5CFAF-ED11-4B6A-8D51-006DB7AE576A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "003 if else if else", "003 if else if else\003 if else if else.vcxproj", "{DC656C25-1C34-4C63-9CDD-DE1C5CF7DAA4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "004 BMI Checker", "004 BMI Checker\004 BMI Checker.vcxproj", "{7AAD6B36-9476-4BFC-8AE8-AF4DEC8DC954}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "005 switch", "005 switch\005 switch.vcxproj", "{E1BF0753-D3E5-4F50-BE57-F0BD9126D478}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HomeAssingment", "HomeAssingment\HomeAssingment.vcxproj", "{462FB4D3-F860-48F9-9D95-A052C30010CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -15,6 +25,26 @@ Global
 		{FD421148-1455-4174-A8A4-D1C591DC8B5A}.Debug|Win32.Build.0 = Debug|Win32
 		{FD421148-1455-4174-A8A4-D1C591DC8B5A}.Release|Win32.ActiveCfg = Release|Win32
 		{FD421148-1455-4174-A8A4-D1C591DC8B5A}.Release|Win32.Build.0 = Release|Win32
+		{9DD5CFAF-ED11-4B6A-8D51-006DB7AE576A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9DD5CFAF-ED11-4B6A-8D51-006DB7AE576A}.Debug|Win32.Build.0 = Debug|Win32
+		{9DD5CFAF-ED11-4B6A-8D51-006DB7AE576A}.Release|Win32.ActiveCfg = Release|Win32
+		{9DD5CFAF-ED11-4B6A-8D51-006DB7AE576A}.Release|Win32.Build.0 = Release|Win32
+		{DC656C25-1C34-4C63-9CDD-DE1C5CF7DAA4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DC656C25-1C34-4C63-9CDD-DE1C5CF7DAA4}.Debug|Win32.Build.0 = Debug|Win32
+		{DC656C25-1C34-4C63-9CDD-DE1C5CF7DAA4}.Release|Win32.ActiveCfg = Release|Win32
+		{DC656C25-1C34-4C63-9CDD-DE1C5CF7DAA4}.Release|Win32.Build.0 = Release|Win32
+		{7AAD6B36-9476-4BFC-8AE8-AF4DEC8DC954}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7AAD6B36-9476-4BFC-8AE8-AF4DEC8DC954}.Debug|Win32.Build.0 = Debug|Win32
+		{7AAD6B36-9476-4BFC-8AE8-AF4DEC8DC954}.Release|Win32.ActiveCfg = Release|Win32
+		{7AAD6B36-9476-4BFC-8AE8-AF4DEC8DC954}.Release|Win32.Build.0 = Release|Win32
+		{E1BF0753-D3E5-4F50-BE57-F0BD9126D478}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E1BF0753-D3E5-4F50-BE57-F0BD9126D478}.Debug|Win32.Build.0 = Debug|Win32
+		{E1BF0753-D3E5-4F50-BE57-F0BD9126D478}.Release|Win32.ActiveCfg = Release|Win32
+		{E1BF0753-D3E5-4F50-BE57-F0BD9126D478}.Release|Win32.Build.0 = Release|Win32
+		{462FB4D3-F860-48F9-9D95-A052C30010CC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{462FB4D3-F860-48F9-9D95-A052C30010CC}.Debug|Win32.Build.0 = Debug|Win32
+		{462FB4D3-F860-48F9-9D95-A052C30010CC}.Release|Win32.ActiveCfg = Release|Win32
+		{462FB4D3-F860-48F9-9D95-A052C30010CC}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
