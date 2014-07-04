@@ -7,6 +7,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "001 function", "001 functio
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "002 keyinput function", "002 keyinput function\002 keyinput function.vcxproj", "{577B3306-2FDD-4FBD-8CAA-6D4C8D2E5C2F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "003 time function", "003 time function\003 time function.vcxproj", "{364E7A5C-E049-4519-BEDC-410E342CB70D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "004 random function", "004 random function\004 random function.vcxproj", "{7B9DA209-CBF9-407B-B937-1F5A5A392640}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -21,6 +25,14 @@ Global
 		{577B3306-2FDD-4FBD-8CAA-6D4C8D2E5C2F}.Debug|Win32.Build.0 = Debug|Win32
 		{577B3306-2FDD-4FBD-8CAA-6D4C8D2E5C2F}.Release|Win32.ActiveCfg = Release|Win32
 		{577B3306-2FDD-4FBD-8CAA-6D4C8D2E5C2F}.Release|Win32.Build.0 = Release|Win32
+		{364E7A5C-E049-4519-BEDC-410E342CB70D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{364E7A5C-E049-4519-BEDC-410E342CB70D}.Debug|Win32.Build.0 = Debug|Win32
+		{364E7A5C-E049-4519-BEDC-410E342CB70D}.Release|Win32.ActiveCfg = Release|Win32
+		{364E7A5C-E049-4519-BEDC-410E342CB70D}.Release|Win32.Build.0 = Release|Win32
+		{7B9DA209-CBF9-407B-B937-1F5A5A392640}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7B9DA209-CBF9-407B-B937-1F5A5A392640}.Debug|Win32.Build.0 = Debug|Win32
+		{7B9DA209-CBF9-407B-B937-1F5A5A392640}.Release|Win32.ActiveCfg = Release|Win32
+		{7B9DA209-CBF9-407B-B937-1F5A5A392640}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
