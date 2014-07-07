@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2013 for Windows Desktop
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "001 array", "001 array\001 array.vcxproj", "{E81510AA-5B54-4D4D-BB64-298FCFBB0218}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "002 배열의 선언 및 초기화", "002 배열의 선언 및 초기화\002 배열의 선언 및 초기화.vcxproj", "{78F7C375-EAAA-464F-BC22-DD764C5B3A4B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "003 Ampersand 로 배열의 주소값", "003 Ampersand 로 배열의 주소값\003 Ampersand 로 배열의 주소값.vcxproj", "{2BD818C7-94DA-4971-95C9-9840AE3E7533}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "004 Asterisk 로 배열의 값을 참조", "004 Asterisk 로 배열의 값을 참조\004 Asterisk 로 배열의 값을 참조.vcxproj", "{256DD5B4-1F36-4E9B-BB9E-427BD678370C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "005 함수의 인자로 배열을 전달", "005 함수의 인자로 배열을 전달\005 함수의 인자로 배열을 전달.vcxproj", "{9DE9DC16-888D-4502-B164-45258C1E0CFC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E81510AA-5B54-4D4D-BB64-298FCFBB0218}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E81510AA-5B54-4D4D-BB64-298FCFBB0218}.Debug|Win32.Build.0 = Debug|Win32
+		{E81510AA-5B54-4D4D-BB64-298FCFBB0218}.Release|Win32.ActiveCfg = Release|Win32
+		{E81510AA-5B54-4D4D-BB64-298FCFBB0218}.Release|Win32.Build.0 = Release|Win32
+		{78F7C375-EAAA-464F-BC22-DD764C5B3A4B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{78F7C375-EAAA-464F-BC22-DD764C5B3A4B}.Debug|Win32.Build.0 = Debug|Win32
+		{78F7C375-EAAA-464F-BC22-DD764C5B3A4B}.Release|Win32.ActiveCfg = Release|Win32
+		{78F7C375-EAAA-464F-BC22-DD764C5B3A4B}.Release|Win32.Build.0 = Release|Win32
+		{2BD818C7-94DA-4971-95C9-9840AE3E7533}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2BD818C7-94DA-4971-95C9-9840AE3E7533}.Debug|Win32.Build.0 = Debug|Win32
+		{2BD818C7-94DA-4971-95C9-9840AE3E7533}.Release|Win32.ActiveCfg = Release|Win32
+		{2BD818C7-94DA-4971-95C9-9840AE3E7533}.Release|Win32.Build.0 = Release|Win32
+		{256DD5B4-1F36-4E9B-BB9E-427BD678370C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{256DD5B4-1F36-4E9B-BB9E-427BD678370C}.Debug|Win32.Build.0 = Debug|Win32
+		{256DD5B4-1F36-4E9B-BB9E-427BD678370C}.Release|Win32.ActiveCfg = Release|Win32
+		{256DD5B4-1F36-4E9B-BB9E-427BD678370C}.Release|Win32.Build.0 = Release|Win32
+		{9DE9DC16-888D-4502-B164-45258C1E0CFC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9DE9DC16-888D-4502-B164-45258C1E0CFC}.Debug|Win32.Build.0 = Debug|Win32
+		{9DE9DC16-888D-4502-B164-45258C1E0CFC}.Release|Win32.ActiveCfg = Release|Win32
+		{9DE9DC16-888D-4502-B164-45258C1E0CFC}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
