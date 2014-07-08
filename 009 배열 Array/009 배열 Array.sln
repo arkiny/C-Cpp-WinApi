@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2013 for Windows Desktop
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "001 array", "001 array\001 array.vcxproj", "{E81510AA-5B54-4D4D-BB64-298FCFBB0218}"
 EndProject
@@ -18,6 +18,10 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "007 Range based for", "007 Range based for\007 Range based for.vcxproj", "{D35AF178-A374-47CE-802D-18A4D69DE91E}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "008 문자열 배열", "008 문자열 배열\008 문자열 배열.vcxproj", "{C4A416E1-24E6-4BCF-9AE6-6A9D7E1B47C6}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "008-1 과제", "008-1 과제\008-1 과제.vcxproj", "{5F633F7A-353C-441A-9C22-203FFE457A51}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "008-2과제", "008-2과제\008-2과제.vcxproj", "{791F7E30-66E9-4627-853F-B7019CEC3032}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +61,14 @@ Global
 		{C4A416E1-24E6-4BCF-9AE6-6A9D7E1B47C6}.Debug|Win32.Build.0 = Debug|Win32
 		{C4A416E1-24E6-4BCF-9AE6-6A9D7E1B47C6}.Release|Win32.ActiveCfg = Release|Win32
 		{C4A416E1-24E6-4BCF-9AE6-6A9D7E1B47C6}.Release|Win32.Build.0 = Release|Win32
+		{5F633F7A-353C-441A-9C22-203FFE457A51}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5F633F7A-353C-441A-9C22-203FFE457A51}.Debug|Win32.Build.0 = Debug|Win32
+		{5F633F7A-353C-441A-9C22-203FFE457A51}.Release|Win32.ActiveCfg = Release|Win32
+		{5F633F7A-353C-441A-9C22-203FFE457A51}.Release|Win32.Build.0 = Release|Win32
+		{791F7E30-66E9-4627-853F-B7019CEC3032}.Debug|Win32.ActiveCfg = Debug|Win32
+		{791F7E30-66E9-4627-853F-B7019CEC3032}.Debug|Win32.Build.0 = Debug|Win32
+		{791F7E30-66E9-4627-853F-B7019CEC3032}.Release|Win32.ActiveCfg = Release|Win32
+		{791F7E30-66E9-4627-853F-B7019CEC3032}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
