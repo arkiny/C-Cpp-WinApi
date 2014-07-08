@@ -13,6 +13,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "004 Asterisk 로 배열의 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "005 함수의 인자로 배열을 전달", "005 함수의 인자로 배열을 전달\005 함수의 인자로 배열을 전달.vcxproj", "{9DE9DC16-888D-4502-B164-45258C1E0CFC}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "006 랜덤함수로 배열 채우기", "006 랜덤함수로 배열 채우기\006 랜덤함수로 배열 채우기.vcxproj", "{21B15AB5-68AE-4866-B038-2F49DA92D55E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "007 Range based for", "007 Range based for\007 Range based for.vcxproj", "{D35AF178-A374-47CE-802D-18A4D69DE91E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "008 문자열 배열", "008 문자열 배열\008 문자열 배열.vcxproj", "{C4A416E1-24E6-4BCF-9AE6-6A9D7E1B47C6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -39,6 +45,18 @@ Global
 		{9DE9DC16-888D-4502-B164-45258C1E0CFC}.Debug|Win32.Build.0 = Debug|Win32
 		{9DE9DC16-888D-4502-B164-45258C1E0CFC}.Release|Win32.ActiveCfg = Release|Win32
 		{9DE9DC16-888D-4502-B164-45258C1E0CFC}.Release|Win32.Build.0 = Release|Win32
+		{21B15AB5-68AE-4866-B038-2F49DA92D55E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{21B15AB5-68AE-4866-B038-2F49DA92D55E}.Debug|Win32.Build.0 = Debug|Win32
+		{21B15AB5-68AE-4866-B038-2F49DA92D55E}.Release|Win32.ActiveCfg = Release|Win32
+		{21B15AB5-68AE-4866-B038-2F49DA92D55E}.Release|Win32.Build.0 = Release|Win32
+		{D35AF178-A374-47CE-802D-18A4D69DE91E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D35AF178-A374-47CE-802D-18A4D69DE91E}.Debug|Win32.Build.0 = Debug|Win32
+		{D35AF178-A374-47CE-802D-18A4D69DE91E}.Release|Win32.ActiveCfg = Release|Win32
+		{D35AF178-A374-47CE-802D-18A4D69DE91E}.Release|Win32.Build.0 = Release|Win32
+		{C4A416E1-24E6-4BCF-9AE6-6A9D7E1B47C6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C4A416E1-24E6-4BCF-9AE6-6A9D7E1B47C6}.Debug|Win32.Build.0 = Debug|Win32
+		{C4A416E1-24E6-4BCF-9AE6-6A9D7E1B47C6}.Release|Win32.ActiveCfg = Release|Win32
+		{C4A416E1-24E6-4BCF-9AE6-6A9D7E1B47C6}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
