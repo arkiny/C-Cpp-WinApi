@@ -244,6 +244,7 @@ void TopDownMerge(int* input, int* working, int lo, int mid, int hi){
 // 정렬은 일단 재귀 함수로 시작하며, 최소 주소와 최대 주소를 받는다.
 void quickSort(int* input, int lo, int hi){
 	// 최대주소가 최소주소보다 작거나 같아지면 (서브어레이가 최소값이 되면) 리턴
+	// Basecase : number of element = 1;
 	if (hi <= lo) return;
 	// 파티션 함수를 이용해 피봇 주소값을 찾아낸다.
 	int j = partition(input, lo, hi);
