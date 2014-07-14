@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2013 for Windows Desktop
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "011 Pointer 선언 및 사용", "011 Pointer 선언 및 사용\011 Pointer 선언 및 사용.vcxproj", "{CB5C54F2-0A43-4065-9AB6-3EF2ADBB7BC9}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "001 Pointer 선언 및 사용", "011 Pointer 선언 및 사용\011 Pointer 선언 및 사용.vcxproj", "{CB5C54F2-0A43-4065-9AB6-3EF2ADBB7BC9}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "002 1차 배열 포인터", "002 1차 배열 포인터\002 1차 배열 포인터.vcxproj", "{D4D50656-5797-429B-98A6-3A76E4DE18BF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "003 1차 배열 문자열 포인터", "003 1차 배열 문자열 포인터\003 1차 배열 문자열 포인터.vcxproj", "{80133B7B-60EB-462B-BC35-971209391F25}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "004 2차 배열 포인터", "004 2차 배열 포인터\004 2차 배열 포인터.vcxproj", "{10CE9627-AA43-46F1-9744-144F350FBC0F}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "005 2차 배열 문자열 포인터", "005 2차 배열 문자열 포인터\005 2차 배열 문자열 포인터.vcxproj", "{94612CBA-7A60-4F73-B509-5F02F8C72540}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +27,18 @@ Global
 		{D4D50656-5797-429B-98A6-3A76E4DE18BF}.Debug|Win32.Build.0 = Debug|Win32
 		{D4D50656-5797-429B-98A6-3A76E4DE18BF}.Release|Win32.ActiveCfg = Release|Win32
 		{D4D50656-5797-429B-98A6-3A76E4DE18BF}.Release|Win32.Build.0 = Release|Win32
+		{80133B7B-60EB-462B-BC35-971209391F25}.Debug|Win32.ActiveCfg = Debug|Win32
+		{80133B7B-60EB-462B-BC35-971209391F25}.Debug|Win32.Build.0 = Debug|Win32
+		{80133B7B-60EB-462B-BC35-971209391F25}.Release|Win32.ActiveCfg = Release|Win32
+		{80133B7B-60EB-462B-BC35-971209391F25}.Release|Win32.Build.0 = Release|Win32
+		{10CE9627-AA43-46F1-9744-144F350FBC0F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{10CE9627-AA43-46F1-9744-144F350FBC0F}.Debug|Win32.Build.0 = Debug|Win32
+		{10CE9627-AA43-46F1-9744-144F350FBC0F}.Release|Win32.ActiveCfg = Release|Win32
+		{10CE9627-AA43-46F1-9744-144F350FBC0F}.Release|Win32.Build.0 = Release|Win32
+		{94612CBA-7A60-4F73-B509-5F02F8C72540}.Debug|Win32.ActiveCfg = Debug|Win32
+		{94612CBA-7A60-4F73-B509-5F02F8C72540}.Debug|Win32.Build.0 = Debug|Win32
+		{94612CBA-7A60-4F73-B509-5F02F8C72540}.Release|Win32.ActiveCfg = Release|Win32
+		{94612CBA-7A60-4F73-B509-5F02F8C72540}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

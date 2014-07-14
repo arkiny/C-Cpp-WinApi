@@ -11,10 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{CB5C54F2-0A43-4065-9AB6-3EF2ADBB7BC9}</ProjectGuid>
+    <ProjectGuid>{10CE9627-AA43-46F1-9744-144F350FBC0F}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>My011Pointer선언및사용</RootNamespace>
-    <ProjectName>001 Pointer 선언 및 사용</ProjectName>
+    <RootNamespace>My0042차배열포인터</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
