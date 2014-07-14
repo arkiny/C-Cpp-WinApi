@@ -27,7 +27,12 @@ main(){
 	????차후에 데이타 이동만을 위한 함수를 정의할수 있을까????
 }
 
-engine(문자열, 문자열){
+Controller(){
+	만약 실질적으로 r를 통해서 반복할 경우 메인에서 게임부분을
+	빼와서 넣을수 있겠지만... 오늘은 여기서 생략
+}
+
+Model(문자열, 문자열){
 	문자열을 받아서, 해당 문자열의 길이의 절반만큼 
 	두팀끼리 묶어서 랜덤으로 뽑아 돌려줌
 }
@@ -44,7 +49,7 @@ view(행렬, 출력갯수){
 
 
 #include <stdio.h> // printf()
-#include <stdlib.h> // srand(), rand()
+#include <stdlib.h> // srand(), rand(), system()
 #include <time.h> // time()
 
 // Prototype
@@ -85,6 +90,7 @@ void main(){
 	semifinalGame(pSemiFinal, pFinal);
 	finalGame(pFinal, pWinner);
 
+	system("pause");
 } // main()
 
 // 8강 경기 실시
@@ -176,5 +182,6 @@ void print_signature(){
 	printf("이희동\n");
 	printf("SGA51A\n");
 	printf("07142014 과제\n");
-	printf("================================================\n");
+	printf("============================================================\n");
+	printf("2120년 한국 월드컵 결과 - (실행할때마다 결과가 바뀝니다)\n\n");
 }
