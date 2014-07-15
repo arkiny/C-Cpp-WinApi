@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+# Visual Studio Express 2013 for Windows Desktop
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "001 Pointer 선언 및 사용", "011 Pointer 선언 및 사용\011 Pointer 선언 및 사용.vcxproj", "{CB5C54F2-0A43-4065-9AB6-3EF2ADBB7BC9}"
 EndProject
@@ -14,6 +14,16 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "005 2차 배열 문자열 포인터", "005 2차 배열 문자열 포인터\005 2차 배열 문자열 포인터.vcxproj", "{94612CBA-7A60-4F73-B509-5F02F8C72540}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "005-1 HomeAssignment", "005-1 HomeAssignment\005-1 HomeAssignment.vcxproj", "{02FFC924-DC94-4FF7-B6BC-F6C491244C01}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "006 포인터 배열", "006 포인터 배열\006 포인터 배열.vcxproj", "{C896A873-8BF7-4485-987E-1AC707B40D0D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "007 함수 포인터", "007 함수 포인터\007 함수 포인터.vcxproj", "{742EAEA7-FE02-4CC9-B819-C3359F7DFF82}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "008 함수안의 지역변수 리턴하기", "008 함수안의 지역변수 리턴하기\008 함수안의 지역변수 리턴하기.vcxproj", "{0BA647AD-137C-48D7-9D1F-8B91C6AF0393}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "009 과제 Magazine System", "009 과제 Magazine System\009 과제 Magazine System.vcxproj", "{44420FB2-9BDC-46E7-A4CF-F3C77F7F533E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "010 void형 포인터", "010 void형 포인터\010 void형 포인터.vcxproj", "{8CFE73D7-7743-4562-AEEB-5559BBF3DFAD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +55,26 @@ Global
 		{02FFC924-DC94-4FF7-B6BC-F6C491244C01}.Debug|Win32.Build.0 = Debug|Win32
 		{02FFC924-DC94-4FF7-B6BC-F6C491244C01}.Release|Win32.ActiveCfg = Release|Win32
 		{02FFC924-DC94-4FF7-B6BC-F6C491244C01}.Release|Win32.Build.0 = Release|Win32
+		{C896A873-8BF7-4485-987E-1AC707B40D0D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C896A873-8BF7-4485-987E-1AC707B40D0D}.Debug|Win32.Build.0 = Debug|Win32
+		{C896A873-8BF7-4485-987E-1AC707B40D0D}.Release|Win32.ActiveCfg = Release|Win32
+		{C896A873-8BF7-4485-987E-1AC707B40D0D}.Release|Win32.Build.0 = Release|Win32
+		{742EAEA7-FE02-4CC9-B819-C3359F7DFF82}.Debug|Win32.ActiveCfg = Debug|Win32
+		{742EAEA7-FE02-4CC9-B819-C3359F7DFF82}.Debug|Win32.Build.0 = Debug|Win32
+		{742EAEA7-FE02-4CC9-B819-C3359F7DFF82}.Release|Win32.ActiveCfg = Release|Win32
+		{742EAEA7-FE02-4CC9-B819-C3359F7DFF82}.Release|Win32.Build.0 = Release|Win32
+		{0BA647AD-137C-48D7-9D1F-8B91C6AF0393}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0BA647AD-137C-48D7-9D1F-8B91C6AF0393}.Debug|Win32.Build.0 = Debug|Win32
+		{0BA647AD-137C-48D7-9D1F-8B91C6AF0393}.Release|Win32.ActiveCfg = Release|Win32
+		{0BA647AD-137C-48D7-9D1F-8B91C6AF0393}.Release|Win32.Build.0 = Release|Win32
+		{44420FB2-9BDC-46E7-A4CF-F3C77F7F533E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{44420FB2-9BDC-46E7-A4CF-F3C77F7F533E}.Debug|Win32.Build.0 = Debug|Win32
+		{44420FB2-9BDC-46E7-A4CF-F3C77F7F533E}.Release|Win32.ActiveCfg = Release|Win32
+		{44420FB2-9BDC-46E7-A4CF-F3C77F7F533E}.Release|Win32.Build.0 = Release|Win32
+		{8CFE73D7-7743-4562-AEEB-5559BBF3DFAD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8CFE73D7-7743-4562-AEEB-5559BBF3DFAD}.Debug|Win32.Build.0 = Debug|Win32
+		{8CFE73D7-7743-4562-AEEB-5559BBF3DFAD}.Release|Win32.ActiveCfg = Release|Win32
+		{8CFE73D7-7743-4562-AEEB-5559BBF3DFAD}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
