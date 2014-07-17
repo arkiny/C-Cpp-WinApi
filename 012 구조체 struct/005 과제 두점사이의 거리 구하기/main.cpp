@@ -54,7 +54,7 @@ typedef struct POINT{
 	bool isinRange(POINT *target){
 		// 두 점간의 거리가(피타고라스 정리 이용) 시야 거리보다 작은가? 작으면 true
 		// 작지 않으면 false;
-		return  this->distanceTo(target) < SIGHT_RANGE; 
+		return  this->distanceTo(target) <= SIGHT_RANGE; 
 	}// is in Range
 
 	// target과 자신과의 거리를 구해서 돌려주는 함수
