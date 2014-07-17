@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{AFF7C475-351B-424F-B5A3-78B732B2129D}</ProjectGuid>
+    <ProjectGuid>{526ADB9D-5003-45E7-9C89-C275063D6A64}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>My005과제두점사이거리구하기</RootNamespace>
+    <RootNamespace>My006enum열거체</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
