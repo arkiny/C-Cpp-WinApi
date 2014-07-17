@@ -1,13 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2013 for Windows Desktop
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "001 구조체 선언 및 사용", "012 구조체 선언 및 사용\012 구조체 선언 및 사용.vcxproj", "{38B7E192-791E-4C14-8016-319CE0FCA8A7}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "002 구조체 문자열", "002 구조체 문자열\002 구조체 문자열.vcxproj", "{E7119FCF-A234-410B-842F-F4C132C8BA4C}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "003 구조체 포인터", "003 구조체 포인터\003 구조체 포인터.vcxproj", "{8E60B6CF-398F-4D80-9628-4B94F6DDD517}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "004 typedef 구조체 재정의", "004 typedef 구조체 재정의\004 typedef 구조체 재정의.vcxproj", "{97C12060-54B0-4E59-B9A4-B68F40E664EA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "005 과제 두점사이의 거리 구하기", "005 과제 두점사이의 거리 구하기\005 과제 두점사이의 거리 구하기.vcxproj", "{B595AD58-FD5E-403E-9D4B-500730703027}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "006 enum 열거체", "006 enum 열거체\006 enum 열거체.vcxproj", "{BEC74080-5772-4F86-828B-BEDD2E3CC2B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +33,18 @@ Global
 		{8E60B6CF-398F-4D80-9628-4B94F6DDD517}.Debug|Win32.Build.0 = Debug|Win32
 		{8E60B6CF-398F-4D80-9628-4B94F6DDD517}.Release|Win32.ActiveCfg = Release|Win32
 		{8E60B6CF-398F-4D80-9628-4B94F6DDD517}.Release|Win32.Build.0 = Release|Win32
+		{97C12060-54B0-4E59-B9A4-B68F40E664EA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{97C12060-54B0-4E59-B9A4-B68F40E664EA}.Debug|Win32.Build.0 = Debug|Win32
+		{97C12060-54B0-4E59-B9A4-B68F40E664EA}.Release|Win32.ActiveCfg = Release|Win32
+		{97C12060-54B0-4E59-B9A4-B68F40E664EA}.Release|Win32.Build.0 = Release|Win32
+		{B595AD58-FD5E-403E-9D4B-500730703027}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B595AD58-FD5E-403E-9D4B-500730703027}.Debug|Win32.Build.0 = Debug|Win32
+		{B595AD58-FD5E-403E-9D4B-500730703027}.Release|Win32.ActiveCfg = Release|Win32
+		{B595AD58-FD5E-403E-9D4B-500730703027}.Release|Win32.Build.0 = Release|Win32
+		{BEC74080-5772-4F86-828B-BEDD2E3CC2B5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BEC74080-5772-4F86-828B-BEDD2E3CC2B5}.Debug|Win32.Build.0 = Debug|Win32
+		{BEC74080-5772-4F86-828B-BEDD2E3CC2B5}.Release|Win32.ActiveCfg = Release|Win32
+		{BEC74080-5772-4F86-828B-BEDD2E3CC2B5}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
