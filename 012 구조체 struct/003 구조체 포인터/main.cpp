@@ -4,6 +4,10 @@
 @git		https://github.com/arkiny/SGA-Learning-Heedong
 
 구조체 포인터
+ - 구조체 내부 데이터 접근 (.)
+ - 구조체 포인터 내부 데이터 접근 (->)
+ - 외부 함수에는 포인터를 이용하는 것이 메모리 관리에도 훨씬 좋다.
+   ( 주소는 4바이트 )
 */
 
 #include <stdio.h> // printf()
@@ -20,15 +24,16 @@ struct POINT{
 	// plus method
 	// @param POINT input 계산할 다른 함수
 	// @return POINT this.x, this.y와 입력받은 struct의 x축과 y축이 더해진 값
-	POINT plus(POINT input){
-		POINT ret = { fX + input.fX, fY + input.fY };
+	POINT plus(POINT *input){
+		POINT ret = { fX + input->fX, fY + input->fY };
 		return ret;
 	}
 };
 
 // prototype
-POINT PlusPoint(POINT p1, POINT p2);
-POINT Al_PlusPoint(POINT p1, POINT p2);
+POINT PlusPoint(POINT *p1, POINT *p2);
+POINT Al_PlusPoint(POINT *p1, POINT *p2);
+POINT DividePoint(POINT *p1, POINT *p2);
 void print_signature();
 
 // main
@@ -39,6 +44,10 @@ void main(){
 	POINT p5 = {};
 	POINT p6 = {};
 	POINT p7 = {};
+	// div
+	POINT p8 = {};
+	POINT p9 = {};
+
 	// p3 = p1 + p2 로 해주고 싶다.
 	/*p3 = { (p1.fX + p2.fX), (p1.fY + p2.fY) };
 	p3.show();*/
@@ -56,21 +65,25 @@ void main(){
 	printf("\noriginal p5-\n");
 	p5.show();
 	printf("changed p5-\n");
-	p5 = PlusPoint(p1, p2);
+	p5 = PlusPoint(&p1, &p2);
 	p5.show();
 
 	printf("\noriginal p7-\n");
 	p7.show();
 	printf("changed p7-\n");
-	p7 = Al_PlusPoint(p1, p2);
+	p7 = Al_PlusPoint(&p1, &p2);
 	p7.show();
 
 	printf("\noriginal p6-\n");
 	p6.show();
 	printf("changed p6-\n");
-	p6 = p1.plus(p2);
+	p6 = p1.plus(&p2);
 	p6.show();
 	/////////////////////////////////////////////////
+
+	printf("\nDivision p7-\n");
+	p7 = DividePoint(&p1, &p2);
+	p7.show();
 } // main()
 
 
@@ -78,17 +91,24 @@ void main(){
 // @Param POINT p1, 입력받을 첫번째 객체, x축과 y축데이타를 가지고 있다.
 // @Param POINT p2, 입력받을 두번째 객체
 // @return POINT p1의 x, y 와 p2의 x,y가 각각 더해진 x,y를 가진 POINT를 리턴
-POINT PlusPoint(POINT p1, POINT p2){
-	POINT ret = { p1.fX + p2.fX, p1.fY + p2.fY }; // 각 POINT의 변수를 가져와서 직접 계산
+POINT PlusPoint(POINT *p1, POINT *p2){
+	POINT ret = { p1->fX + p2->fX, p1->fY + p2->fY }; // 각 POINT의 변수를 가져와서 직접 계산
 	return ret;
 } // PlusPoint();
 
 // Alternative PlustPoint
 // 객체 지향을 이용하여 만드는 방법
 // 이미 우리는 Struct안에 비슷한 함수를 가지고 있다?!
-POINT Al_PlusPoint(POINT p1, POINT p2){
-	return p1.plus(p2); // Struct안의 함수를 그대로 이용해서 리턴
+// 선생님이 한대로 포인터를 이용한 받기
+// 구조체를 그대로 받는 것보다 메모리를 아낄수 있다.
+POINT Al_PlusPoint(POINT *p1, POINT *p2){
+	return p1->plus(p2); // Struct안의 함수를 그대로 이용해서 리턴
 } // PlusPoint();
+
+POINT DividePoint(POINT *p1, POINT *p2){
+	POINT ret = { p1->fX / p2->fX, p1->fY / p2->fY };
+	return ret;
+} // DividePoint()
 
 
 // 서명 출력
