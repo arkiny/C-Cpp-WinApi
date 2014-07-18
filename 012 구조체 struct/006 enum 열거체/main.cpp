@@ -23,7 +23,7 @@ void main(){
 
 	// 
 	int weapon[WEAPON_MAX];
-	char *str[] = { "Rifle", "Desert Eagle", "Gurka", "M48", "RPG-7" };
+	char *str[] = { "M16A4", "Desert Eagle", "Gurka", "M48", "RPG-7" };
 
 	printf("무기 종류 = %s\n", str[Secondary]);
 
