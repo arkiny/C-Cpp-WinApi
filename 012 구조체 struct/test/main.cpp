@@ -1,458 +1,189 @@
-/* Path finding
-*
-* written by Giri Prahasta Putra
-* website: http://prahasta.com
-* twitter: http://twitter.com/igrir
-*
-*
-* Universitas Pendidikan Indonesia
-* http://cs.upi.edu
-*/
-
 #include <stdio.h>
-#include <malloc.h>
 #include <stdlib.h>
+#include <string.h>
+#include <malloc.h>
 
-/*	CREATE THE DOUBLE LIST  */
 
-//create the coordinate holder
-typedef struct{
-	//the coordinate consists of x, y, and the number of iteration
-	//for example (2,3,0)
-	int c[4];
-}coordinate;
+//#define BIG_EXAMPLE
 
-//the address for next element
-typedef struct elmt * address;
+typedef struct node_t node_t, *heap_t;
+typedef struct edge_t edge_t;
 
-//create the element of list
-typedef struct elmt
+struct edge_t {
+	node_t *nd;	/* target of this edge */
+	edge_t *sibling;/* for singly linked list */
+	int len;	/* edge cost */
+};
+struct node_t {
+	edge_t *edge;	/* singly linked list of edges */
+	node_t *via;	/* where previous node is in shortest path */
+	double dist;	/* distance from origining node */
+	char name[8];	/* the, er, name */
+	int heap_idx;	/* link to heap position for updating distance */
+};
+
+
+/* --- edge management --- */
+#ifdef BIG_EXAMPLE
+#	define BLOCK_SIZE (1024 * 32 - 1)
+#else
+#	define BLOCK_SIZE 15
+#endif
+edge_t *edge_root = 0, *e_next = 0;
+
+/* Don't mind the memory management stuff, they are besides the point.
+Pretend e_next = malloc(sizeof(edge_t)) */
+void add_edge(node_t *a, node_t *b, double d)
 {
-	coordinate cord;
-	address prev;
-	address next;
-}element;
+	if (e_next == edge_root) {
+		edge_root = (edge_t*)malloc(sizeof(edge_t) * (BLOCK_SIZE + 1));
+		edge_root[BLOCK_SIZE].sibling = e_next;
+		e_next = edge_root + BLOCK_SIZE;
+	}
+	--e_next;
 
-//create the list
-typedef struct
+	e_next->nd = b;
+	e_next->len = d;
+	e_next->sibling = a->edge;
+	a->edge = e_next;
+}
+
+void free_edges()
 {
-	//the list itself hold the first and the last element
-	element * first;
-	element * tail;
-}list;
-
-void createList(list * L){
-	(*L).first = NULL;
-	(*L).tail = NULL;
-}
-
-void addFirst(list *L, int x, int y, int i){
-	element * new1 = (element *)malloc(sizeof(element));
-
-	//add the data
-	new1->cord.c[0] = x;
-	new1->cord.c[1] = y;
-	new1->cord.c[2] = i;
-
-	if ((*L).first == NULL) {
-		(*L).first = new1;
-		(*L).tail = new1;
-		new1->next = NULL;
-		new1->prev = NULL;
-	}
-	else{
-		new1->next = (*L).first;
-		(*L).first->prev = new1;
-		(*L).first = new1;
-		new1->prev = NULL;
+	for (; edge_root; edge_root = e_next) {
+		e_next = edge_root[BLOCK_SIZE].sibling;
+		free(edge_root);
 	}
 }
 
-void addLast(list *L, int x, int y, int i){
+/* --- priority queue stuff --- */
+heap_t *heap;
+int heap_len;
 
-	if ((*L).first == NULL) {
-		addFirst(L, x, y, i);
-	}
-	else{
-		element * new1 = (element *)malloc(sizeof(element));
-
-		//add the data
-		new1->cord.c[0] = x;
-		new1->cord.c[1] = y;
-		new1->cord.c[2] = i;
-
-		//add the new element
-		(*L).tail->next = new1;
-		new1->prev = (*L).tail;
-		(*L).tail = new1;
-		new1->next = NULL;
-	}
-
-}
-
-void delNow(list *L, element * now){
-	//if the last element
-	if (now == (*L).first && now == (*L).tail) {
-		(*L).first = NULL;
-		(*L).tail = NULL;
-		free(now);
-		//if the first element
-	}
-	else if (now == (*L).first) {
-		(*L).first = now->next;
-		(*L).first->prev = NULL;
-		now->next = NULL;
-
-		free(now);
-		//if the tail element
-	}
-	else if (now == (*L).tail) {
-		(*L).tail = now->prev;
-		(*L).tail->next = NULL;
-		now->prev = NULL;
-
-		free(now);
-		//if at the middle
-	}
-	else{
-		now->prev->next = now->next;
-		now->next->prev = now->prev;
-		now->next = NULL;
-		now->prev = NULL;
-		free(now);
-	}
-}
-
-
-void printElements(list L){
-	element * now = L.first;
-
-	while (now != NULL) {
-		printf("x: %d, y: %d, i: %d\n", now->cord.c[0], now->cord.c[1], now->cord.c[2]);
-		now = now->next;
-	}
-}
-
-//this function return 1 if the path is in the list
-int checkPathExist(list L, int x, int y){
-	element * now = L.first;
-	int exist = 0;
-
-	while (now != NULL && exist == 0) {
-		if (now->cord.c[0] == x && now->cord.c[1] == y) {
-			exist = 1;
-		}
-		now = now->next;
-	}
-
-	return exist;
-}
-
-//return the number of iteration hold by the node
-int returnIteration(list L, int x, int y){
-	element * now = L.first;
-	int iteration = 0;
-	int found = 0;
-	while (now != NULL && found == 0) {
-		if (now->cord.c[0] == x && now->cord.c[1] == y) {
-			found = 1;
-			iteration = now->cord.c[2];
-		}
-		now = now->next;
-	}
-
-	return iteration;
-}
-
-int main()	{
-
-	list L;
-	//initialize the list for the path
-	createList(&L);
-
-	//intialize the map
-
-	//0 = free
-	//1 = wall
-	//2 = start
-	//3 = end
-	int arr[11][11] = { { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
-	{ 1, 0, 0, 0, 1, 1, 0, 1, 0, 1 },
-	{ 1, 0, 1, 0, 0, 1, 0, 0, 0, 1 },
-	{ 1, 0, 0, 0, 0, 0, 0, 1, 0, 1 },
-	{ 1, 0, 1, 0, 0, 1, 0, 0, 0, 1 },
-	{ 1, 0, 1, 0, 1, 1, 0, 1, 0, 1 },
-	{ 1, 0, 0, 0, 0, 1, 0, 1, 0, 1 },
-	{ 1, 0, 1, 1, 0, 0, 0, 1, 0, 1 },
-	{ 1, 0, 1, 0, 0, 1, 0, 1, 0, 1 },
-	{ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }
-	};
-
-
-	//start
-	int xstart = 1;
-	int ystart = 3;
-
-	//end
-	int xend = 8;
-	int yend = 8;
-
-	//using arr[y][x] because arr[row][column]
-	//set the start
-	arr[ystart][xstart] = 2;
-	//set the end
-	arr[yend][xend] = 3;
-
+void set_dist(node_t *nd, node_t *via, double d)
+{
 	int i, j;
 
-	for (i = 0; i<10; i++)
-	{
-		for (j = 0; j<10; j++)
-		{
-			if (arr[i][j] == 9) {
-				printf("* ");
-			}
-			else if (arr[i][j] == 0) {
-				printf("  ");
-			}
-			else if (arr[i][j] == 2) {
-				printf("S ");
-			}
-			else if (arr[i][j] == 3) {
-				printf("0 ");
-			}
-			else{
-				printf("%d ", arr[i][j]);
-			}
+	/* already knew better path */
+	if (nd->via && d >= nd->dist) return;
 
-		}
-		printf("\n");
+	/* find existing heap entry, or create a new one */
+	nd->dist = d;
+	nd->via = via;
+
+	i = nd->heap_idx;
+	if (!i) i = ++heap_len;
+
+	/* upheap */
+	for (; i > 1 && nd->dist < heap[j = i / 2]->dist; i = j)
+		(heap[i] = heap[j])->heap_idx = i;
+
+	heap[i] = nd;
+	nd->heap_idx = i;
+}
+
+node_t * pop_queue()
+{
+	node_t *nd, *tmp;
+	int i, j;
+
+	if (!heap_len) return 0;
+
+	/* remove leading element, pull tail element there and downheap */
+	nd = heap[1];
+	tmp = heap[heap_len--];
+
+	for (i = 1; i < heap_len && (j = i * 2) <= heap_len; i = j) {
+		if (j < heap_len && heap[j]->dist > heap[j + 1]->dist) j++;
+
+		if (heap[j]->dist >= tmp->dist) break;
+		(heap[i] = heap[j])->heap_idx = i;
 	}
 
-	//start from the end
+	heap[i] = tmp;
+	tmp->heap_idx = i;
 
-	//add the first element to the list, the end
-	//of the path
-	addFirst(&L, xend, yend, 0);
+	return nd;
+}
 
-	int found = 0;
-	int cx = xend;
-	int cy = yend;
-	int ci = 0;
+/* --- Dijkstra stuff; unreachable nodes will never make into the queue --- */
+void calc_all(node_t *start)
+{
+	node_t *lead;
+	edge_t *e;
 
-	element * now = L.first;
+	set_dist(start, start, 0);
+	while ((lead = pop_queue()))
+		for (e = lead->edge; e; e = e->sibling)
+			set_dist(e->nd, lead, lead->dist + e->len);
+}
 
-	//do the iteration until the first node found
-	while (found == 0 && now != NULL) {
+void show_path(node_t *nd)
+{
+	if (nd->via == nd)
+		printf("%s", nd->name);
+	else if (!nd->via)
+		printf("%s(unreached)", nd->name);
+	else {
+		show_path(nd->via);
+		printf("-> %s(%g) ", nd->name, nd->dist);
+	}
+}
 
+int main(void)
+{
+#ifndef BIG_EXAMPLE
+	int i;
 
+#	define N_NODES ('f' - 'a' + 1)
+	node_t *nodes = (node_t*)calloc(sizeof(node_t), N_NODES);
 
-		//check the adjacent of four direction not wall
+	for (i = 0; i < N_NODES; i++)
+		sprintf(nodes[i].name, "%c", 'a' + i);
 
-		int nowx = now->cord.c[0];
-		int nowy = now->cord.c[1];
-		int nowi = now->cord.c[2];
+#	define E(a, b, c) add_edge(nodes + (a - 'a'), nodes + (b - 'a'), c)
+	E('a', 'b', 7);	E('a', 'c', 9); E('a', 'f', 14);
+	E('b', 'c', 10); E('b', 'd', 15); E('c', 'd', 11);
+	E('c', 'f', 2); E('d', 'e', 6);	E('e', 'f', 9);
+#	undef E
 
-		//check the up
-		if (nowx == xstart && nowy - 1 == ystart) {
-			found = 1;
-			addLast(&L, nowx, nowy - 1, nowi + 1);
+#else /* BIG_EXAMPLE */
+	int i, j, c;
+
+#	define N_NODES 4000
+	node_t *nodes = calloc(sizeof(node_t), N_NODES);
+
+	for (i = 0; i < N_NODES; i++)
+		sprintf(nodes[i].name, "%d", i + 1);
+
+	/* given any pair of nodes, there's about 50% chance they are not
+	connected; if connected, the cost is randomly chosen between 0
+	and 49 (inclusive! see output for consequences) */
+	for (i = 0; i < N_NODES; i++) {
+		for (j = 0; j < N_NODES; j++) {
+			/* majority of runtime is actually spent here */
+			if (i == j) continue;
+			c = rand() % 100;
+			if (c < 50) continue;
+			add_edge(nodes + i, nodes + j, c - 50);
 		}
-		if (found == 0) {
-			if (nowy - 1 >= 0) {
-				if (checkPathExist(L, nowx, nowy - 1) == 0) {
-					if (arr[nowy - 1][nowx] != 1) {
-						addLast(&L, nowx, nowy - 1, nowi + 1);
-					}
-				}
-			}
-		}
-
-
-		//check the down
-		if (nowx == xstart && nowy + 1 == ystart) {
-			found = 1;
-			addLast(&L, nowx, nowy + 1, nowi + 1);
-		}
-		if (found == 0) {
-			//in here check to 9 because the maximum of the map is 9
-			if (nowy + 1 <= 9) {
-				if (checkPathExist(L, nowx, nowy + 1) == 0) {
-					if (arr[nowy + 1][nowx] != 1) {
-						addLast(&L, nowx, nowy + 1, nowi + 1);
-					}
-				}
-			}
-		}
-
-		//check the left
-		if (nowx - 1 == xstart && nowy == ystart) {
-			found = 1;
-			addLast(&L, nowx - 1, nowy, nowi + 1);
-		}
-		if (found == 0) {
-			if (nowx - 1 >= 0) {
-				if (checkPathExist(L, nowx - 1, nowy) == 0) {
-					if (arr[nowy][nowx - 1] != 1) {
-						addLast(&L, nowx - 1, nowy, nowi + 1);
-					}
-				}
-			}
-		}
-
-		//check the right
-		if (nowx + 1 == xstart && nowy == ystart) {
-			found = 1;
-			addLast(&L, nowx + 1, nowy, nowi + 1);
-		}
-		if (found == 0) {
-			if (nowx + 1 <= 9) {
-				if (checkPathExist(L, nowx + 1, nowy) == 0) {
-					if (arr[nowy][nowx + 1] != 1) {
-						addLast(&L, nowx + 1, nowy, nowi + 1);
-					}
-				}
-			}
-		}
-
-		now = now->next;
 	}
 
-	//do the next step if there was a solution
-	if (found == 1) {
+#endif
+	heap = (heap_t*)calloc(sizeof(heap_t), N_NODES + 1);
+	heap_len = 0;
 
-
-		/*********** FROM START TO END ***********/
-		found = 0;
-
-		//create the list that hold the track
-		list L2;
-		createList(&L2);
-
-		addFirst(&L2, L.tail->cord.c[0], L.tail->cord.c[1], L.tail->cord.c[2]);
-
-		//check from the start to the end to find the short path
-		//from the built path and also remove the unnecessary path
-
-		now = L.tail;
-
-		int backX = L.tail->cord.c[0];
-		int backY = L.tail->cord.c[1];
-		int backI = L.tail->cord.c[2];
-
-		while (found == 0){
-			//the holder of the candidate for the 
-			int candidateX;
-			int candidateY;
-			int candidateI;
-
-			//check the adjacent from the last one
-
-			//check the adjacent of four direction not wall and check it's the shortest iteration one
-
-			//check up
-			//check whether it's in the list
-			if (backY - 1 >= 0) {
-				if (checkPathExist(L, backX, backY - 1) == 1) {
-
-					if (returnIteration(L, backX, backY - 1) < backI) {
-						candidateX = backX;
-						candidateY = backY - 1;
-						candidateI = returnIteration(L, backX, backY - 1);
-					}
-
-				}
-			}
-
-			//check down
-			if (backY + 1 <= 9) {
-				if (checkPathExist(L, backX, backY + 1) == 1) {
-					if (returnIteration(L, backX, backY + 1) < backI) {
-						candidateX = backX;
-						candidateY = backY + 1;
-						candidateI = returnIteration(L, backX, backY + 1);
-					}
-				}
-			}
-
-			//check left
-			if (backX - 1 >= 0) {
-				if (checkPathExist(L, backX - 1, backY) == 1) {
-					if (returnIteration(L, backX - 1, backY) < backI) {
-						candidateX = backX - 1;
-						candidateY = backY;
-						candidateI = returnIteration(L, backX - 1, backY);
-					}
-				}
-			}
-
-			//check right
-			if (backX + 1 <= 9) {
-				if (checkPathExist(L, backX + 1, backY) == 1) {
-					if (returnIteration(L, backX + 1, backY) < backI) {
-						candidateX = backX + 1;
-						candidateY = backY;
-						candidateI = returnIteration(L, backX + 1, backY);
-
-					}
-				}
-			}
-
-			addLast(&L2, candidateX, candidateY, candidateI);
-
-			backX = candidateX;
-			backY = candidateY;
-			backI = candidateI;
-
-			//stop it when reach the end path
-			if (backX == xend && backY == yend) {
-				found = 1;
-			}
-
-		}
-
-
-
-		//draw the path to the map
-
-		element * draw = L2.first;
-
-		while (draw != NULL) {
-			if (draw != L2.first && draw != L2.tail) {
-				arr[draw->cord.c[1]][draw->cord.c[0]] = 9;
-			}
-
-			draw = draw->next;
-		}
-
-		for (i = 0; i<10; i++)
-		{
-			for (j = 0; j<10; j++)
-			{
-				if (arr[i][j] == 9) {
-					printf("* ");
-				}
-				else if (arr[i][j] == 0) {
-					printf("  ");
-				}
-				else if (arr[i][j] == 2) {
-					printf("S ");
-				}
-				else if (arr[i][j] == 3) {
-					printf("0 ");
-				}
-				else{
-					printf("%d ", arr[i][j]);
-				}
-
-			}
-			printf("\n");
-		}
-
-	}
-	else{
-		printf("There is no solution\n");
+	calc_all(nodes);
+	for (i = 0; i < N_NODES; i++) {
+		show_path(nodes + i);
+		putchar('\n');
 	}
 
+#if 0
+	/* real programmers don't free memories (they use Fortran) */
+	free_edges();
+	free(heap);
+	free(nodes);
+#endif
 	return 0;
 }
