@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+# Visual Studio Express 2013 for Windows Desktop
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "001 구조체 선언 및 사용", "012 구조체 선언 및 사용\012 구조체 선언 및 사용.vcxproj", "{38B7E192-791E-4C14-8016-319CE0FCA8A7}"
 EndProject
@@ -20,6 +20,10 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "007-1 과제", "007-1 과제\007-1 과제.vcxproj", "{F9353D81-8D98-4F13-834D-C7C4BE5C6D44}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test", "test\test.vcxproj", "{D7057C25-884A-48F3-8B73-ACFFD54D0ADF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "008 자기 참조 구조체", "008 자기 참조 구조체\008 자기 참조 구조체.vcxproj", "{28A364FB-99A4-4E01-8497-916CD1A1A188}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "008-1 과제", "008-1 과제\008-1 과제.vcxproj", "{A3947AD7-4A44-4570-9856-636CBEFD36AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +67,14 @@ Global
 		{D7057C25-884A-48F3-8B73-ACFFD54D0ADF}.Debug|Win32.Build.0 = Debug|Win32
 		{D7057C25-884A-48F3-8B73-ACFFD54D0ADF}.Release|Win32.ActiveCfg = Release|Win32
 		{D7057C25-884A-48F3-8B73-ACFFD54D0ADF}.Release|Win32.Build.0 = Release|Win32
+		{28A364FB-99A4-4E01-8497-916CD1A1A188}.Debug|Win32.ActiveCfg = Debug|Win32
+		{28A364FB-99A4-4E01-8497-916CD1A1A188}.Debug|Win32.Build.0 = Debug|Win32
+		{28A364FB-99A4-4E01-8497-916CD1A1A188}.Release|Win32.ActiveCfg = Release|Win32
+		{28A364FB-99A4-4E01-8497-916CD1A1A188}.Release|Win32.Build.0 = Release|Win32
+		{A3947AD7-4A44-4570-9856-636CBEFD36AA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A3947AD7-4A44-4570-9856-636CBEFD36AA}.Debug|Win32.Build.0 = Debug|Win32
+		{A3947AD7-4A44-4570-9856-636CBEFD36AA}.Release|Win32.ActiveCfg = Release|Win32
+		{A3947AD7-4A44-4570-9856-636CBEFD36AA}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
