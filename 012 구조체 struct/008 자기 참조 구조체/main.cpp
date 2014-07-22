@@ -18,12 +18,21 @@ typedef struct node{
 	
 	node* pnext; // next node
 
+	// Do RECURSIVE
+	node* findNode(UNIT key){
+		//base case
+		if (ukey == key) return this;
+		// 현재 노드가 꼬리라면,
+		if (pnext == nullptr) return nullptr;
+		// do recursive
+		pnext->findNode(ukey);	
+	}
 }NODE;
 
 // prototype
 void showNode(node *head);
 void addNode(node *front, node* input);
-void findNode(node *head, UNIT key);
+node* findNode(node *head, UNIT key);
 
 // main
 void main(){
@@ -68,7 +77,15 @@ void main(){
 	addNode(&a, &d);
 	showNode(&a);
 	UNIT find = 1004;
-	findNode(&a, find);
+	node* pfind = findNode(&a, find);
+
+	node* pf = a.findNode(1004); 
+	if (pf){
+		printf("pf nvalue = %d\n", pf->nValue);
+	}
+	else {
+		printf("err: No such an element\n");
+	}
 }// main()
 
 // Print out from head to tail
@@ -93,11 +110,16 @@ void addNode(node *front, node* input){
 // findNode
 // @param node *cur
 // @param UINT key
-void findNode(node *head, UNIT key){
+node* findNode(node *head, UNIT key){
 	node *cur = head;
 	while (cur->ukey != key){
 		cur = cur->pnext;
+		if (cur == nullptr){
+			printf("No such a key in the list\n");
+			return nullptr;
+		}
 	}
 	printf("Value of Key %u is %d\n", cur->ukey, cur->nValue);
+	return cur;
 }
 

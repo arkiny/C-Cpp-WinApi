@@ -43,7 +43,9 @@ typedef struct node {
 	// 동적 할당으로 만들어야 하는가?
 	// No, I will use libary from C++
 	// 예전에 강사님이 말한 strcpy를 이용해봄
-	void inputData(char input_artist_name[MAX_STRING], char input_song_name[MAX_STRING], node *input_next_node){
+	void inputData(char input_artist_name[MAX_STRING], 
+					char input_song_name[MAX_STRING], 
+					node *input_next_node){
 		strcpy(data.artist_name, input_artist_name);
 		strcpy(data.song_name, input_song_name);
 		next_node = input_next_node;
