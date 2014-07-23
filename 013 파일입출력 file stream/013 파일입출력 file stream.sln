@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2013 for Windows Desktop
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "001 파일쓰기", "001 파일쓰기\001 파일쓰기.vcxproj", "{74CF332D-7D41-4980-A635-38DA06EB0A2F}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "004 user defined data 읽고 쓰기", "004 user defined data 읽고 쓰기\004 user defined data 읽고 쓰기.vcxproj", "{F61C87A8-E7A9-429D-B772-B6F244B16D90}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "004-1 과제", "004-1 과제\004-1 과제.vcxproj", "{DF2BFA55-9D81-41AE-B33B-8973397AC177}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "004-2 과제", "004-2 과제\004-2 과제.vcxproj", "{9EE5DEF0-F916-415B-97F5-556165DC8C34}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{DF2BFA55-9D81-41AE-B33B-8973397AC177}.Debug|Win32.Build.0 = Debug|Win32
 		{DF2BFA55-9D81-41AE-B33B-8973397AC177}.Release|Win32.ActiveCfg = Release|Win32
 		{DF2BFA55-9D81-41AE-B33B-8973397AC177}.Release|Win32.Build.0 = Release|Win32
+		{9EE5DEF0-F916-415B-97F5-556165DC8C34}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9EE5DEF0-F916-415B-97F5-556165DC8C34}.Debug|Win32.Build.0 = Debug|Win32
+		{9EE5DEF0-F916-415B-97F5-556165DC8C34}.Release|Win32.ActiveCfg = Release|Win32
+		{9EE5DEF0-F916-415B-97F5-556165DC8C34}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
