@@ -33,6 +33,8 @@ int main(){
 
 	int ncarrot = 0;
 	cout << "당근을 몇개 먹었습니까? ";
+	
+	//ncarrot 값
 	cin >> ncarrot;
 	cout << "당근을 " << ncarrot << " 개 먹었습니다." << endl;
 
@@ -49,7 +51,6 @@ int main(){
 	// 계속 8진수로 출력이 된다.
 	cout << dec << 10 << endl;
 
-	
 	// 나누기 연산
 	cout << 14.78f << " / " << 9.61f << " = " << 14.78f / 9.61f << endl;
 

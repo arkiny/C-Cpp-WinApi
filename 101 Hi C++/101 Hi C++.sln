@@ -5,6 +5,10 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "001 cpp begin", "001 cpp begin\001 cpp begin.vcxproj", "{6BD6282A-1E48-4CD9-9C3D-A64577BC6D71}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "002 문자 및 문자열 입력", "002 문자 및 문자열 입력\002 문자 및 문자열 입력.vcxproj", "{470274A6-B5E2-46D7-9464-AB96241F2CCF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "003 String Class", "003 String Class\003 String Class.vcxproj", "{FA152CBA-6F4A-4ADD-A75B-1FA1D65FC12E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -15,6 +19,14 @@ Global
 		{6BD6282A-1E48-4CD9-9C3D-A64577BC6D71}.Debug|Win32.Build.0 = Debug|Win32
 		{6BD6282A-1E48-4CD9-9C3D-A64577BC6D71}.Release|Win32.ActiveCfg = Release|Win32
 		{6BD6282A-1E48-4CD9-9C3D-A64577BC6D71}.Release|Win32.Build.0 = Release|Win32
+		{470274A6-B5E2-46D7-9464-AB96241F2CCF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{470274A6-B5E2-46D7-9464-AB96241F2CCF}.Debug|Win32.Build.0 = Debug|Win32
+		{470274A6-B5E2-46D7-9464-AB96241F2CCF}.Release|Win32.ActiveCfg = Release|Win32
+		{470274A6-B5E2-46D7-9464-AB96241F2CCF}.Release|Win32.Build.0 = Release|Win32
+		{FA152CBA-6F4A-4ADD-A75B-1FA1D65FC12E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FA152CBA-6F4A-4ADD-A75B-1FA1D65FC12E}.Debug|Win32.Build.0 = Debug|Win32
+		{FA152CBA-6F4A-4ADD-A75B-1FA1D65FC12E}.Release|Win32.ActiveCfg = Release|Win32
+		{FA152CBA-6F4A-4ADD-A75B-1FA1D65FC12E}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
