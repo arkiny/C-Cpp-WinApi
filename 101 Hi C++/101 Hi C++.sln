@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2013 for Windows Desktop
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "001 cpp begin", "001 cpp begin\001 cpp begin.vcxproj", "{6BD6282A-1E48-4CD9-9C3D-A64577BC6D71}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "002 문자 및 문자열 입력", "002 문자 및 문자열 입력\002 문자 및 문자열 입력.vcxproj", "{470274A6-B5E2-46D7-9464-AB96241F2CCF}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "003 String Class", "003 String Class\003 String Class.vcxproj", "{FA152CBA-6F4A-4ADD-A75B-1FA1D65FC12E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "003-1 과제-산성비", "003-1 과제-산성비\003-1 과제-산성비.vcxproj", "{CFAAFB96-E301-4F8D-9C05-B602D7DEA12E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{FA152CBA-6F4A-4ADD-A75B-1FA1D65FC12E}.Debug|Win32.Build.0 = Debug|Win32
 		{FA152CBA-6F4A-4ADD-A75B-1FA1D65FC12E}.Release|Win32.ActiveCfg = Release|Win32
 		{FA152CBA-6F4A-4ADD-A75B-1FA1D65FC12E}.Release|Win32.Build.0 = Release|Win32
+		{CFAAFB96-E301-4F8D-9C05-B602D7DEA12E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CFAAFB96-E301-4F8D-9C05-B602D7DEA12E}.Debug|Win32.Build.0 = Debug|Win32
+		{CFAAFB96-E301-4F8D-9C05-B602D7DEA12E}.Release|Win32.ActiveCfg = Release|Win32
+		{CFAAFB96-E301-4F8D-9C05-B602D7DEA12E}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

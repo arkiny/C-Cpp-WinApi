@@ -52,19 +52,3 @@ void main(){
 
 }
 
-/*
-	과제 ]
-
-	String class 활용
-	compare 활용 or find 활용
-	c : str[][10] = { "first", "second", "third" };
-	c++ : string[5] = .....;
-
-	다섯개의 단어 배열
-	___, ___, ___, ___, ___
-
-	입력 : ___
-	해당 단어를 삭제
-
-	산성비 게임 
-*/
