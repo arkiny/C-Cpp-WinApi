@@ -5,6 +5,10 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "001 new delete", "001 new delete\001 new delete.vcxproj", "{8897073C-98F5-4740-AF40-D27F62350CAD}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "002 new delete array", "002 new delete array\002 new delete array.vcxproj", "{622597B2-CC16-4157-A037-76ABA265E329}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "003 new delete struct", "003 new delete struct\003 new delete struct.vcxproj", "{22B64039-C9D8-4F61-B6CF-79C523DB3171}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -15,6 +19,14 @@ Global
 		{8897073C-98F5-4740-AF40-D27F62350CAD}.Debug|Win32.Build.0 = Debug|Win32
 		{8897073C-98F5-4740-AF40-D27F62350CAD}.Release|Win32.ActiveCfg = Release|Win32
 		{8897073C-98F5-4740-AF40-D27F62350CAD}.Release|Win32.Build.0 = Release|Win32
+		{622597B2-CC16-4157-A037-76ABA265E329}.Debug|Win32.ActiveCfg = Debug|Win32
+		{622597B2-CC16-4157-A037-76ABA265E329}.Debug|Win32.Build.0 = Debug|Win32
+		{622597B2-CC16-4157-A037-76ABA265E329}.Release|Win32.ActiveCfg = Release|Win32
+		{622597B2-CC16-4157-A037-76ABA265E329}.Release|Win32.Build.0 = Release|Win32
+		{22B64039-C9D8-4F61-B6CF-79C523DB3171}.Debug|Win32.ActiveCfg = Debug|Win32
+		{22B64039-C9D8-4F61-B6CF-79C523DB3171}.Debug|Win32.Build.0 = Debug|Win32
+		{22B64039-C9D8-4F61-B6CF-79C523DB3171}.Release|Win32.ActiveCfg = Release|Win32
+		{22B64039-C9D8-4F61-B6CF-79C523DB3171}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

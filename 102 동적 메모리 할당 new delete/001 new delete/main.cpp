@@ -13,6 +13,9 @@
 
 using namespace std;
 
+void CreateData(void **data, int input);
+void DeleteData(void **data);
+
 void main(){
 	//1. 이름이 있는 변수
 	int num = 61;
@@ -37,4 +40,36 @@ void main(){
 	// c++은 garbage collector가 없어서 메모리 관리를 해줘야한다.
 	// 그래서 새롭게 나온게 있음 ㅋ unique...(그닥 추천하진 않는다)
 	// 수십년동안 이렇게 했는데..........
+
+	// 3. 메모리 할당과 동시에 초기화
+	void *pnum2 = new float(3.1415f);
+
+	// 값과 주소 출력
+	cout << "pnum 2 값 : " << *(float*)pnum2 << endl	
+		 << "pnum 2 주소 : " << pnum2 << endl;
+
+	delete pnum2;
+	pnum2 = nullptr;
+
+	// 확장...
+	void *pdat = nullptr;
+
+	CreateData(&pdat, 45);
+
+	cout << *(int*)pdat << endl;
+	//cout << pdat  ...->45가 출력
+	
+	DeleteData(&pdat);
 }	
+
+//*****************************************//
+void CreateData(void **data, int input){
+	*data = new int(input);
+	*(int*)*(data) = input;
+}
+
+void DeleteData(void **data){
+	delete *data;
+	*data = nullptr;
+}
+//******************************************//
