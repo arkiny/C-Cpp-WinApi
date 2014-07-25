@@ -58,6 +58,7 @@ void main(){
 	time_t typingTime = 0;
 	int combo = -1;
 	int temp_score = -1;
+	int input_flag = 0;
 
 	// 최초 변수 입력
 	var_init(&input, output_string, &score);
@@ -104,6 +105,7 @@ void main(){
 		// 매 루프가 돌때마다 콤보와 score 계산츤 초기화
 		combo = 0;
 		temp_score = 0;
+		input_flag = 0;
 		for (int i = 0; i < 5; i++){
 			// 만약 같은 걸 찾아냈을경우, 득점에 필요한 계산을 마친뒤에,
 			// 그 자리에 새로운 문자열을 채워넣는다.
@@ -117,9 +119,10 @@ void main(){
 				cout << "현재까지 득점 : " << score << endl;
 
 				output_string[i] = DATABASE[rand() % 25];
+				input_flag = 1;
 			}
 			// 오타났을시에
-			else if (i == 4){
+			else if (i == 4 && input_flag == 0){
 				score = score - 10;
 				cout << "No such a word, 점수 감소 - 10점" << endl;
 			}
