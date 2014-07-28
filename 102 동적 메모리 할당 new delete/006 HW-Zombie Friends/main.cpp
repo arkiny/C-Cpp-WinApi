@@ -21,9 +21,9 @@
 	** 오늘은 좀더 포인터에 집중해서 놀았...
 	질문 ] 만약 여기서 dequeue나, delete에서 double pointer를 쓰려면?
 */
-#include <vector>
-#include <string>
-#include <iostream>
+#include <vector> // vector
+#include <string> // string
+#include <iostream> // cout, cin, endl
 
 // using
 using std::vector;
@@ -156,7 +156,9 @@ TUBBY dequeueTUBBY(vector<TUBBY*> *vinput){
 		// 그래서 ret시에는 자체 임시 메모리를 통해서 ret해주는 식으로 결정
 		// 이건 처리하고 바로 처리되려나?	
 		// 자체 임시메모리가 받고, 포인터를 이용해서 삭제
-		cout << "남은 친구들중 가장 먼저 온 텔레토비 칭구가 집에 갔어요~" << endl;
+		cout << "남은 친구들중 " 
+			<< vinput->front()->z_number 
+			<<"번 텔레토비 칭구가 집에 가요~" << endl;
 		cout << "빠바이~★" << endl;
 		TUBBY ret = *vinput->front();
 		// 여기서 과연 이중 포인터가 필요할것인가.
@@ -191,11 +193,7 @@ void deleteTUBBY(vector<TUBBY*> *vinput){
 	cout << "방청소(메모리 청소)를 하고," << endl;
 	cout << "모두 집에 갈시간이에요~♩" << endl;
 	cout << "텔레토피 칭구들 안녀엉~♬" << endl;
-	void *ptr = nullptr;
 	while(!vinput->empty()){
-		ptr = vinput->back();
-		delete ptr;
-		vinput->pop_back();				
-	}		
-	ptr = nullptr; // ptr 리셋
+		dequeueTUBBY(vinput); // 다 없어질때까지 dequeue, 함수 재활용
+	}			
 }
