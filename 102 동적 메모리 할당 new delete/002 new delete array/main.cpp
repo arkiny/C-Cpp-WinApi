@@ -14,6 +14,7 @@ void main(){
 	int *ptr = array;*/
 
 	// ptr에다가 1~5 대입
+	// 포인터를 배열처럼 이용
 	int *ptr = new int[5];
 
 
@@ -34,7 +35,7 @@ void main(){
 
 	CreateData(&pptr, input2, 5);
 	cout << *(int*)(pptr+1) << end;*/
-
+	// 동적으로 값을 만들어서 이용
 	void* pt = nullptr; {
 		int size = 0;
 		cout << "얼마나 많은 적을 만들까요?" << endl;

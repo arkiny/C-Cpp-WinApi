@@ -32,7 +32,7 @@ void main(){
 	{// 중괄호는 보기 좋으라고 한거
 		*pnum1 = 77;
 		cout << "pnum1 값 = " << *pnum1 << endl;
-	}
+	}// new 하고 딜리트를 해야한다는 강조하기 위해서 해놓은 것
 	delete pnum1;		// delete
 	pnum1 = nullptr;	// nullptr
 	// 키 초기화를 하는 습관을 가져야 한다.
@@ -42,6 +42,7 @@ void main(){
 	// 수십년동안 이렇게 했는데..........
 
 	// 3. 메모리 할당과 동시에 초기화
+	// 어떠한 데이타형 다 받을수 있지만 사용하려 했을때 다시 캐스팅해야 한다.
 	void *pnum2 = new float(3.1415f);
 
 	// 값과 주소 출력
@@ -52,6 +53,8 @@ void main(){
 	pnum2 = nullptr;
 
 	// 확장...
+	// 실제로 엔진 구조들이나 Direct3D들을 보면 이런식으로 메모리 생성을 많이 한다.
+	// 내부에서 메모리 생성하고.... 훨더 깔끔함
 	void *pdat = nullptr;
 
 	CreateData(&pdat, 45);
@@ -59,6 +62,7 @@ void main(){
 	cout << *(int*)pdat << endl;
 	//cout << pdat  ...->45가 출력
 	
+	// 이런식으로 릴리즈해준다.
 	DeleteData(&pdat);
 }	
 

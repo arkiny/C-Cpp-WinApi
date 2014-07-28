@@ -9,6 +9,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "002 new delete array", "002
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "003 new delete struct", "003 new delete struct\003 new delete struct.vcxproj", "{22B64039-C9D8-4F61-B6CF-79C523DB3171}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "004 stl vector template class", "004 stl vector template class\004 stl vector template class.vcxproj", "{59D94575-C8C3-4DD2-B339-977ADD42D201}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "005 stl list template class", "005 stl list template class\005 stl list template class.vcxproj", "{6EFCC44A-E2A8-4343-B37A-A761F332B891}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "006 HW-Zombie Friends", "006 HW-Zombie Friends\006 HW-Zombie Friends.vcxproj", "{83689091-EFD0-4281-B0E5-FD8FDF5E64A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -27,6 +33,18 @@ Global
 		{22B64039-C9D8-4F61-B6CF-79C523DB3171}.Debug|Win32.Build.0 = Debug|Win32
 		{22B64039-C9D8-4F61-B6CF-79C523DB3171}.Release|Win32.ActiveCfg = Release|Win32
 		{22B64039-C9D8-4F61-B6CF-79C523DB3171}.Release|Win32.Build.0 = Release|Win32
+		{59D94575-C8C3-4DD2-B339-977ADD42D201}.Debug|Win32.ActiveCfg = Debug|Win32
+		{59D94575-C8C3-4DD2-B339-977ADD42D201}.Debug|Win32.Build.0 = Debug|Win32
+		{59D94575-C8C3-4DD2-B339-977ADD42D201}.Release|Win32.ActiveCfg = Release|Win32
+		{59D94575-C8C3-4DD2-B339-977ADD42D201}.Release|Win32.Build.0 = Release|Win32
+		{6EFCC44A-E2A8-4343-B37A-A761F332B891}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6EFCC44A-E2A8-4343-B37A-A761F332B891}.Debug|Win32.Build.0 = Debug|Win32
+		{6EFCC44A-E2A8-4343-B37A-A761F332B891}.Release|Win32.ActiveCfg = Release|Win32
+		{6EFCC44A-E2A8-4343-B37A-A761F332B891}.Release|Win32.Build.0 = Release|Win32
+		{83689091-EFD0-4281-B0E5-FD8FDF5E64A2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{83689091-EFD0-4281-B0E5-FD8FDF5E64A2}.Debug|Win32.Build.0 = Debug|Win32
+		{83689091-EFD0-4281-B0E5-FD8FDF5E64A2}.Release|Win32.ActiveCfg = Release|Win32
+		{83689091-EFD0-4281-B0E5-FD8FDF5E64A2}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
