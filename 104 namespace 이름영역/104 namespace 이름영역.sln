@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2013 for Windows Desktop
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "001 using", "001 using\001 using.vcxproj", "{DDB2FCAC-0EB9-4348-877D-0E7D5D22C4C8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "002 namespace 정의", "002 namespace 정의\002 namespace 정의.vcxproj", "{E94F9E0D-BB64-4A11-9107-1B93339CE423}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "003 namespace 영역추가 다중파일", "003 namespace 영역추가\003 namespace 영역추가.vcxproj", "{B9AB8F33-457F-442B-90C6-E306FC004F57}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DDB2FCAC-0EB9-4348-877D-0E7D5D22C4C8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DDB2FCAC-0EB9-4348-877D-0E7D5D22C4C8}.Debug|Win32.Build.0 = Debug|Win32
+		{DDB2FCAC-0EB9-4348-877D-0E7D5D22C4C8}.Release|Win32.ActiveCfg = Release|Win32
+		{DDB2FCAC-0EB9-4348-877D-0E7D5D22C4C8}.Release|Win32.Build.0 = Release|Win32
+		{E94F9E0D-BB64-4A11-9107-1B93339CE423}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E94F9E0D-BB64-4A11-9107-1B93339CE423}.Debug|Win32.Build.0 = Debug|Win32
+		{E94F9E0D-BB64-4A11-9107-1B93339CE423}.Release|Win32.ActiveCfg = Release|Win32
+		{E94F9E0D-BB64-4A11-9107-1B93339CE423}.Release|Win32.Build.0 = Release|Win32
+		{B9AB8F33-457F-442B-90C6-E306FC004F57}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B9AB8F33-457F-442B-90C6-E306FC004F57}.Debug|Win32.Build.0 = Debug|Win32
+		{B9AB8F33-457F-442B-90C6-E306FC004F57}.Release|Win32.ActiveCfg = Release|Win32
+		{B9AB8F33-457F-442B-90C6-E306FC004F57}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

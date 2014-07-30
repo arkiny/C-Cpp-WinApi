@@ -37,6 +37,12 @@
 	------------------------------------------------------------
 	
 	따로 종료 인터페이스는 안넣음
+	
+	-------------------------------------------------------------
+	** 수업중 bug 발견 후 fix **
+	** unsigned int 같은 경우, 계속 -값이 가서 음수가 될 경우
+	0보다 작은 수는 감지를 못해준다. **
+	-------------------------------------------------------------
 */
 
 #include <iostream> // cout, cin, endl
@@ -52,14 +58,14 @@ using std::string;
 using std::vector;
 
 // Global Constant Variable
-const unsigned int DEFAULT_AFFECTION_POINT = 25; // default affection point
+const int DEFAULT_AFFECTION_POINT = 25; // default affection point
 const string catName[] = { "냥이", "먕이", "나비", "반장", 
 						"알렉", "정남", "조석", "수지", 
 						"현영", "뱅이", "호두", "몬드" };
 
 typedef struct cat {
 	string name;							// 고양이 이름
-	unsigned int affection_point;			// 애정도
+	int affection_point;			// 애정도
 
 	// 고양이가 도망갔는지 안도망갔는지 확인
 	bool isRunAway(){
