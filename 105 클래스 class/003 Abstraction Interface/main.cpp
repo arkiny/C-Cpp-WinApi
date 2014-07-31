@@ -11,7 +11,10 @@ void main(){
 	player.show();
 	enemy.show();
 	
+	enemy.setPos(10, 10);
+	enemy.show();
+
 	//test
-	player.showDistance(enemy.getPos());
-	player.showAngle(enemy.getPos());
+	player.showDistance(enemy.getPos()); // 14.14
+	player.showAngle(enemy.getPos()); // 45µµ
 }
