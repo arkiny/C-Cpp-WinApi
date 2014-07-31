@@ -33,21 +33,21 @@ void Object::movePos(float moveX, float moveY){
 	pos.fy += moveY;
 }
 
-float Object::calcDistance(POINT target){
+float Object::calcDistance(POINT &target){
 	// sqrt((세로 거리)^2 + (가로거리)^2)
 	return sqrt(pow((target.fx - pos.fx), 2) + pow((target.fy - pos.fy), 2));
 }
 
-void Object::showDistance(POINT target){
+void Object::showDistance(POINT &target){
 	cout << "Distance to Target= " << this->calcDistance(target) << endl;
 }
 
-float Object::calcAngle(POINT target){
+float Object::calcAngle(POINT &target){
 	// tan^-1 (x/y) * (180 / PI)
 	return atan2((target.fy - pos.fy), (target.fx - pos.fx)) * (180 / 3.141592);
 }
 
-void Object::showAngle(POINT target){
+void Object::showAngle(POINT &target){
 	cout << "Angle to Target= " << this->calcAngle(target) << " degree"<< endl;
 }
 

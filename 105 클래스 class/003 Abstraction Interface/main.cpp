@@ -11,7 +11,10 @@ void main(){
 	player.show();
 	enemy.show();
 	
-	enemy.setPos(10, 10);
+	enemy.setPos(6, 10);
+	enemy.show();
+
+	enemy.movePos(4, 0); // (10,10)
 	enemy.show();
 
 	//test

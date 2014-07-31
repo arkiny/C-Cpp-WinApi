@@ -56,20 +56,20 @@ public:
 	// Calculate distance to other point
 	// @param POINT other point
 	// @return float distance to the point
-	float calcDistance(POINT);
+	float calcDistance(POINT&);
 
 	// Calculate and show distance between other point
 	// @param POINT other point
-	void showDistance(POINT);
+	void showDistance(POINT&);
 
 	// Calculate Angle to other point
 	// @param POINT other point
 	// @return float Angle
-	float calcAngle(POINT);
+	float calcAngle(POINT&);
 
 	// Calculate and show Angle to other point
 	// @param POINT other point
-	void showAngle(POINT);
+	void showAngle(POINT&);
 
 	// return object's current position
 	POINT getPos();
