@@ -1,4 +1,15 @@
+// 엔간해선 헤더 참조는 다 cpp파일로 내려보내도록 한다.
+// 꺽쇠 모양 헤더를 맨위로 보내고
+#include <iostream>
+#include <cmath>
+
+// custom header를 나중에 넣을수있도록 한다.
 #include "object.h"
+
+// 왜 using namespace std를 안쓰고 일부분만 가져오느냐
+// 매번 로딩때마다 다 로딩하게 되면 무거워진다...
+using std::cout;
+using std::endl;
 
 void Object::show(){
 	cout << ">>> Object Class <<<" << endl;

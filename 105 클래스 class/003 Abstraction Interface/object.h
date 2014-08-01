@@ -15,15 +15,15 @@
 	ShowDistance() // 멤버 변수가 하나 더 있어야 한다
 	CalcAngle // 적과의 각도구하기
 */
+// 기능은 ifndef랑 똑같....
+// #pragma once
 
 #ifndef _OBJECT_H_
 #define _OBJECT_H_
 
-#include <iostream>
-#include <cmath>
-
-using std::cout;
-using std::endl;
+// 헤더 위에 최대한 다른 헤더 참조를 줄여주도록 하자
+// 헤더를 끌어다 쓸때는 최대한 cpp파일 안에 넣어두고
+// 또 필요한경우 끌어올수 있는 건 나중에 배울 예정
 
 typedef struct Point{
 	// 아예 여기서 초기화해버리면 다시 만질 필요가 없어져서 편함
@@ -48,6 +48,7 @@ public:
 	// @param float x coordinate
 	// @param float y coordinate
 	void setPos(float, float); 
+
 	// move object's position depends on its original position
 	// @param float x vertical move
 	// @param float y horizontal move
@@ -76,6 +77,8 @@ public:
 
 private:
 	/*POINT pos = {};*/ //최근버전의 c++에서 이게 가능하게 바뀜
+	// cygwin은 C11만 적용되고 c14가 적용 안되어서 불가능
+	// gcc에서나 가능...
 	POINT pos;
 };
 
