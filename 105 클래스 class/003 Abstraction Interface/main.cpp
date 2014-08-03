@@ -44,36 +44,3 @@ void main(){
 }
 
 
-/*
-	map class 만들기
-
-	3,3
-	000
-	000
-	010
-
-	5,6
-	000000
-	000100
-	000100
-	000100
-	000100
-
-	member var_
-	초기값으로 맵크기 설정하기
-	위치를 지정하면 타일 속성이 1로 변환
-
-	기본]
-	enum tiletype { ROAD, WALL, MAX_TILE };					
-	CreateMap(int row, int column );					// 맵 init
-	RenderMap();										// 만든 맵을 출력
-
-	확장]
-	SaveMapFile( filename );
-	LoadMapFile( filename );
-
-	SetTile(int row, int column, tiletype etype);
-
-	character class를 만들어서 렌더해서 돌아다니게 할수 있다.
-
-*/

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2013 for Windows Desktop
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "001 구조체와 클래스의 비교", "001 구조체와 클래스의 비교\001 구조체와 클래스의 비교.vcxproj", "{C164C32D-C61C-47A8-9D2B-532C7BAEA895}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "003 Abstraction Interface", "003 Abstraction Interface\003 Abstraction Interface.vcxproj", "{A04896C3-AA2B-4DCB-9C88-351E6266A69E}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "004 Inheritance _ single", "004 Inheritance _ single\004 Inheritance _ single.vcxproj", "{D44069DA-A0DD-411F-8CA3-09E39A04CF30}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "003-1 map obejct", "003-1 map obejct\003-1 map obejct.vcxproj", "{8619B82E-0260-491A-898B-8538781526B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{D44069DA-A0DD-411F-8CA3-09E39A04CF30}.Debug|Win32.Build.0 = Debug|Win32
 		{D44069DA-A0DD-411F-8CA3-09E39A04CF30}.Release|Win32.ActiveCfg = Release|Win32
 		{D44069DA-A0DD-411F-8CA3-09E39A04CF30}.Release|Win32.Build.0 = Release|Win32
+		{8619B82E-0260-491A-898B-8538781526B6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8619B82E-0260-491A-898B-8538781526B6}.Debug|Win32.Build.0 = Debug|Win32
+		{8619B82E-0260-491A-898B-8538781526B6}.Release|Win32.ActiveCfg = Release|Win32
+		{8619B82E-0260-491A-898B-8538781526B6}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
