@@ -94,8 +94,23 @@ void main(){
 	delete pbase;
 	pbase = nullptr;
 
+	// 
 	base *pbase = new GrandDerived(); // 손자 클래스로 생성
 
+	//
+	derived *pder = nullptr;
+	pder = new derived();
+
+	//// ex
+	//minion* pmini1 = new miniMelee;
+	//minion* pmini2 = new miniRange;
+	//minion* pmini3 = new miniMagic;
+
+	//// 어떤 미니언이 생성되던간에 매니저에서 관리해줄수 있다.
+	//// 뒤에 뭐가 나오든 간에
+	//MiniList->push(pmini1);
+	//MiniList->push(pmini2);
+	//MiniList->push(pmini3);
 	
 	delete pbase;
 	pbase = nullptr;
