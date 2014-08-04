@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MainMenuScreen" Collapsed="true">
+    <Position X="4.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>MainMenuScreen.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Physical" Collapsed="true">
+    <Position X="2.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgABAAAAAAAAAAAAAAAAAAAAIBAAAAIABAAAAAAAAAA=</HashCode>
+      <FileName>Physical.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Intelligence" Collapsed="true">
+    <Position X="4.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIQAgAAAAAAAAAAAAAAAAEAAAAAAAAABAAAAAAAACA=</HashCode>
+      <FileName>Intelligence.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="character" Collapsed="true">
+    <Position X="4.5" Y="4.75" Width="1.5" />
+    <InheritanceLine Type="Physical">
+      <InheritanceModifierLabel ManuallyPlaced="true">
+        <Position X="1.164" Y="0.131" />
+      </InheritanceModifierLabel>
+    </InheritanceLine>
+    <InheritanceLine Type="Intelligence">
+      <InheritanceModifierLabel ManuallyPlaced="true">
+        <Position X="-0.44" Y="1.12" />
+      </InheritanceModifierLabel>
+    </InheritanceLine>
+    <InheritanceLine Type="Leadership">
+      <InheritanceModifierLabel ManuallyPlaced="true">
+        <Position X="-1.671" Y="0.143" />
+      </InheritanceModifierLabel>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAADAAAAAAAAAAMAAEAABABAAEAAAAAAA=</HashCode>
+      <FileName>Character.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Leadership" Collapsed="true">
+    <Position X="6.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAgACBAAAAAAAAgg=</HashCode>
+      <FileName>Leadership.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
