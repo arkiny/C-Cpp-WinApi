@@ -21,7 +21,7 @@
       <FileName>Intelligence.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="character" Collapsed="true">
+  <Class Name="State" Collapsed="true">
     <Position X="4.5" Y="4.75" Width="1.5" />
     <InheritanceLine Type="Physical">
       <InheritanceModifierLabel ManuallyPlaced="true">
@@ -40,7 +40,7 @@
     </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAIAAAAAAAAADAAAAAAAAAAMAAEAABABAAEAAAAAAA=</HashCode>
-      <FileName>Character.h</FileName>
+      <FileName>State.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Leadership" Collapsed="true">

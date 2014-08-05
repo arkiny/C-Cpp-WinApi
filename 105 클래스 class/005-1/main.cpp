@@ -21,12 +21,12 @@ using std::string;
 	최상단의 클래스
 	- 특별한 역할을 하기보단, 구조를 완성짓기위한 기본클래스
 */
-class IGameObj{
+class IState{
 public:
-	IGameObj() {};
-	virtual ~IGameObj(){}; // 소멸자 같은 경우에는 virtual을 써줘야 한다.
+	IState() {};
+	virtual ~IState(){}; // 소멸자 같은 경우에는 virtual을 써줘야 한다.
 	virtual void show() { // virtual을 걸게 되면 해당 함수, 혹은 내용이 무시된다..
-		cout << "iGameObj ] --- show ---" << endl;
+		cout << "IState ] --- show ---" << endl;
 	}
 };
 
@@ -35,83 +35,83 @@ public:
 - 물건을 집거나 잡을수 있는 역할 부여.
 - ???
 */
-class Arm : virtual public IGameObj
+class Idle : virtual public IState
 {
 public:
-	Arm() ;
-	virtual ~Arm() ;
+	Idle() ;
+	virtual ~Idle() ;
 
 public:
 	virtual void show();
 
-	void setArm(int ncnt)	{ nCntArm = ncnt; }
-	int getArm()			{ return nCntArm; }
+	void setIdle(int ncnt)	{ nCntIdle = ncnt; }
+	int getIdle()			{ return nCntIdle; }
 
 private:
-	int nCntArm;		// 팔의 개수
+	int nCntIdle;		// 팔의 개수
 };
 
-Arm::Arm()
+Idle::Idle()
 {
-	cout << "Arm ] --- constructor --- " << endl;
+	cout << "Idle ] --- constructor --- " << endl;
 }
 
-Arm::~Arm()
+Idle::~Idle()
 {
-	cout << "Arm ] --- destructor --- " << endl;
+	cout << "Idle ] --- destructor --- " << endl;
 }
 
-void Arm::show()
+void Idle::show()
 {
-	cout << "Arm ] --- " << nCntArm << " 개의 팔로 "
+	cout << "Idle ] --- " << nCntIdle << " 개의 팔로 "
 		<< "물건을 잡을 수 있다." << endl;
 }
 
 
 /*
-Leg
+RunAway
 - 다리 역할
 - 이동능력 부여
 */
-class Leg : virtual public IGameObj
+class RunAway : virtual public IState
 {
 public:
-	Leg();
-	virtual ~Leg();
+	RunAway();
+	virtual ~RunAway();
 
 public:
 	virtual void show();
 
-	void setLeg(int ncnt)	{ nCntLeg = ncnt; }
-	int getLeg()			{ return nCntLeg; }
+	void setRunAway(int ncnt)	{ nCntRunAway = ncnt; }
+	int getRunAway()			{ return nCntRunAway; }
 
 private:
-	int nCntLeg;		// 팔의 개수
+	int nCntRunAway;		// 팔의 개수
 };
 
-Leg::Leg()
+RunAway::RunAway()
 {
-	cout << "Leg ] --- constructor --- " << endl;
+	cout << "RunAway ] --- constructor --- " << endl;
 }
 
-Leg::~Leg()
+RunAway::~RunAway()
 {
-	cout << "Leg ] --- destructor --- " << endl;
+	cout << "RunAway ] --- destructor --- " << endl;
 }
 
-void Leg::show()
+void RunAway::show()
 {
-	cout << "Leg ] --- " << nCntLeg << " 개의 다리로 "
+	cout << "RunAway ] --- " << nCntRunAway << " 개의 다리로 "
 		<< "걸을 수 있다." << endl;
 }
 
 /*
 */
-class character : public Arm, public Leg
+class State : public Idle, public RunAway
 {
 public:
-	character();
-	~character();
+	State();
+	~State();
 
 	void setname(string str)	{ name = str; }
 	string getname()			{ return name; }
@@ -122,22 +122,22 @@ private:
 	string name;
 };
 
-character::character()
+State::State()
 {
-	cout << "Character ] --- constructor --- " << endl;
+	cout << "State ] --- constructor --- " << endl;
 }
 
-character::~character()
+State::~State()
 {
-	cout << "Character ] --- destructor --- " << endl;
+	cout << "State ] --- destructor --- " << endl;
 }
 
-void character::show()
+void State::show()
 {
 	cout << "내 이름은 " << name << endl;
 
-	Arm::show();
-	Leg::show();
+	Idle::show();
+	RunAway::show();
 }
 
 
@@ -147,23 +147,23 @@ void character::show()
 */
 void main()
 {
-	//character minion;
+	//State minion;
 
-	//minion.setArm(3);
+	//minion.setIdle(3);
 	//minion.setname("Poppy");
-	//minion.setLeg(4);
+	//minion.setRunAway(4);
 
 	//minion.show();
 
-	// 동적으로 character를 받았지만,
-	// 캐스팅을 통해 Arm클래스의 function을 쓸수 있다.
+	// 동적으로 State를 받았지만,
+	// 캐스팅을 통해 Idle클래스의 function을 쓸수 있다.
 	// 자식으로 객체를 만들고, 부모로 접근 (up casting)
-	//character* pminion = new character;
+	//State* pminion = new State;
 
 	///*pminion->show();*/
-	//Arm* parm = (Arm*)pminion;
-	//parm->setArm(2);
-	//parm->show();
+	//Idle* pIdle = (Idle*)pminion;
+	//pIdle->setIdle(2);
+	//pIdle->show();
 	//
 	//delete pminion;
 
@@ -172,24 +172,24 @@ void main()
 		하지만 삭제시 포인터 에러
 	*/
 
-	//Leg* plegmini = new character;
+	//RunAway* pRunAwaymini = new State;
 
-	//// leg의 show()가 call됨
-	//plegmini->setLeg(10);
-	//plegmini->show();
+	//// RunAway의 show()가 call됨
+	//pRunAwaymini->setRunAway(10);
+	//pRunAwaymini->show();
 
-	//delete plegmini;
+	//delete pRunAwaymini;
 
-	IGameObj *pmini = new character;
-	/*pmini->setLeg(2);*/
+	IState *pmini = new State;
+	/*pmini->setRunAway(2);*/
 	
 	//pmini->show();
 
-	//character* pchar = (character*)pmini;
-	character* pchar = dynamic_cast<character*>(pmini);
+	//State* pchar = (State*)pmini;
+	State* pchar = dynamic_cast<State*>(pmini);
 	// setType을 이용해서 관리
-	pchar->setArm(1);
-	pchar->setLeg(1);
+	pchar->setIdle(1);
+	pchar->setRunAway(1);
 	pchar->show();
 
 	// delete error 나는 이유는 다형성 확보가 되지 않았기 때문이다.

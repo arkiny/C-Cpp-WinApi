@@ -19,12 +19,12 @@
 	장수관리자를 만들었음
 	무력, 통솔, 지력 수치가 있고 각자 클래스에 저장되어있음
 */
-#include "CharacterManager.h"
+#include "StateManager.h"
 #include "MainMenuScreen.h"
 
 /*
 */
 void main(){	
-	CharacterManager mng;
+	StateManager mng;
 	MainMenuScreen mn = MainMenuScreen(mng);
 }

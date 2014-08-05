@@ -8,7 +8,7 @@ MainMenuScreen::MainMenuScreen()
 {
 }
 
-MainMenuScreen::MainMenuScreen(CharacterManager& input){
+MainMenuScreen::MainMenuScreen(StateManager& input){
 	bool exit_call = false;
 	char keyinput = 0;
 	while (!exit_call){
@@ -21,7 +21,7 @@ MainMenuScreen::MainMenuScreen(CharacterManager& input){
 		switch (keyinput)
 		{
 		case '1':
-			while (input.addCharacter()); // infinity loop until add done
+			while (input.addState()); // infinity loop until add done
 			break;
 		case '2':
 			input.showAll();

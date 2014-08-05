@@ -4,7 +4,7 @@
 
 #pragma once
 
-class Physical /*: public IGameObject*/
+class Physical /*: public IStateect*/
 {
 public:
 	// constructor

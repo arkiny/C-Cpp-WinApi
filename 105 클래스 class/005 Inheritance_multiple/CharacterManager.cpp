@@ -1,17 +1,17 @@
 #include <iostream>
-#include "CharacterManager.h"
+#include "StateManager.h"
 using std::cin;
 using std::cout;
 using std::endl;
 
 
-CharacterManager::CharacterManager()
+StateManager::StateManager()
 {
 	vCharData.resize(0);
 	vCharData.shrink_to_fit();
 }
 
-CharacterManager::~CharacterManager()
+StateManager::~StateManager()
 {
 	void *ptr = nullptr;
 	for (int i = 0; i < vCharData.size(); i++){
@@ -24,15 +24,15 @@ CharacterManager::~CharacterManager()
 	vCharData.shrink_to_fit();
 }
 
-bool CharacterManager::addCharacter(){
+bool StateManager::addState(){
 	string b_name = "";
 	int b_Physical = -1;
 	int b_Leadership = -1;
 	int b_Intelligence = -1;
 	char re = 0;
 
-	character *p_ch = nullptr;
-	p_ch = new character();
+	State *p_ch = nullptr;
+	p_ch = new State();
 	
 	cout << "신규장수 이름 : "; 
 	cin >> b_name;
@@ -63,7 +63,7 @@ bool CharacterManager::addCharacter(){
 	return re == 'y' || re == 'Y';
 }
 
-void CharacterManager::showAll(){
+void StateManager::showAll(){
 	for (unsigned int i = 0; i < vCharData.size(); i++){
 		vCharData.at(i)->show();
 	}

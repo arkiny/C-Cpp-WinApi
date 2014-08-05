@@ -5,24 +5,24 @@
 #pragma once
 
 #include <vector>
-#include "Character.h"
+#include "State.h"
 
 using std::vector;
 
-class CharacterManager
+class StateManager
 {
 public:
-	CharacterManager();
-	~CharacterManager();
+	StateManager();
+	~StateManager();
 	
-	// add character from user input
+	// add State from user input
 	// @return bool user input end?
-	bool addCharacter();
+	bool addState();
 
-	// print all character property to console
+	// print all State property to console
 	void showAll();
 
 private:
-	vector<character*> vCharData;
+	vector<State*> vCharData;
 };
 

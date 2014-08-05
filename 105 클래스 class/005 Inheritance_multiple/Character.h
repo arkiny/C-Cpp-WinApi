@@ -12,14 +12,14 @@
 
 using std::string;
 
-class character : public Physical, public Leadership, public Intelligence
+class State : public Physical, public Leadership, public Intelligence
 {
 public:
 	// default constructr
-	character();
+	State();
 
 	// destructor
-	~character();
+	~State();
 
 	// set general's name
 	// @param string name

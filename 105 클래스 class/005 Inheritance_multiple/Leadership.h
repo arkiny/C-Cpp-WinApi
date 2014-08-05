@@ -4,7 +4,7 @@
 */
 #pragma once
 
-class Leadership /*: public IGameObject*/
+class Leadership /*: public IStateect*/
 {
 public:
 	// consturctor

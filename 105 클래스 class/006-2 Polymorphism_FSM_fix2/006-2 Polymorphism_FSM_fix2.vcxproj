@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{7C819247-E577-4B4A-BB9D-47FC128EFFFA}</ProjectGuid>
+    <ProjectGuid>{8B4C626E-7236-4F7D-B5F0-7F7A2146A78C}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>My006Polymorphism_FSM</RootNamespace>
+    <RootNamespace>My0062Polymorphism_FSM_fix2</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -76,17 +76,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="State.cpp" />
-    <ClCompile Include="State.h" />
-    <ClCompile Include="StateMachine.cpp" />
-    <ClCompile Include="StateMachine.h" />
+    <ClCompile Include="Idle.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Resting.cpp" />
+    <ClCompile Include="RunAway.cpp" />
+    <ClCompile Include="State.cpp" />
+    <ClCompile Include="StateMachine.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="IBattle.h" />
     <ClInclude Include="Idle.h" />
     <ClInclude Include="IState.h" />
-    <ClInclude Include="Sleep.h" />
+    <ClInclude Include="Resting.h" />
+    <ClInclude Include="RunAway.h" />
+    <ClInclude Include="State.h" />
+    <ClInclude Include="StateMachine.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

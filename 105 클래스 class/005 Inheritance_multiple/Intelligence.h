@@ -4,7 +4,7 @@
 */
 #pragma once
 
-class Intelligence /*: public IGameObject*/
+class Intelligence /*: public IStateect*/
 {
 public:
 	// consturctor

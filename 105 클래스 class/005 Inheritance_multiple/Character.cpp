@@ -1,31 +1,31 @@
 #include <iostream>
-#include "Character.h"
+#include "State.h"
 
 using std::cout;
 using std::endl;
 
-character::character()
+State::State()
 {	
 	name = "";
 }
 
-character::~character()
+State::~State()
 {	
 }
 
-void character::setName(string input_str){
+void State::setName(string input_str){
 	name = input_str; 
 }
 
-string character::getName()	{
+string State::getName()	{
 	return name; 
 }
 
-int character::getPowerLevel(){
+int State::getPowerLevel(){
 	return this->getPhysical() + this->getLeadership() + this->getIQ();
 }
 
-void character::show(){
+void State::show(){
 	cout << "---------------------------------" << endl;
 	cout << "장수 이름: " << name << endl;
 	Physical::show();

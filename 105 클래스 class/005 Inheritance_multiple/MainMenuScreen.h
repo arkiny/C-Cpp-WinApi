@@ -3,7 +3,7 @@ MainMenu 출력을 위한 클래스
 */
 #pragma once
 
-#include "CharacterManager.h"
+#include "StateManager.h"
 
 class MainMenuScreen
 {
@@ -12,8 +12,8 @@ public:
 	MainMenuScreen();
 
 	// constructor which has render main menu screen
-	// @param CharacterManager manager which will be shown on the console
-	MainMenuScreen(CharacterManager&);
+	// @param StateManager manager which will be shown on the console
+	MainMenuScreen(StateManager&);
 	~MainMenuScreen();
 
 private:
