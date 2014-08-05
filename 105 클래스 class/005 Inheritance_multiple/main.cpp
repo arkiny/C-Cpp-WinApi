@@ -1,6 +1,6 @@
 /*
 	@author		Heedong Arkiny Lee
-	@date		08032014
+	@date		08042014
 	@git		https://github.com/arkiny/SGA-Learning-Heedong
 
 	다중 상속 (multiple inheritance)

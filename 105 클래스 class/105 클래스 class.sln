@@ -15,6 +15,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "003-1 map obejct", "003-1 m
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "005 Inheritance_multiple", "005 Inheritance_multiple\005 Inheritance_multiple.vcxproj", "{CF0BDD91-36B2-4954-92A3-C6AD22F04985}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "005-1 Inhertance_multiple_origin", "005-1\005-1.vcxproj", "{76AD05EF-38C4-4404-A3F3-7CB59B293529}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "006 Polymorphism_FSM", "006 Polymorphism_FSM\006 Polymorphism_FSM.vcxproj", "{7C819247-E577-4B4A-BB9D-47FC128EFFFA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -45,6 +49,14 @@ Global
 		{CF0BDD91-36B2-4954-92A3-C6AD22F04985}.Debug|Win32.Build.0 = Debug|Win32
 		{CF0BDD91-36B2-4954-92A3-C6AD22F04985}.Release|Win32.ActiveCfg = Release|Win32
 		{CF0BDD91-36B2-4954-92A3-C6AD22F04985}.Release|Win32.Build.0 = Release|Win32
+		{76AD05EF-38C4-4404-A3F3-7CB59B293529}.Debug|Win32.ActiveCfg = Debug|Win32
+		{76AD05EF-38C4-4404-A3F3-7CB59B293529}.Debug|Win32.Build.0 = Debug|Win32
+		{76AD05EF-38C4-4404-A3F3-7CB59B293529}.Release|Win32.ActiveCfg = Release|Win32
+		{76AD05EF-38C4-4404-A3F3-7CB59B293529}.Release|Win32.Build.0 = Release|Win32
+		{7C819247-E577-4B4A-BB9D-47FC128EFFFA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7C819247-E577-4B4A-BB9D-47FC128EFFFA}.Debug|Win32.Build.0 = Debug|Win32
+		{7C819247-E577-4B4A-BB9D-47FC128EFFFA}.Release|Win32.ActiveCfg = Release|Win32
+		{7C819247-E577-4B4A-BB9D-47FC128EFFFA}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
