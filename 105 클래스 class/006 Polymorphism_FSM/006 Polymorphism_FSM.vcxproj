@@ -76,17 +76,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="State.cpp" />
-    <ClCompile Include="State.h" />
-    <ClCompile Include="StateMachine.cpp" />
-    <ClCompile Include="StateMachine.h" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Orc.cpp" />
+    <ClCompile Include="State.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="IBattle.h" />
-    <ClInclude Include="Idle.h" />
-    <ClInclude Include="IState.h" />
-    <ClInclude Include="Sleep.h" />
+    <ClInclude Include="Orc.h" />
+    <ClInclude Include="State.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

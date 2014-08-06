@@ -20,7 +20,7 @@
 
 	과정 ]]
 	1. Interface만을 이용해서 state 매니저를 만드려다가 실패(갈아 엎음)
-	2. callback(수업시간에 배운 void (*pf)()등등) 을 이용해서 콜백해서 만드려다가 실패
+	2. callback(수업시간에 배운 void (*pf)()등등) 을 이용해서 Interface 콜백해서 만드려다가 실패
 		-> function 라이브러리를 이용해여 부분적으로 해결
 	3. Interface 이용하는 걸 포기하고 state class를 통하여 직접 state를 제어하기로 결정
 	4. 원래 IBattle을 통해 그래프 깊이를 늘리려다가 일단 C++ Interface에 적응 못하고 포기

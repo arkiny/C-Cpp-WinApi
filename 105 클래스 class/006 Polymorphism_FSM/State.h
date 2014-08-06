@@ -1,48 +1,56 @@
-#pragma once
-
-#include "Idle.h"
-#include "IBattle.h"
-#include "Sleep.h"
-
-
-enum statetype { Idling, inBattle, Sleeping, stateMAX };
 /*
-	이거 어디다가 쓰지....
+virtual 가상 함수
+- 상속받은 클래스의 함수를 우선 사용.
+= 0 순수 가상함수 (pure virtual function)
+- pvf에 대해서 상속 받은 클래스는 반드시 정의한다.
 */
-class State : public Idle, public IBattle, public Sleep
+
+#ifndef _STATE_H_
+#define _STATE_H_
+
+// prototype으로 사기침 ㅡㅡ
+class Orc;
+
+class iState
 {
 public:
-	State();
-	~State();
+	//소멸자에 virtual을 정의함으로서 child class의 소멸자역시 call가능
+	virtual ~iState() {}
+public:
+	// 상태 진입
+	// pure virtual function
+	// 반드시 밑에서 정의를 해줘야 한다.
+	virtual void enter(Orc* porc) = 0; // = 0 PURE VIRTUAL
 
-	bool doEvent(){	
-		return true;
-	}
+	// 상태 진행중
+	virtual void execute(Orc* porc) = 0;
 
-	IState* goNext(IState* in){
-		switch (currentType)
-		{
-		case Idling:
-			in = dynamic_cast<Idle*>(in);
-			currentType = Idling;
-			break;
-		case inBattle:
-			in = dynamic_cast<IBattle*>(in);
-			currentType = inBattle;
-			break;
-		case Sleeping:
-			in = dynamic_cast<Sleep*>(in);
-			currentType = Sleeping;
-			break;
-		default:
-			break;
-		}
-	}
-
-	void setTLevel(int in);
-	void setELevel(int in);
-
-private:
-	statetype currentType;
+	// 상태 이탈
+	virtual void exit(Orc* porc) = 0;
 };
 
+/*
+	Idle State
+*/
+class StateIdle : public iState
+{
+private:
+	void enter(Orc* porc);
+	void execute(Orc* porc);
+	void exit(Orc* porc);
+};
+
+
+/*
+	Sleep State
+*/
+class StateSleep : public iState
+{
+private:
+	void enter(Orc* porc);
+	void execute(Orc* porc);
+	void exit(Orc* porc);
+};
+
+
+#endif
