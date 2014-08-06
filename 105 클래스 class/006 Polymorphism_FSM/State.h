@@ -16,6 +16,7 @@ class iState
 public:
 	//소멸자에 virtual을 정의함으로서 child class의 소멸자역시 call가능
 	virtual ~iState() {}
+
 public:
 	// 상태 진입
 	// pure virtual function
@@ -52,5 +53,37 @@ private:
 	void exit(Orc* porc);
 };
 
+/*
+inBattle, Fight State
+*/
+class StateFight : public iState
+{
+private:
+	void enter(Orc* porc);
+	void execute(Orc* porc);
+	void exit(Orc* porc);
+};
+
+/*
+inBattle, RunAway State
+*/
+class StateRunAway : public iState
+{
+private:
+	void enter(Orc* porc);
+	void execute(Orc* porc);
+	void exit(Orc* porc);
+};
+
+/*
+ DeadState
+*/
+class StateDead : public iState
+{
+private:
+	void enter(Orc* porc);
+	void execute(Orc* porc);
+	void exit(Orc* porc);
+};
 
 #endif

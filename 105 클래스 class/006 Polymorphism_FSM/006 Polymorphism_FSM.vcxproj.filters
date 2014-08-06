@@ -2,11 +2,14 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Orc.cpp" />
     <ClCompile Include="State.cpp" />
+    <ClCompile Include="IGameObj.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Orc.h" />
     <ClInclude Include="State.h" />
+    <ClInclude Include="iGameObj.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>
