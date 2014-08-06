@@ -40,13 +40,7 @@ void StateSleep::enter(Orc* porc){
 }
 
 void StateSleep::execute(Orc* porc){
-	int nhealth = porc->GetHealth();
-	nhealth += 2;
-	porc->SetHealth(nhealth);
 	
-	cout << "오크가 자면서 체력을 회복합니다. Z Z z z .." << endl
-		<< "HP = " << porc->GetHealth()
-		<< endl;
 
 	if (porc->getDist() <= porc->getRange()){
 		// 거리가 좁혀졌으면 전투상황에 다시 직면한다.
@@ -57,6 +51,15 @@ void StateSleep::execute(Orc* porc){
 		// 배회하러 간다
 		porc->SetHealth(20);
 		porc->ChangeState(new StateIdle);
+	}
+	else {
+		int nhealth = porc->GetHealth();
+		nhealth += 2;
+		porc->SetHealth(nhealth);
+
+		cout << "오크가 자면서 체력을 회복합니다. Z Z z z .." << endl
+			<< "HP = " << porc->GetHealth()
+			<< endl;
 	}
 }
 
@@ -97,19 +100,19 @@ void StateFight::execute(Orc* porc){
 		int nhealth = porc->GetHealth();
 		int ehealth = porc->getEnemyHealth();
 
- 		nhealth = nhealth - 4; // 차후에 enemy 공격력확인
-		ehealth = ehealth - 2;
+ 		ehealth = ehealth - 2;
+		nhealth = nhealth - 4; // 차후에 enemy 공격력확인
 
-		porc->SetHealth(nhealth);
 		porc->setEnemyHealth(ehealth);
-
-		cout << "오크가 공격당해 데미지 4를 받습니다." << endl
-			<< "HP = " << porc->GetHealth()
-			<< endl;
+		porc->SetHealth(nhealth);		
 
 		cout << "오크가 플레이어를 공격해 2를 를 줍니다." << endl
 			<< "Player HP = " << porc->getEnemyHealth()
 			<< endl;
+
+		cout << "오크가 공격당해 데미지 4를 받습니다." << endl
+			<< "HP = " << porc->GetHealth()
+			<< endl;		
 	}
 	
 
