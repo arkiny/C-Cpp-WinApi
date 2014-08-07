@@ -25,6 +25,7 @@
 		float fx = pt[0]; // 배열처럼 쓰는데, 내부의 fX를 리턴
 		float fy = pt[1]; // 내부의 fY를 리턴
 		pt[2] -> error 처리
+		!pt // 부호바꾸기
 */
 
 #include <iostream>
