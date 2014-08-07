@@ -61,5 +61,6 @@ void main(){
 		//std::cout << "Loop...." << std::endl;
 
 		_sleep(500); // 0.1ÃÊ sleep
+		fflush(stdin);
 	}
 }

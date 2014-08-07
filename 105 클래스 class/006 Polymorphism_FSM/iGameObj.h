@@ -102,6 +102,10 @@ public: // interface
 private:
 	// 굳이 왜 포인터인가? state를 switching 해주기 위해서	
 	iState *pstate = nullptr;		// 현재 상태, AI State
+									// state layer를 여러개를 주면된다.
+									// 음흠? 그럼 전투에 관련된 state레이어를 만들수 있겠군!
+									// 다음번에는 그렇게 맹궈보자
+
 	int m_health = 20;				// 체력지수	
 	int m_position = 10;			// 오크의 위치(직선 기준)
 	int m_speed = 2;				// 도망갈때 이동속도
