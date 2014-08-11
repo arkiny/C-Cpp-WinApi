@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2013 for Windows Desktop
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "001 template", "001 template\001 template.vcxproj", "{C715EAEB-95E6-4A83-AA05-46882E807B68}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "002 template class", "002 template class\002 template class.vcxproj", "{3C62F0C0-5920-4B5C-97D5-7D46D7A5D2C5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C715EAEB-95E6-4A83-AA05-46882E807B68}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C715EAEB-95E6-4A83-AA05-46882E807B68}.Debug|Win32.Build.0 = Debug|Win32
+		{C715EAEB-95E6-4A83-AA05-46882E807B68}.Release|Win32.ActiveCfg = Release|Win32
+		{C715EAEB-95E6-4A83-AA05-46882E807B68}.Release|Win32.Build.0 = Release|Win32
+		{3C62F0C0-5920-4B5C-97D5-7D46D7A5D2C5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3C62F0C0-5920-4B5C-97D5-7D46D7A5D2C5}.Debug|Win32.Build.0 = Debug|Win32
+		{3C62F0C0-5920-4B5C-97D5-7D46D7A5D2C5}.Release|Win32.ActiveCfg = Release|Win32
+		{3C62F0C0-5920-4B5C-97D5-7D46D7A5D2C5}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

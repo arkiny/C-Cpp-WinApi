@@ -110,10 +110,10 @@ bool point::operator==(const point &rhs){
 float point::operator[](const int &in){
 	switch (in)
 	{
-	case 1:
+	case 0:
 		return fX;
 		break;
-	case 2:
+	case 1:
 		return fY;
 		break;
 	default:
