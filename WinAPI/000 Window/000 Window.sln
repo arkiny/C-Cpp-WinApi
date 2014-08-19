@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "000 A SimpleWindow", "000 A SimpleWindow\000 A SimpleWindow.vcxproj", "{9F990E46-ACFE-46D8-AA13-30421E7BA6D3}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "000-1 SimpleWindow", "000-1 SimpleWindow\000-1 SimpleWindow.vcxproj", "{FB4CFD5A-B3C1-4B6F-BEA9-DCB1F120B7DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9F990E46-ACFE-46D8-AA13-30421E7BA6D3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9F990E46-ACFE-46D8-AA13-30421E7BA6D3}.Debug|Win32.Build.0 = Debug|Win32
+		{9F990E46-ACFE-46D8-AA13-30421E7BA6D3}.Release|Win32.ActiveCfg = Release|Win32
+		{9F990E46-ACFE-46D8-AA13-30421E7BA6D3}.Release|Win32.Build.0 = Release|Win32
+		{FB4CFD5A-B3C1-4B6F-BEA9-DCB1F120B7DA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FB4CFD5A-B3C1-4B6F-BEA9-DCB1F120B7DA}.Debug|Win32.Build.0 = Debug|Win32
+		{FB4CFD5A-B3C1-4B6F-BEA9-DCB1F120B7DA}.Release|Win32.ActiveCfg = Release|Win32
+		{FB4CFD5A-B3C1-4B6F-BEA9-DCB1F120B7DA}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
