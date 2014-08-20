@@ -29,12 +29,67 @@
 
 #include <Windows.h>
 
+LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);	// 원형은 정해져 있다
+
 int	WINAPI WinMain(HINSTANCE hInst,				// 실행된 프로그램
 				HINSTANCE preHIsntance,			// 16비트 시절에 썼던 코드가 남아있는 것
 				LPSTR lpCmdline,				// shell command line parameter, 
 												// 저장파일을 링크할때 사용한다. (이용 : tool)
 				int nCmdShow)					// 프로그래밍이 실행될때 값, OS가 자동으로 설정해준다.
 {
-	MessageBox(NULL, L"dd", L"dd", MB_OK);
+	WNDCLASS wc = {};							// 윈도우를 분류하는 구조체의 이름
+	wc.hInstance = hInst;
+	wc.lpszClassName = L"MyShittyWindow";
+	wc.hbrBackground = (HBRUSH)GetStockObject(GRAY_BRUSH);	// 화면에 그리는 것을 할때 다시 배우게 될 예정
+	wc.hCursor = LoadCursor(NULL, IDC_ARROW);				// 커서 바꾸기
+	wc.style = CS_VREDRAW | CS_HREDRAW;						// 윈도우사이즈 중에 변경이 되면 다시 그려라
+	wc.hIcon = 0;
+	wc.cbClsExtra = 0;
+	wc.cbWndExtra = 0;
+	wc.lpfnWndProc = WindowProc;								// callback 내가 호출하는게 아니라 남에 의해서 호출되는 함수	
+	wc.lpszMenuName = NULL;
+	
+	RegisterClass(&wc);										// 레지스터
+	
+	HWND hWnd = CreateWindowEx(
+							0,
+							L"MyShittyWindow",
+							L"Hello My Window",
+							WS_OVERLAPPEDWINDOW,
+							// F12해서 보면 WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME | WS_MINIMIZEBOX | WS_MAXIMIZEBOX
+							// 나중에 윈도우 만들때 최대화 버튼을 빼거나 할때 여기서 수정하면 된다고 합니다.
+							CW_USEDEFAULT,		
+							CW_USEDEFAULT,
+							CW_USEDEFAULT,
+							CW_USEDEFAULT,
+							NULL,
+							NULL,
+							hInst,
+							NULL);
+
+	ShowWindow(hWnd, nCmdShow); // 여기까지 보여주는 것
+
+	MSG msg = {};
+	while (GetMessage(&msg, NULL, 0, 0)){
+		TranslateMessage(&msg);	// msg를 해석해주는 함수
+		DispatchMessage(&msg);
+	}
+
+	//MessageBox(NULL, L"dd", L"dd", MB_OK);
+
 	return 0;
+}
+
+// 여기서 키값이나 다 받을 예정
+LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam){
+	switch (uMsg)
+	{
+	case WM_KEYDOWN:
+		MessageBox(NULL, L"dd", L"dd", MB_OK);
+		return 0;
+	case WM_DESTROY:
+		::PostQuitMessage(0);
+		return 0;
+	}
+	return ::DefWindowProc(hWnd, uMsg, wParam, lParam);
 }

@@ -32,6 +32,8 @@ WinMaker::WinMaker(wchar_t const * caption, wchar_t const * className,
 		(LPCWSTR) className,	// name of the window class
 		caption,				// window caption
 		WS_OVERLAPPEDWINDOW,	// style
+		// F12해서 보면 WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME | WS_MINIMIZEBOX | WS_MAXIMIZEBOX
+		// 나중에 윈도우 만들때 최대화 버튼을 빼거나 할때 여기서 수정하면 된다고 합니다.
 		CW_USEDEFAULT,			// x position
 		CW_USEDEFAULT,			// y position
 		CW_USEDEFAULT,			// width
