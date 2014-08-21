@@ -1,4 +1,7 @@
 /*
+	@author		Heedong Arkiny Lee
+	@git		https://github.com/arkiny/SGA-Learning-Heedong
+
 	unsigned short를 재정의 한것들
 	ifndef에서 multitype과 UNICODE 정의 확인
 
@@ -41,7 +44,7 @@ int	WINAPI WinMain(HINSTANCE hInst,				// 실행된 프로그램
 	wc.hInstance = hInst;
 	wc.lpszClassName = L"MyShittyWindow";
 	wc.hbrBackground = (HBRUSH)GetStockObject(GRAY_BRUSH);	// 화면에 그리는 것을 할때 다시 배우게 될 예정
-	wc.hCursor = LoadCursor(NULL, IDC_ARROW);				// 커서 바꾸기
+	wc.hCursor = LoadCursor(NULL, IDC_WAIT);				// 커서 바꾸기
 	wc.style = CS_VREDRAW | CS_HREDRAW;						// 윈도우사이즈 중에 변경이 되면 다시 그려라
 	wc.hIcon = 0;
 	wc.cbClsExtra = 0;
@@ -54,14 +57,13 @@ int	WINAPI WinMain(HINSTANCE hInst,				// 실행된 프로그램
 	HWND hWnd = CreateWindowEx(
 							0,
 							L"MyShittyWindow",
-							L"Hello My Window",
-							WS_OVERLAPPEDWINDOW,
-							// F12해서 보면 WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME | WS_MINIMIZEBOX | WS_MAXIMIZEBOX
+							L"Hello My Window",							
+							WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME,
 							// 나중에 윈도우 만들때 최대화 버튼을 빼거나 할때 여기서 수정하면 된다고 합니다.
 							CW_USEDEFAULT,		
 							CW_USEDEFAULT,
-							CW_USEDEFAULT,
-							CW_USEDEFAULT,
+							800,
+							600,
 							NULL,
 							NULL,
 							hInst,
