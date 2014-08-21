@@ -51,14 +51,61 @@ WinMaker::WinMaker(wchar_t const * caption, wchar_t const * className,
 LRESULT CALLBACK WindowProcedure
 (HWND hwnd, unsigned int message, WPARAM wParam, LPARAM lParam)
 {
+	// 콜되면 지역변수는 초기화 된다.
+	// 아예 전역변수를 짜던지 static을 이용하도록 한다.
+	int mouseX, mouseY;
+	TCHAR str[128] = L"";
 	switch (message)
 	{
+	case WM_CREATE:
+		// 창이 처음 생성될때
+		wsprintf(str, L"Create");
+		MessageBox(hwnd, L"WM_CREATE", L"WM_CREATE_Alert", MB_OK);
+		return 0;
+
+	case WM_KEYDOWN:
+		switch (wParam){ // wparam의 경우
+		case VK_LEFT:
+			MessageBox(hwnd, L"Left", L"Left", MB_OK);
+			return 0;
+		case VK_RIGHT:
+			MessageBox(hwnd, L"Right", L"Right", MB_OK);
+			return 0;
+		case VK_UP:
+			MessageBox(hwnd, L"UP", L"UP", MB_OK);
+			return 0;
+		case VK_DOWN:
+			MessageBox(hwnd, L"DOWN", L"DOWN", MB_OK);
+			return 0;
+		default:
+			MessageBox(hwnd, L"Default", L"Default", MB_OK);
+			return 0;
+		}
+		return 0;
+
+	case WM_KEYUP:
+		//MessageBox(hWnd, L"WM_KEYUP", L"WM_KEYUP_Alert", MB_OK);
+		return 0;
+
+	case WM_LBUTTONDOWN:
+		// 평면상에서 마우스는 위치를 가지고 있고, 그 위치 정보를 표현하기 위해
+		// X좌표와 Y좌표가 필요하다. 화면에서는 데카르트 좌표를 이용한다.
+		// 2바이트씩 이용하기 때문에 비트연산을 이용해서 뺄수가 있다.
+		// 하라고 하면 할수 있지만 매크로를 만들어 놓음 ㅋ
+		mouseX = LOWORD(lParam);
+		mouseY = LOWORD(lParam);
+		wsprintf(str, L"%d, %d", mouseX, mouseY);
+		::SetWindowText(hwnd, str);
+		//MessageBox(hWnd, L"WM_LBUTTONCLICK", L"WM_LBUTTONCLICK_Alert", MB_OK);
+		return 0;
+
+	case WM_MOUSEMOVE:
+		return 0;
+
 	case WM_DESTROY:
 		::PostQuitMessage(0);
 		return 0;
-
 	}
-	// defWindowProc은 기타 메세지를 무시하기위해 삽입
 	return ::DefWindowProc(hwnd, message, wParam, lParam);
 }
 
