@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="SimpleWindow.h" />
+    <ClInclude Include="KeyController.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="SimpleWindow.cpp" />
+    <ClCompile Include="WindowMain.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{06ef1d00-ae44-4ac7-b26e-c25c5ee607c7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="ragnarokonlineart039.gif">
+      <Filter>Resource</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

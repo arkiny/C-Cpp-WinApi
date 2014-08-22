@@ -9,6 +9,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "000-1 SimpleWindow", "000-1
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "001 SimpleWindow", "001 SimpleWindow\001 SimpleWindow.vcxproj", "{854AF99E-07B0-446C-AC95-1B56670ADAB7}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "002 SimpleWindowMover", "002 SimpleWindowMover\002 SimpleWindowMover.vcxproj", "{2E205DEB-5EE4-4491-AD36-6DABB7400321}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "003 API2D-DC", "003 API2D - DC\003 API2D-DC.vcxproj", "{6F804860-3FD5-4AE9-A4E9-E0940DE5374E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -27,6 +31,14 @@ Global
 		{854AF99E-07B0-446C-AC95-1B56670ADAB7}.Debug|Win32.Build.0 = Debug|Win32
 		{854AF99E-07B0-446C-AC95-1B56670ADAB7}.Release|Win32.ActiveCfg = Release|Win32
 		{854AF99E-07B0-446C-AC95-1B56670ADAB7}.Release|Win32.Build.0 = Release|Win32
+		{2E205DEB-5EE4-4491-AD36-6DABB7400321}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2E205DEB-5EE4-4491-AD36-6DABB7400321}.Debug|Win32.Build.0 = Debug|Win32
+		{2E205DEB-5EE4-4491-AD36-6DABB7400321}.Release|Win32.ActiveCfg = Release|Win32
+		{2E205DEB-5EE4-4491-AD36-6DABB7400321}.Release|Win32.Build.0 = Release|Win32
+		{6F804860-3FD5-4AE9-A4E9-E0940DE5374E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6F804860-3FD5-4AE9-A4E9-E0940DE5374E}.Debug|Win32.Build.0 = Debug|Win32
+		{6F804860-3FD5-4AE9-A4E9-E0940DE5374E}.Release|Win32.ActiveCfg = Release|Win32
+		{6F804860-3FD5-4AE9-A4E9-E0940DE5374E}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

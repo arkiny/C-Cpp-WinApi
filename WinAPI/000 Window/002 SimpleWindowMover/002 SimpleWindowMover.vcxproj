@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{FB4CFD5A-B3C1-4B6F-BEA9-DCB1F120B7DA}</ProjectGuid>
+    <ProjectGuid>{2E205DEB-5EE4-4491-AD36-6DABB7400321}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>My0001SimpleWindow</RootNamespace>
   </PropertyGroup>

@@ -99,6 +99,7 @@ LRESULT CALLBACK WinMaker::WindowProc
 	TCHAR str[128] = L"";
 	KeyController key_Ctl(hwnd, wParam);
 	static RECT winRect = { 0, };
+	HDC hdc;
 	
 	switch (message)
 	{
@@ -138,6 +139,12 @@ LRESULT CALLBACK WinMaker::WindowProc
 		wsprintf(str, L"%d, %d", mouseX, mouseY);
 		::SetWindowText(hwnd, str);
 		//MessageBox(hWnd, L"WM_LBUTTONCLICK", L"WM_LBUTTONCLICK_Alert", MB_OK);
+
+		// get DC를 이용한 움직임
+		hdc = GetDC(hwnd);
+		Rectangle(hdc, 100, 100, 200, 200);
+		::ReleaseDC(hwnd, hdc);
+
 		return 0;
 
 	case WM_MOUSEMOVE:
