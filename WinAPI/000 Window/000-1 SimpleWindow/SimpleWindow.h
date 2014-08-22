@@ -33,11 +33,14 @@ public:
 	WinMaker(wchar_t const * caption,
 		wchar_t const * className,
 		HINSTANCE hInstance);
+	
 	void Show(int cmdShow){
 		::ShowWindow(_hwnd, cmdShow);
 		::UpdateWindow(_hwnd);
-	}
+	}	
 
-protected:
+	static LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+
+protected:	
 	HWND _hwnd;
 };

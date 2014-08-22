@@ -189,7 +189,7 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam){
 		// 집에가서 과제하면서 OOP로 정리하고....
 
 		mouseX = LOWORD(lParam);
-		mouseY = LOWORD(lParam);
+		mouseY = HIWORD(lParam);
 
 		::GetClientRect(hWnd, &winRect);
 
