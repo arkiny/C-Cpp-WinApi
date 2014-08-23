@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="WorldRenderer">
+    <Position X="8.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAQAAQAAQAAAAAACAAAEAAAAAAAAAAAAAMMCCA=</HashCode>
+      <FileName>ScreenHandler.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="TileMap">
+    <Position X="5.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACBAAEAABAAAAAAAAgAAAAIAAAAAAAACAAAgAA=</HashCode>
+      <FileName>ScreenHandler.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Player">
+    <Position X="1.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAIAAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ScreenHandler.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Typedef Name="TILEMAP" Collapsed="true">
+    <Position X="4.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ScreenHandler.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="LPTILEMAP" Collapsed="true">
+    <Position X="6.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ScreenHandler.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="PLAYER" Collapsed="true">
+    <Position X="2.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ScreenHandler.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="LPPLAYER" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ScreenHandler.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
