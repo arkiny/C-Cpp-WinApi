@@ -139,10 +139,6 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
 
-   //
-
-   //
-
    return TRUE;
 }
 
@@ -215,9 +211,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			//	if (!world.inList(world.getTileCoordinate(mx, my).x, 
 			//		world.getTileCoordinate(mx, my).y)){
 			//		world.addObject(mx, my);
-
 			worldrenderer.moveAnimation(mx, my);
-		
 			break;
 		}
 		/*
