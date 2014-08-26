@@ -1,44 +1,34 @@
-// 082514 API2D-2.cpp : 응용 프로그램에 대한 진입점을 정의합니다.
+// API2D Control.cpp : 응용 프로그램에 대한 진입점을 정의합니다.
 //
-
 /*
-	사각형
-	1. 처음 위치 상단 가운데 대충
-	2. 지혼자, 부드럽게 오른쪽으로 이동하다가, 끝이 닿으면 방향을 바꿔서 반대로 (왔다리 갔다리)
-
-	원은 플레이어가 움직이고
+	아래들도 각자 윈도우임
+	이런 것들을 control이라고 한다.
+	포폴 만들때 툴을 만들때 집중적으로 필요하게 된다.
+	button (체크버튼, 라디오버튼, 푸쉬버튼 등)
+	edit
+	list
+	dropbox
 */
 
 #include "stdafx.h"
-#include "082514 API2D-2.h"
+#include "API2D Control.h"
 
 #define MAX_LOADSTRING 100
-#define TIMER_ID 5
-#define TIMER_ID2 4
+#define BTN_GAME_START 1
+#define BTN_GAME_EXIT 2
 
 // 전역 변수:
 HINSTANCE hInst;								// 현재 인스턴스입니다.
 TCHAR szTitle[MAX_LOADSTRING];					// 제목 표시줄 텍스트입니다.
 TCHAR szWindowClass[MAX_LOADSTRING];			// 기본 창 클래스 이름입니다.
-int mX, mY;
-//static RECT _circle;
-POINT _circle;
-
-// 너무 어렵게 생각했다 ㅠㅠ
-static bool isRightKeyDown = false,
-isLeftKeyDown = false,
-isUpKeyDown = false,
-isDownKeyDown = false;
-
+HWND hBtnWnd;
+HWND hBtnExitWnd;
 
 // 이 코드 모듈에 들어 있는 함수의 정방향 선언입니다.
 ATOM				MyRegisterClass(HINSTANCE hInstance);
 BOOL				InitInstance(HINSTANCE, int);
 LRESULT CALLBACK	WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK	About(HWND, UINT, WPARAM, LPARAM);
-
-void Update(float delta);
-void Render(HDC hdc);
 
 int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -54,7 +44,7 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 
 	// 전역 문자열을 초기화합니다.
 	LoadString(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
-	LoadString(hInstance, IDC_MY082514API2D2, szWindowClass, MAX_LOADSTRING);
+	LoadString(hInstance, IDC_API2DCONTROL, szWindowClass, MAX_LOADSTRING);
 	MyRegisterClass(hInstance);
 
 	// 응용 프로그램 초기화를 수행합니다.
@@ -63,10 +53,9 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 		return FALSE;
 	}
 
-	hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_MY082514API2D2));
+	hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_API2DCONTROL));
 
 	// 기본 메시지 루프입니다.
-	// 메시지루프를 상용화에선 손을 봐서 계속 돌아가게 만든다.
 	while (GetMessage(&msg, NULL, 0, 0))
 	{
 		if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
@@ -97,10 +86,10 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 	wcex.cbClsExtra		= 0;
 	wcex.cbWndExtra		= 0;
 	wcex.hInstance		= hInstance;
-	wcex.hIcon			= LoadIcon(hInstance, MAKEINTRESOURCE(IDI_MY082514API2D2));
+	wcex.hIcon			= LoadIcon(hInstance, MAKEINTRESOURCE(IDI_API2DCONTROL));
 	wcex.hCursor		= LoadCursor(NULL, IDC_ARROW);
 	wcex.hbrBackground	= (HBRUSH)(COLOR_WINDOW+1);
-	wcex.lpszMenuName	= MAKEINTRESOURCE(IDC_MY082514API2D2);
+	wcex.lpszMenuName	= MAKEINTRESOURCE(IDC_API2DCONTROL);
 	wcex.lpszClassName	= szWindowClass;
 	wcex.hIconSm		= LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
@@ -151,99 +140,46 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	int wmId, wmEvent;
 	PAINTSTRUCT ps;
-	HDC hdc;
-
-	/*
-		1. 마우스 클릭한 지점으로부터 가로로 300pixel
-		길이의 라인을 그려라.
-		2. 윈도우를 최소화 한후 복귀해도, 라인이 유지되어야함
-	*/
-	/*
-		실습
-		1. 키보드 커서(화살표) 방향대로
-		원을 5pixel씩 이동시킨다
-		WM_KEYDWON, w Param = VK_RIGHT,
-		Ellipse() 함수
-		2. 부드럽게~
-	*/
-
-	/* 
-		고정적으로 메시지를 발생시킬수 있으면,
-		갭을 고칠수 있다. -> setTimer를 이용한다.
-	*/
+	HDC hdc;	
 
 	switch (message)
-	{		
+	{
 	case WM_CREATE:
-		// handler, IDEVENT, 간격(1000 = 1초) 일정이하면 바꿔도 의미가 없다,
-		// callback 함수를 받을래! 하면 함수 포인터로 받을수 있다. 타이머 발생시 콜백함수 실행
-		::SetTimer(hWnd, TIMER_ID, 50, NULL); // timer라는 msg를 발생시키는 발생기이다.
-		_circle = { 100, 100 };
+		// WS_CHILD 는 부모윈도우가 사라질때 같이 사라지고
+		// child 이므로 부모에게 메시지를 보낸다.
+		// WS_VISIBLE 보이고
+		// window 속성
+		hBtnWnd = CreateWindow(L"button", 
+			L"Game Start",
+			WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
+			20, 20, 100, 25, 
+			hWnd, // 부모 지정
+			(HMENU)BTN_GAME_START, 
+			hInst, NULL);
+		/*
+		 실습 종료버튼 추가
+		*/
+		hBtnExitWnd = CreateWindow
+			(L"button",
+			L"Game Exit",
+			WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
+			20, 60, 100, 25,
+			hWnd, // 부모 지정
+			(HMENU)BTN_GAME_EXIT,
+			hInst, NULL);
 		break;
-
-	case WM_TIMER:
-		if (wParam == TIMER_ID)
-		{
-			Update(50 / 1000.0f);
-		}
-		::InvalidateRect(hWnd, NULL, true);
-		break;
-
-	case WM_KEYDOWN:
-		switch (wParam){
-		case VK_RIGHT:
-			isRightKeyDown = true;
-			break;
-		case VK_LEFT:
-			isLeftKeyDown = true;
-			break;
-		case VK_UP:
-			isUpKeyDown = true;
-			break;
-		case VK_DOWN:
-			isDownKeyDown = true;
-			break;
-		}
-		::InvalidateRect(hWnd, NULL, true);		
-		break;	
-	
-	case WM_KEYUP:
-		switch (wParam){
-		case VK_RIGHT:
-			isRightKeyDown = false;
-			break;
-		case VK_LEFT:
-			isLeftKeyDown = false;
-			break;
-		case VK_UP:
-			isUpKeyDown = false;
-			break;
-		case VK_DOWN:
-			isDownKeyDown = false;
-			break;
-		}
-
-		break;
-
-	case WM_LBUTTONDOWN:
-		mX = LOWORD(lParam);
-		mY = HIWORD(lParam);
-
-		// 무효화를 하면 일어나면 동작
-		// 두번쩨 Rect가 무효화 하는 범위
-		// 모르거나 전체 영역을 다시 그리고 싶다고 할때 NULL을 넣는다.
-		// 게임의 경우 부분만 다시 그리는 게 거의 불가능하다
-		// 무효화 할 경우 WM_PAINT메세지가 발생한다.
-		// 세번째 인자같은 경우에는 지우고 발생할것인가 안지우고 발생할것인가. (쟌상)
-		::InvalidateRect(hWnd, NULL, true);		
-		break;
-
 	case WM_COMMAND:
 		wmId    = LOWORD(wParam);
 		wmEvent = HIWORD(wParam);
 		// 메뉴 선택을 구문 분석합니다.
 		switch (wmId)
 		{
+		case BTN_GAME_EXIT:
+			PostQuitMessage(0);
+			break;
+		case BTN_GAME_START:
+			MessageBox(hWnd, L"Game Starte", L"MSGBOX", MB_OK);
+			break;
 		case IDM_ABOUT:
 			DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
 			break;
@@ -254,19 +190,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			return DefWindowProc(hWnd, message, wParam, lParam);
 		}
 		break;
-
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);
-		hdc = ::GetDC(hWnd);
-		Render(hdc);
+		// TODO: 여기에 그리기 코드를 추가합니다.
 		EndPaint(hWnd, &ps);
 		break;
-	case WM_SIZE:
-		InvalidateRect(hWnd, NULL, true);
-		break;
 	case WM_DESTROY:
-		//::KillTimer(hWnd, TIMER_ID);
-		::KillTimer(hWnd, TIMER_ID);
 		PostQuitMessage(0);
 		break;
 	default:
@@ -293,27 +222,4 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 		break;
 	}
 	return (INT_PTR)FALSE;
-}
-
-// 핵심 프레임웤
-void Update(float delta){	
-	if (isRightKeyDown){
-		_circle.x += 5;
-	}
-	if (isLeftKeyDown){
-		_circle.x -= 5;
-	}
-	if (isUpKeyDown){
-		_circle.y -= 5;
-	}
-	if (isDownKeyDown){
-		_circle.y += 5;
-	}	
-}
-
-void Render(HDC hdc){	
-	::MoveToEx(hdc, mX, mY, NULL);
-	// 첫 시작 설정점에서 부터 계속 이어서 그리게 된다.		
-	::LineTo(hdc, mX + 300, mY);
-	::Ellipse(hdc, _circle.x - 25, _circle.y - 25, _circle.x + 25, _circle.y + 25);
 }
