@@ -1,30 +1,24 @@
-// API2D Control.cpp : 응용 프로그램에 대한 진입점을 정의합니다.
+// TimerHomwork fix2.cpp : Defines the entry point for the application.
 //
-/*
-	아래들도 각자 윈도우임
-	이런 것들을 control이라고 한다.
-	포폴 만들때 툴을 만들때 집중적으로 필요하게 된다.
-	button (체크버튼, 라디오버튼, 푸쉬버튼 등)
-	edit
-	list
-	dropbox
-*/
 
 #include "stdafx.h"
-#include "API2D Control.h"
+#include "TimerHomwork fix2.h"
+#include "WorldRenderer.h"
 
 #define MAX_LOADSTRING 100
-#define BTN_GAME_START 1
-#define BTN_GAME_EXIT 2
 
-// 전역 변수:
-HINSTANCE hInst;								// 현재 인스턴스입니다.
-TCHAR szTitle[MAX_LOADSTRING];					// 제목 표시줄 텍스트입니다.
-TCHAR szWindowClass[MAX_LOADSTRING];			// 기본 창 클래스 이름입니다.
-HWND hBtnWnd;
-HWND hBtnExitWnd;
+// user add define
+#define ID_OBS 4
 
-// 이 코드 모듈에 들어 있는 함수의 정방향 선언입니다.
+// Global Variables:
+HINSTANCE hInst;								// current instance
+TCHAR szTitle[MAX_LOADSTRING];					// The title bar text
+TCHAR szWindowClass[MAX_LOADSTRING];			// the main window class name
+
+World world;
+WorldRenderer worldRenderer = WorldRenderer(&world);
+
+// Forward declarations of functions included in this code module:
 ATOM				MyRegisterClass(HINSTANCE hInstance);
 BOOL				InitInstance(HINSTANCE, int);
 LRESULT CALLBACK	WndProc(HWND, UINT, WPARAM, LPARAM);
@@ -38,24 +32,24 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	UNREFERENCED_PARAMETER(hPrevInstance);
 	UNREFERENCED_PARAMETER(lpCmdLine);
 
- 	// TODO: 여기에 코드를 입력합니다.
+ 	// TODO: Place code here.
 	MSG msg;
 	HACCEL hAccelTable;
 
-	// 전역 문자열을 초기화합니다.
+	// Initialize global strings
 	LoadString(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
-	LoadString(hInstance, IDC_API2DCONTROL, szWindowClass, MAX_LOADSTRING);
+	LoadString(hInstance, IDC_TIMERHOMWORKFIX2, szWindowClass, MAX_LOADSTRING);
 	MyRegisterClass(hInstance);
 
-	// 응용 프로그램 초기화를 수행합니다.
+	// Perform application initialization:
 	if (!InitInstance (hInstance, nCmdShow))
 	{
 		return FALSE;
 	}
 
-	hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_API2DCONTROL));
+	hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_TIMERHOMWORKFIX2));
 
-	// 기본 메시지 루프입니다.
+	// Main message loop:
 	while (GetMessage(&msg, NULL, 0, 0))
 	{
 		if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
@@ -71,9 +65,9 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 
 
 //
-//  함수: MyRegisterClass()
+//  FUNCTION: MyRegisterClass()
 //
-//  목적: 창 클래스를 등록합니다.
+//  PURPOSE: Registers the window class.
 //
 ATOM MyRegisterClass(HINSTANCE hInstance)
 {
@@ -86,10 +80,10 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 	wcex.cbClsExtra		= 0;
 	wcex.cbWndExtra		= 0;
 	wcex.hInstance		= hInstance;
-	wcex.hIcon			= LoadIcon(hInstance, MAKEINTRESOURCE(IDI_API2DCONTROL));
+	wcex.hIcon			= LoadIcon(hInstance, MAKEINTRESOURCE(IDI_TIMERHOMWORKFIX2));
 	wcex.hCursor		= LoadCursor(NULL, IDC_ARROW);
 	wcex.hbrBackground	= (HBRUSH)(COLOR_WINDOW+1);
-	wcex.lpszMenuName	= MAKEINTRESOURCE(IDC_API2DCONTROL);
+	wcex.lpszMenuName	= MAKEINTRESOURCE(IDC_TIMERHOMWORKFIX2);
 	wcex.lpszClassName	= szWindowClass;
 	wcex.hIconSm		= LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
@@ -97,20 +91,20 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 }
 
 //
-//   함수: InitInstance(HINSTANCE, int)
+//   FUNCTION: InitInstance(HINSTANCE, int)
 //
-//   목적: 인스턴스 핸들을 저장하고 주 창을 만듭니다.
+//   PURPOSE: Saves instance handle and creates main window
 //
-//   설명:
+//   COMMENTS:
 //
-//        이 함수를 통해 인스턴스 핸들을 전역 변수에 저장하고
-//        주 프로그램 창을 만든 다음 표시합니다.
+//        In this function, we save the instance handle in a global variable and
+//        create and display the main program window.
 //
 BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    HWND hWnd;
 
-   hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
+   hInst = hInstance; // Store instance handle in our global variable
 
    hWnd = CreateWindow(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
       CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, NULL, NULL, hInstance, NULL);
@@ -127,60 +121,49 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 }
 
 //
-//  함수: WndProc(HWND, UINT, WPARAM, LPARAM)
+//  FUNCTION: WndProc(HWND, UINT, WPARAM, LPARAM)
 //
-//  목적:  주 창의 메시지를 처리합니다.
+//  PURPOSE:  Processes messages for the main window.
 //
-//  WM_COMMAND	- 응용 프로그램 메뉴를 처리합니다.
-//  WM_PAINT	- 주 창을 그립니다.
-//  WM_DESTROY	- 종료 메시지를 게시하고 반환합니다.
+//  WM_COMMAND	- process the application menu
+//  WM_PAINT	- Paint the main window
+//  WM_DESTROY	- post a quit message and return
 //
 //
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	int wmId, wmEvent;
 	PAINTSTRUCT ps;
-	HDC hdc;	
+	HDC hdc;
+	RECT winRect;
+
+	::GetClientRect(hWnd ,&winRect);
+	world.updateMap(winRect);
 
 	switch (message)
-	{
+	{	
 	case WM_CREATE:
-		// WS_CHILD 는 부모윈도우가 사라질때 같이 사라지고
-		// child 이므로 부모에게 메시지를 보낸다.
-		// WS_VISIBLE 보이고
-		// window 속성
-		hBtnWnd = CreateWindow(L"button", 
-			L"Game Start",
-			WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
-			20, 20, 100, 25, 
-			hWnd, // 부모 지정
-			(HMENU)BTN_GAME_START, 
-			hInst, NULL);
-		/*
-		 실습 종료버튼 추가
-		*/
-		hBtnExitWnd = CreateWindow
-			(L"button",
-			L"Game Exit",
-			WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
-			20, 60, 100, 25,
-			hWnd, // 부모 지정
-			(HMENU)BTN_GAME_EXIT,
-			hInst, NULL);
+		::SetTimer(hWnd, ID_OBS, 50, NULL);
 		break;
 
+	case WM_KEYDOWN:
+		world.kbDown(wParam);
+		break;
+
+	case WM_KEYUP:
+		world.kbUp(wParam);
+		break;
+
+	case WM_TIMER:		
+		world.Update(50 / 1000.0f);
+		InvalidateRect(hWnd, NULL, true);
+		break;
 	case WM_COMMAND:
 		wmId    = LOWORD(wParam);
 		wmEvent = HIWORD(wParam);
-		// 메뉴 선택을 구문 분석합니다.
+		// Parse the menu selections:
 		switch (wmId)
 		{
-		case BTN_GAME_EXIT:
-			PostQuitMessage(0);
-			break;
-		case BTN_GAME_START:
-			MessageBox(hWnd, L"Game Starte", L"MSGBOX", MB_OK);
-			break;
 		case IDM_ABOUT:
 			DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
 			break;
@@ -193,10 +176,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		break;
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);
-		// TODO: 여기에 그리기 코드를 추가합니다.
+		worldRenderer.render(hdc);
 		EndPaint(hWnd, &ps);
 		break;
 	case WM_DESTROY:
+		::KillTimer(hWnd, ID_OBS);
 		PostQuitMessage(0);
 		break;
 	default:
@@ -205,7 +189,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	return 0;
 }
 
-// 정보 대화 상자의 메시지 처리기입니다.
+// Message handler for about box.
 INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	UNREFERENCED_PARAMETER(lParam);

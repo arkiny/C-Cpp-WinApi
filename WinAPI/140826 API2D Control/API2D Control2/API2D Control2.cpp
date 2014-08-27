@@ -1,34 +1,29 @@
-// API2D Control.cpp : 응용 프로그램에 대한 진입점을 정의합니다.
+// API2D Control2.cpp : 응용 프로그램에 대한 진입점을 정의합니다.
 //
-/*
-	아래들도 각자 윈도우임
-	이런 것들을 control이라고 한다.
-	포폴 만들때 툴을 만들때 집중적으로 필요하게 된다.
-	button (체크버튼, 라디오버튼, 푸쉬버튼 등)
-	edit
-	list
-	dropbox
-*/
+
 
 #include "stdafx.h"
-#include "API2D Control.h"
+#include "API2D Control2.h"
 
 #define MAX_LOADSTRING 100
-#define BTN_GAME_START 1
-#define BTN_GAME_EXIT 2
+#define BTN_ID 0
+#define EDIT_ID 1
 
 // 전역 변수:
 HINSTANCE hInst;								// 현재 인스턴스입니다.
 TCHAR szTitle[MAX_LOADSTRING];					// 제목 표시줄 텍스트입니다.
 TCHAR szWindowClass[MAX_LOADSTRING];			// 기본 창 클래스 이름입니다.
-HWND hBtnWnd;
-HWND hBtnExitWnd;
 
 // 이 코드 모듈에 들어 있는 함수의 정방향 선언입니다.
 ATOM				MyRegisterClass(HINSTANCE hInstance);
 BOOL				InitInstance(HINSTANCE, int);
 LRESULT CALLBACK	WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK	About(HWND, UINT, WPARAM, LPARAM);
+//
+WCHAR str[128] = L"";
+HWND hEditWnd;
+HWND hBtnWnd;
+//
 
 int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -44,7 +39,7 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 
 	// 전역 문자열을 초기화합니다.
 	LoadString(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
-	LoadString(hInstance, IDC_API2DCONTROL, szWindowClass, MAX_LOADSTRING);
+	LoadString(hInstance, IDC_API2DCONTROL2, szWindowClass, MAX_LOADSTRING);
 	MyRegisterClass(hInstance);
 
 	// 응용 프로그램 초기화를 수행합니다.
@@ -53,7 +48,7 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 		return FALSE;
 	}
 
-	hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_API2DCONTROL));
+	hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_API2DCONTROL2));
 
 	// 기본 메시지 루프입니다.
 	while (GetMessage(&msg, NULL, 0, 0))
@@ -86,10 +81,10 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 	wcex.cbClsExtra		= 0;
 	wcex.cbWndExtra		= 0;
 	wcex.hInstance		= hInstance;
-	wcex.hIcon			= LoadIcon(hInstance, MAKEINTRESOURCE(IDI_API2DCONTROL));
+	wcex.hIcon			= LoadIcon(hInstance, MAKEINTRESOURCE(IDI_API2DCONTROL2));
 	wcex.hCursor		= LoadCursor(NULL, IDC_ARROW);
 	wcex.hbrBackground	= (HBRUSH)(COLOR_WINDOW+1);
-	wcex.lpszMenuName	= MAKEINTRESOURCE(IDC_API2DCONTROL);
+	wcex.lpszMenuName	= MAKEINTRESOURCE(IDC_API2DCONTROL2);
 	wcex.lpszClassName	= szWindowClass;
 	wcex.hIconSm		= LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
@@ -126,6 +121,17 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    return TRUE;
 }
 
+
+/*
+1. API에는 이름이 정해져 있다.
+2. 차일드 윈도우 - 윈도우 핸들을 다루는 API함수
+3. 윈도우이다. -
+4. 부분윈도우의 WndProc로 메시지가 전달된다.
+5. 4번의 경우 WMCOMMAND
+6. LOWORD
+7. HIWORD
+윈도우 핸들을 다루는 API함수 OK
+*/
 //
 //  함수: WndProc(HWND, UINT, WPARAM, LPARAM)
 //
@@ -141,51 +147,62 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	int wmId, wmEvent;
 	PAINTSTRUCT ps;
 	HDC hdc;	
+	WCHAR str2[128] = L"님은 천재!";
 
 	switch (message)
 	{
 	case WM_CREATE:
-		// WS_CHILD 는 부모윈도우가 사라질때 같이 사라지고
-		// child 이므로 부모에게 메시지를 보낸다.
-		// WS_VISIBLE 보이고
-		// window 속성
-		hBtnWnd = CreateWindow(L"button", 
-			L"Game Start",
-			WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
-			20, 20, 100, 25, 
-			hWnd, // 부모 지정
-			(HMENU)BTN_GAME_START, 
-			hInst, NULL);
-		/*
-		 실습 종료버튼 추가
-		*/
-		hBtnExitWnd = CreateWindow
-			(L"button",
-			L"Game Exit",
-			WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
-			20, 60, 100, 25,
-			hWnd, // 부모 지정
-			(HMENU)BTN_GAME_EXIT,
-			hInst, NULL);
-		break;
+		hEditWnd = CreateWindow(
+			L"edit",
+			NULL,
+			WS_CHILD | WS_VISIBLE | WS_BORDER | ES_AUTOHSCROLL, // ws는 window style, es는 edit style
+			10,10,200,25,
+			hWnd,
+			(HMENU)EDIT_ID,
+			hInst,
+			NULL
+			);
 
+		hBtnWnd = CreateWindow
+			(L"button",
+			L"Enter",
+			WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
+			210, 10, 100, 25,
+			hWnd, // 부모 지정
+			(HMENU)BTN_ID,
+			hInst, NULL);
+		
+		break;
 	case WM_COMMAND:
 		wmId    = LOWORD(wParam);
 		wmEvent = HIWORD(wParam);
 		// 메뉴 선택을 구문 분석합니다.
 		switch (wmId)
 		{
-		case BTN_GAME_EXIT:
-			PostQuitMessage(0);
-			break;
-		case BTN_GAME_START:
-			MessageBox(hWnd, L"Game Starte", L"MSGBOX", MB_OK);
-			break;
 		case IDM_ABOUT:
 			DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
 			break;
 		case IDM_EXIT:
 			DestroyWindow(hWnd);
+			break;
+		case BTN_ID:			
+			::MessageBox(hWnd, str, str, MB_OK);
+			break;
+		case EDIT_ID:
+			switch (wmEvent){
+			case EN_CHANGE:
+				// 얻어오긔
+				::GetWindowText(hEditWnd,str, 128);		// editbox에 입력된 스트링				
+				// 쓰긔
+			/*	::SetWindowText(hWnd, str);				
+				::InvalidateRect(hWnd, NULL, TRUE);*/
+				
+				break;
+			case EN_UPDATE:
+				break;
+			case EN_SETFOCUS:
+				break;
+			}
 			break;
 		default:
 			return DefWindowProc(hWnd, message, wParam, lParam);
@@ -194,6 +211,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);
 		// TODO: 여기에 그리기 코드를 추가합니다.
+		TextOut(hdc, 100, 300, str, lstrlen(str));
 		EndPaint(hWnd, &ps);
 		break;
 	case WM_DESTROY:
