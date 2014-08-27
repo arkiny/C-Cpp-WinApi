@@ -22,11 +22,15 @@ public:
 				_world->getObstacle().getPos().y + _world->getObstacle().getSize());
 		}
 				
+		HBRUSH myBrush = (HBRUSH)GetStockObject(GRAY_BRUSH);
+		HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, myBrush);		
 		::Rectangle(hdc,
 			_world->getPlayer().getPos().x - _world->getPlayer().getSize(),
 			_world->getPlayer().getPos().y - _world->getPlayer().getSize(),
 			_world->getPlayer().getPos().x + _world->getPlayer().getSize(),
 			_world->getPlayer().getPos().y + _world->getPlayer().getSize());
+		SelectObject(hdc, oldBrush);
+		DeleteObject(myBrush);
 	}
 
 private:

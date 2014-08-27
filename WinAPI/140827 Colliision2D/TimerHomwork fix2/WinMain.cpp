@@ -1,8 +1,8 @@
-// TimerHomwork fix2.cpp : Defines the entry point for the application.
+// WinMain.cpp : Defines the entry point for the application.
 //
 
 #include "stdafx.h"
-#include "TimerHomwork fix2.h"
+#include "WinMain.h"
 #include "WorldRenderer.h"
 
 #define MAX_LOADSTRING 100

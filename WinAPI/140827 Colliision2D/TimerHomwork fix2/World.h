@@ -82,6 +82,7 @@ public:
 		}
 
 		if (_player.checkBound(_map)){
+			// TODO: 다른쪽으로는 움직일수 있게 차후 추가
 			// do nothing
 		}
 		else {
@@ -94,7 +95,7 @@ public:
 	// world에서 처리하는게 편한가.
 	// 사각형 충돌? 혹은 거리를 계산해서 충돌?
 	// 그럼 원 대 사각형 충돌은 어떻게 처리해야되지?
-	// 거리를 원거리 따로, 사각형 거리 따로?
+	// 거리를 원거리 따로, 사각형 거리 따로?`
 	BOOL collider(){
 		//top		
 		//bottom

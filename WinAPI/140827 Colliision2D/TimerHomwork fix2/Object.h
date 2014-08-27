@@ -81,6 +81,7 @@ public:
 	int getSize(){ return _size; }
 	KeyControl getKC(){ return _kc; }
 	POINT getPos(){ return _pos; }
+
 	BOOL checkBound(RECT &_map){
 		BOOL ret = (_pos.x - _size <= _map.left ||
 			_pos.x + _size >= _map.right ||
@@ -132,7 +133,7 @@ public:
 		_pos.y = y;
 	}
 
-	void update(){
+	void update(){		
 		if (_kc.left){ _pos.x -= 10; }
 		if (_kc.right){ _pos.x += 10; }
 		if (_kc.up){ _pos.y -= 10; }
