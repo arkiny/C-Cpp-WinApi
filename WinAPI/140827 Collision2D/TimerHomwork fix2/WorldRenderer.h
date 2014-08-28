@@ -14,8 +14,8 @@ public:
 	}
 	
 	void render(HDC hdc){
-		if (!_world->collider()){
-			::Rectangle(hdc,
+		if (!_world->EllipseCollider()){
+			::Ellipse(hdc,
 				_world->getObstacle().getPos().x - _world->getObstacle().getSize(),
 				_world->getObstacle().getPos().y - _world->getObstacle().getSize(),
 				_world->getObstacle().getPos().x + _world->getObstacle().getSize(),
@@ -24,7 +24,12 @@ public:
 				
 		HBRUSH myBrush = (HBRUSH)GetStockObject(GRAY_BRUSH);
 		HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, myBrush);		
-		::Rectangle(hdc,
+		/*::Rectangle(hdc,
+			_world->getPlayer().getPos().x - _world->getPlayer().getSize(),
+			_world->getPlayer().getPos().y - _world->getPlayer().getSize(),
+			_world->getPlayer().getPos().x + _world->getPlayer().getSize(),
+			_world->getPlayer().getPos().y + _world->getPlayer().getSize());*/
+		::Ellipse(hdc,
 			_world->getPlayer().getPos().x - _world->getPlayer().getSize(),
 			_world->getPlayer().getPos().y - _world->getPlayer().getSize(),
 			_world->getPlayer().getPos().x + _world->getPlayer().getSize(),

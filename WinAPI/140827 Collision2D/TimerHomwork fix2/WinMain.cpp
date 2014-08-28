@@ -136,6 +136,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	PAINTSTRUCT ps;
 	HDC hdc;
 	RECT winRect;
+	int mX, mY;
 
 	::GetClientRect(hWnd ,&winRect);
 	world.updateMap(winRect);
