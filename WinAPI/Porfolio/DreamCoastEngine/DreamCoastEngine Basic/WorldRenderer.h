@@ -23,37 +23,66 @@ public:
 private:
 	// Drawing Map
 	void drawMap(HDC &hdc, RECT &winRect){
-		POINT pt;
+		POINT pt, pt2;
 		int x, y; // change normal coordinate to screenCoordnate
 		int tileWidth = _lpworld->getGameMap().getTileSize();
 		int tileHeight = tileWidth;
 		TCHAR text[20] = L"";
 
-		for (int i = 0; i < _lpworld->getGameMap().getMapSize()._x; i++){
+		for (int j = 0; j < _lpworld->getGameMap().getMapSize()._x; j++){
 			// columns
-			for (int j = 0; j < _lpworld->getGameMap().getMapSize()._y; j++){
+			for (int i = 0; i < _lpworld->getGameMap().getMapSize()._y; i++){
 				// 원래 사각형의 좌표
 				x = j*tileWidth; // on screen
-				y = i*tileHeight;
-
+				y = i*tileHeight;				
 				
+				/*MoveToEx(hdc, (tileWidth * _lpworld->getGameMap().getMapSize()._x)+ x - tileWidth, 100+y - tileHeight/2, NULL);
+				LineTo(hdc, (tileWidth * _lpworld->getGameMap().getMapSize()._x)+ x + tileWidth, 100+y - tileHeight/2);
+				LineTo(hdc, (tileWidth * _lpworld->getGameMap().getMapSize()._x)+ x + tileWidth, 100+y + tileHeight/2);
+				LineTo(hdc, (tileWidth * _lpworld->getGameMap().getMapSize()._x)+ x - tileWidth, 100+y + tileHeight/2);
+				LineTo(hdc, (tileWidth * _lpworld->getGameMap().getMapSize()._x) +x - tileWidth, 100+y - tileHeight/2);*/
+
 				// 원래 사각형이 있어야 할 좌표에서 ISOMetric위의 좌표로 치환
 				pt = _lpworld->getGameMap().TwoDtoISO({ x, y });
 
 				drawTile(pt.x + (tileWidth * _lpworld->getGameMap().getMapSize()._x), 
-					pt.y + 100, 0, hdc);
+					pt.y + 100, 0, hdc);		
 
+				/*::Rectangle(hdc,
+					pt.x + (tileWidth * _lpworld->getGameMap().getMapSize()._x) - tileWidth,
+					pt.y + 100 - tileHeight,
+					pt.x + (tileWidth * _lpworld->getGameMap().getMapSize()._x) + tileWidth,
+					pt.y + 100 + tileHeight);*/
+			
 				// 좌표 출력
+				
+
 				wsprintf(text, L"(%d, %d)", i, j);
 				::TextOut(hdc, pt.x + (tileWidth *_lpworld->getGameMap().getMapSize()._x),
-					pt.y + 100 - 5, text, 6);				
+					pt.y + 100 - 5, text, 6);
 			}
 		}
 
 		// 차후 PickRender를 위해 남겨놓은 주석
-	/*	pt = _lpworld->getGameMap().TwoDtoISO({ 1*tileWidth, 2*tileHeight });
+
+		pt = _lpworld->getGameMap().TwoDtoISO({ 1*tileWidth, 2*tileHeight });
+		
+		RECT check;
+		check.left = pt.x + (tileWidth * _lpworld->getGameMap().getMapSize()._x) - tileWidth;
+		check.top = pt.y + 100 - tileHeight / 2;
+		check.right = pt.x + (tileWidth * _lpworld->getGameMap().getMapSize()._x) + tileWidth;
+		check.bottom = pt.y + 100 + tileHeight / 2;
+
 		drawTile(pt.x + (tileWidth *_lpworld->getGameMap().getMapSize()._x)
-			, pt.y+100, 1, hdc);*/
+			, pt.y + 100, 1, hdc);
+		::Rectangle(hdc, pt.x - 10, pt.y - 10, pt.x + 10, pt.y + 10);
+
+		pt = _lpworld->getGameMap().isoTo2D({ 1, 1 });
+		
+		drawTile(pt.x
+			, pt.y, 1, hdc);
+
+		
 	}
 
 	void drawTile(int x, int y, int type, HDC &hdc){

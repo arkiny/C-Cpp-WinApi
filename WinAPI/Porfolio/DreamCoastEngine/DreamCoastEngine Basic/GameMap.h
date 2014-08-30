@@ -60,6 +60,44 @@ public:
 		return ret;
 	}
 
+	// 입력 받는 타일의 좌표는 db에서의 좌표	
+	// 이렇게 되면 클릭할때마다 좌표를 한번씩 다 스캔하게 되는데....
+	POINT twoDtoISOcheck(POINT tile, POINT cur){
+		
+		// db에서의 좌표를 화면좌표로 변환하고,
+		// 그 화면 좌표를 중심으로 사각형을 생성한다.
+		RECT tileArea = { 
+			tile.x - _tileSize ,
+			tile.y - _tileSize ,
+			tile.x + _tileSize ,
+			tile.y + _tileSize };
+
+		POINT ret = tile;
+
+		int xFromTilePos = cur.x - tile.x;
+		int yFromTilePos = cur.y - tile.y;
+
+		// 커서 좌표를 받아와서 범위를 확인한다.
+		if ( tileArea.left >= cur.x && tileArea.right <= cur.x &&
+			tileArea.top >= cur.y && tileArea.bottom<= cur.y){
+			if (yFromTilePos < xFromTilePos){
+				if (yFromTilePos < (-xFromTilePos)) --ret.y;
+				else ++ret.x;
+			}
+			else if (yFromTilePos > xFromTilePos){
+				if (yFromTilePos < (-xFromTilePos)) --ret.x;
+				else ++ret.y;
+			}
+			// 커서가 tile 포인트의 범위 안에 있을때
+			// 왼쪽 위에 있을 때 현재 위치의 -1, -1
+			// 오른쪽 위에 있을때 현재 위치의 0, -1
+			// 왼쪽 아래에 있을때 현재 위치의 -1, 1
+			// 오른쪽 아래에 있을때 현재 위치의 0, 1			
+			// 정확하게 마름모 안에 있을때 0, 0
+		};
+		return ret;
+	}
+
 private:
 	MapSize _size;
 	//차후 database 추가

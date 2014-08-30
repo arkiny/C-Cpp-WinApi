@@ -31,14 +31,14 @@ public:
 		_map.setMapSize(size_x, size_y);
 	}	
 
-	//BOOL pick(int x, int y){
+	BOOL pick(int x, int y){
 
 	//	::Rectangle(hdc,
 	//		x - (tileWidth / 2),
 	//		y - (tileHeight / 2),
 	//		x + (tileWidth / 2),
 	//		y + (tileHeight / 2));
-	//}
+	}
 
 	UIInven getUI(){
 		return _ui;

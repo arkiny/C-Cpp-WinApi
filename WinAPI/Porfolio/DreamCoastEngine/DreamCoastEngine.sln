@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DreamCoastEngine Basic", "DreamCoastEngine Basic\DreamCoastEngine Basic.vcxproj", "{CCC2CF13-0489-4427-A4DB-ED0ABD38EE18}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DreamCoastEndgine_ISO", "DreamCoastEndgine_ISO\DreamCoastEndgine_ISO.vcxproj", "{8AB1F52F-303D-45A7-8E6D-0DD971EF51CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -15,6 +17,10 @@ Global
 		{CCC2CF13-0489-4427-A4DB-ED0ABD38EE18}.Debug|Win32.Build.0 = Debug|Win32
 		{CCC2CF13-0489-4427-A4DB-ED0ABD38EE18}.Release|Win32.ActiveCfg = Release|Win32
 		{CCC2CF13-0489-4427-A4DB-ED0ABD38EE18}.Release|Win32.Build.0 = Release|Win32
+		{8AB1F52F-303D-45A7-8E6D-0DD971EF51CD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8AB1F52F-303D-45A7-8E6D-0DD971EF51CD}.Debug|Win32.Build.0 = Debug|Win32
+		{8AB1F52F-303D-45A7-8E6D-0DD971EF51CD}.Release|Win32.ActiveCfg = Release|Win32
+		{8AB1F52F-303D-45A7-8E6D-0DD971EF51CD}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
