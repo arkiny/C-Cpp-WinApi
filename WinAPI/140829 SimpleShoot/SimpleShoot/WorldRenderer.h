@@ -15,15 +15,19 @@ public:
 	
 	void render(HDC hdc){
 		TCHAR str[6] = L"";
-		if (!_world->EllipseCollider()){
-			if (_world->getObstacle().getHP() > 0){
-				::Ellipse(hdc,
-					_world->getObstacle().getPos().x - _world->getObstacle().getSize(),
-					_world->getObstacle().getPos().y - _world->getObstacle().getSize(),
-					_world->getObstacle().getPos().x + _world->getObstacle().getSize(),
-					_world->getObstacle().getPos().y + _world->getObstacle().getSize());
-				::wsprintf(str, L"HP: %d", _world->getObstacle().getHP());
-				::TextOut(hdc, _world->getObstacle().getPos().x - 10, _world->getObstacle().getPos().y - 10, str, 5);
+
+		if (_world->getObstacle().size() > 0){
+			if (!_world->EllipseCollider()){
+				// todo : 차후 유동값으로 전환
+				if (_world->getObstacle()[0]->getHP() > 0){
+					::Ellipse(hdc,
+						_world->getObstacle()[0]->getPos().x - _world->getObstacle()[0]->getSize(),
+						_world->getObstacle()[0]->getPos().y - _world->getObstacle()[0]->getSize(),
+						_world->getObstacle()[0]->getPos().x + _world->getObstacle()[0]->getSize(),
+						_world->getObstacle()[0]->getPos().y + _world->getObstacle()[0]->getSize());
+					::wsprintf(str, L"HP: %d", _world->getObstacle()[0]->getHP());
+					::TextOut(hdc, _world->getObstacle()[0]->getPos().x - 10, _world->getObstacle()[0]->getPos().y - 10, str, 5);
+				}
 			}
 		}
 				
@@ -44,13 +48,12 @@ public:
 		myBrush = (HBRUSH)GetStockObject(BLACK_BRUSH);
 		oldBrush = (HBRUSH)SelectObject(hdc, myBrush);
 
-		if (!_world->getBullets().empty()){
+		for (int i = 0; i < _world->getBullets().size(); i++){
 			::Ellipse(hdc,
-				_world->getBullets()[0]->getPos().x - _world->getBullets()[0]->getSize(),
-				_world->getBullets()[0]->getPos().y - _world->getBullets()[0]->getSize(),
-				_world->getBullets()[0]->getPos().x + _world->getBullets()[0]->getSize(),
-				_world->getBullets()[0]->getPos().y + _world->getBullets()[0]->getSize());
-			
+				_world->getBullets()[i]->getPos().x - _world->getBullets()[i]->getSize(),
+				_world->getBullets()[i]->getPos().y - _world->getBullets()[i]->getSize(),
+				_world->getBullets()[i]->getPos().x + _world->getBullets()[i]->getSize(),
+				_world->getBullets()[i]->getPos().y + _world->getBullets()[i]->getSize());
 		}
 
 		SelectObject(hdc, oldBrush);

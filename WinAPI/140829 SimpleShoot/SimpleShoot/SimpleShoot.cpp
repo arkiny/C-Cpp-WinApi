@@ -159,8 +159,20 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 	case WM_TIMER:
 		world.Update(50 / 1000.0f);
+		
+		if (world.isGameOver()){
+			::KillTimer(hWnd, ID_OBS);
+			if (MessageBox(hWnd, L"Game Over, Exit Game?", L"Simple Shooter", MB_OKCANCEL) == IDOK)
+			{
+				DestroyWindow(hWnd);
+			}
+			world.setGameOver(false);
+			::SetTimer(hWnd, ID_OBS, 50, NULL);
+		}
+
 		InvalidateRect(hWnd, NULL, true);
 		break;
+
 	case WM_COMMAND:
 		wmId = LOWORD(wParam);
 		wmEvent = HIWORD(wParam);

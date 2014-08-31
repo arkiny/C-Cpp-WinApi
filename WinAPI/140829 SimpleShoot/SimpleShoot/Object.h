@@ -28,7 +28,7 @@ public:
 	Obstacle(POINT pos, int size){
 		_pos = pos;
 		_size = size;
-		_dir = LEFT;
+		_dir = DOWN;
 	}
 
 	int getSize(){	return _size;	}
@@ -51,11 +51,14 @@ public:
 	void update(float delta){
 		switch (_dir)
 		{
-		case LEFT:
+		/*case LEFT:
 			_pos.x -= 5;
 			break;
 		case RIGHT:
 			_pos.x += 5;
+			break;*/
+		case DOWN:
+			_pos.y += 5;
 			break;
 		default:
 			break;

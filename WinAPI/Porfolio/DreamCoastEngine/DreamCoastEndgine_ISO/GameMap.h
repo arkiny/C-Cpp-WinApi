@@ -97,8 +97,7 @@ private:
 
 	void drawMap(HDC &hdc){
 		POINT pt;	
-
-		int x, y, nx, ny;
+		int x, y;
 		TCHAR text[20] = L"";
 		
 		
