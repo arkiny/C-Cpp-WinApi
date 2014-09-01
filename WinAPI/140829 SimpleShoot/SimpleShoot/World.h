@@ -6,7 +6,7 @@
 	나중에 필요하면 refactoring함..
 */
 
-#pragma once;
+#pragma once
 
 #include <stdlib.h>
 #include <time.h>

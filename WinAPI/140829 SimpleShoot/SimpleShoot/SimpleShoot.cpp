@@ -17,8 +17,12 @@ HINSTANCE hInst;								// 현재 인스턴스입니다.
 TCHAR szTitle[MAX_LOADSTRING];					// 제목 표시줄 텍스트입니다.
 TCHAR szWindowClass[MAX_LOADSTRING];			// 기본 창 클래스 이름입니다.
 
-World world;
-WorldRenderer worldRenderer = WorldRenderer(&world);
+//09012014
+World* g_pMainWorld = nullptr;
+WorldRenderer* g_pWorldrenderer = nullptr;
+
+//World world;
+//WorldRenderer worldRenderer = WorldRenderer(&world);
 
 // 이 코드 모듈에 들어 있는 함수의 정방향 선언입니다.
 ATOM				MyRegisterClass(HINSTANCE hInstance);
@@ -42,6 +46,12 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	LoadString(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
 	LoadString(hInstance, IDC_SIMPLESHOOT, szWindowClass, MAX_LOADSTRING);
 	MyRegisterClass(hInstance);
+
+	// program이 끝나기 전까지 접근이 가능한 변수가 된거임
+	// custom global var init
+	g_pMainWorld = new World;
+	g_pWorldrenderer = new WorldRenderer(g_pMainWorld);
+
 
 	// 응용 프로그램 초기화를 수행합니다.
 	if (!InitInstance (hInstance, nCmdShow))
@@ -138,10 +148,9 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	PAINTSTRUCT ps;
 	HDC hdc;
 	RECT winRect;
-	int mX, mY;
 
 	::GetClientRect(hWnd, &winRect);
-	world.updateMap(winRect);
+	g_pMainWorld->updateMap(winRect);
 
 	switch (message)
 	{
@@ -150,23 +159,23 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		break;
 
 	case WM_KEYDOWN:
-		world.kbDown(wParam);
+		g_pMainWorld->kbDown(wParam);
 		break;
 
 	case WM_KEYUP:
-		world.kbUp(wParam);
+		g_pMainWorld->kbUp(wParam);
 		break;
 
 	case WM_TIMER:
-		world.Update(50 / 1000.0f);
+		g_pMainWorld->Update(50 / 1000.0f);
 		
-		if (world.isGameOver()){
+		if (g_pMainWorld->isGameOver()){
 			::KillTimer(hWnd, ID_OBS);
 			if (MessageBox(hWnd, L"Game Over, Exit Game?", L"Simple Shooter", MB_OKCANCEL) == IDOK)
 			{
 				DestroyWindow(hWnd);
 			}
-			world.setGameOver(false);
+			g_pMainWorld->setGameOver(false);
 			::SetTimer(hWnd, ID_OBS, 50, NULL);
 		}
 
@@ -191,7 +200,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		break;
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);
-		worldRenderer.render(hdc);
+		g_pWorldrenderer->render(hdc);
 		EndPaint(hWnd, &ps);
 		break;
 	case WM_DESTROY:

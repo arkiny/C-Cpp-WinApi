@@ -19,6 +19,9 @@ class Object {
 public:
 	virtual ~Object() {};
 	virtual void update(float delta) = 0;
+	POINT getPos(){ return _pos; }
+protected:
+	POINT _pos;
 };
 
 class Obstacle : public Object{
@@ -33,7 +36,8 @@ public:
 
 	int getSize(){	return _size;	}
 	MoveState getDir(){ return _dir; }
-	POINT getPos(){ return _pos; }
+	
+
 	BOOL checkBound(RECT &_map){
 		BOOL ret = (_pos.x - _size <= _map.left ||
 			_pos.x + _size >= _map.right ||
@@ -43,6 +47,7 @@ public:
 	}
 
 	void setDir(MoveState in) { _dir = in; }
+
 	void setPos(int x, int y){
 		_pos.x = x;
 		_pos.y = y;
@@ -74,7 +79,7 @@ public:
 	}
 
 private:
-	POINT _pos;
+	//POINT _pos;
 	int _size;
 	MoveState _dir;	
 	int _hp = 3;
@@ -92,8 +97,7 @@ public:
 
 	int getSize(){ return _size; }
 	KeyControl getKC(){ return _kc; }
-	POINT getPos(){ return _pos; }
-
+	
 	BOOL checkBound(RECT &_map){
 		BOOL ret = (_pos.x - _size <= _map.left ||
 			_pos.x + _size >= _map.right ||
@@ -153,7 +157,7 @@ public:
 	}
 
 private:
-	POINT _pos;
+	//POINT _pos;
 	int _size;
 	KeyControl _kc;
 };
@@ -180,10 +184,9 @@ public:
 	}
 
 	int getSize() { return _size; }
-	POINT getPos() { return _pos; }
 
 private:
-	POINT _pos;
+	//POINT _pos;
 	const int _size = 2;
 	const int _bulletSpeed = 10;
 };
