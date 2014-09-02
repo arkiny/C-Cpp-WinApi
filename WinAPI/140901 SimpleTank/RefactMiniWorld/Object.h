@@ -169,6 +169,7 @@ public:
 private:
 	//POINT _pos;
 	int _size;
+	int _degree = 30;
 	KeyControl _kc;
 	MoveState _lastdr;
 };
@@ -230,6 +231,7 @@ private:
 	//POINT _pos;
 	const int _size = 3;
 	const int _bulletSpeed = 15;
+	int _degree;
 	MoveState _direction;
 };
 

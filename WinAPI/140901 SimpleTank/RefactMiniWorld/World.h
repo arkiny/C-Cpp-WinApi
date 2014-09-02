@@ -4,6 +4,12 @@
 
 	WORLD 관리 클래스
 	Object들을 관리하며 각 object간의 상호작용, 
+
+	셀의 위치가 30, 30이거나 플레이어 위치가 거기이거나 한다면
+	움직이는 놈이 위치가 있으면
+	충동영역들을 비교할수 있다.
+
+
 */
 
 #pragma once
@@ -312,10 +318,12 @@ private:
 	void addObject(int x, int y){
 		if (isCurInside(x, y))
 		{
+			// 이부분 차후 어레이로 수정
 			Enemy* ptr = new Enemy(getTileRect(getTileCoordinate(x, y).x, getTileCoordinate(x, y).y));
 			ptr->setPos(getTileCoordinate(x, y));
 			_vEnemy.push_back(ptr);
 			ptr = nullptr;
+			// 이부분 차후 어레이로 수정
 		}
 	}
 
@@ -323,6 +331,7 @@ private:
 		POINT coordnate = getTileCoordinate(x, y);
 		void* ptr = nullptr;
 
+		// 이부분 차후 어레이로 수정
 		for (int i = 0; i < _vEnemy.size(); i++){
 			if (_vEnemy[i]->getPos().x == coordnate.x &&
 				_vEnemy[i]->getPos().y == coordnate.y){
@@ -334,11 +343,15 @@ private:
 			}
 		}
 		ptr = nullptr;
+		//
 	}
 
 	void moveObject(int fx, int fy, int tx, int ty){
 		POINT coordnate = getTileCoordinate(fx, fy);
 		POINT tcoordnate = getTileCoordinate(tx, ty);
+
+		// 이부분 차후 어레이로 수정
+
 		if (_vEnemy.size() == 0){
 			addObject(tx, ty); // 오브젝트 db에 아무것도 없을경우
 		}
@@ -351,6 +364,8 @@ private:
 				addObject(tx, ty); // 출발 기록이 없을경우
 			}
 		}
+
+		// 이부분 차후 어레이로 수정
 	}
 
 	POINT getTileCoordinate(int x, int y){
