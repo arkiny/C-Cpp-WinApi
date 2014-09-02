@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{44A1FABC-A4AD-4B87-ADAE-F49836887FFF}</ProjectGuid>
+    <ProjectGuid>{52A8E04E-BD12-4A4A-A348-E24D36A9F309}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>RefactMiniWorld</RootNamespace>
+    <RootNamespace>SimpleTank</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -78,29 +78,25 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Object.h" />
-    <ClInclude Include="World.h" />
-    <ClInclude Include="RefactMiniWorld.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="SimpleTank.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="WorldRenderer.h" />
+    <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="RefactMiniWorld.cpp" />
+    <ClCompile Include="SimpleTank.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="RefactMiniWorld.rc" />
+    <ResourceCompile Include="SimpleTank.rc" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="RefactMiniWorld.ico" />
+    <Image Include="SimpleTank.ico" />
     <Image Include="small.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

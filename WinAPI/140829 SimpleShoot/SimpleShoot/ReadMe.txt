@@ -28,3 +28,44 @@ stl 컨테이너 써서 동적생성, 최적의 stl 선택
 ---------------------------------------------------
 
 vector를 쓰고 재사용 
+
+std::vector<cBullet*> m_vBulletList;
+ std::queue<cBullet*> m_qBulletReUseList;
+
+ 재활용
+ cbullet* pbullet = NULL;
+ if (m_qBuleltReUseList.size() <= 0){
+	pBullet = new cBullet;
+	m_vBulletList.push_back(pBullet);
+ } else {
+	pBullet = (cBullet*)m_qBulletReUseList.front();
+	m_qBulletReUseList.pop();
+ }
+
+ if (pBullet!=NULL)
+ {
+  pBullet->startMove();
+ }
+
+ 생성한 놈(class)에서 해제를 해야함
+
+for size of queue{
+if (m_vBulletList[i] i= NULL)
+	delete statc_cast<cBullet*>(m_vBulletList[i])
+
+m_vBulletList.clear();
+
+while(!m_quBulletReUseList.empty()){
+	m_qbulletReUseList.pop();
+}
+
+1. 과제.... 
+- 과제 그리드 위에 클릭하면, 회색처리.
+- 탱크에서 총알이 나가면 그리드 위의 충돌 타일(회색)과 충돌 체크
+
+- 삼각함수 (싸인, 코싸인, 탄젠트) 예습
+- 각도를 가지고 회전을 시키기 (내일 배우기는 할것)
+
+2. 내일 할것
+- 마우스로 누르면 장애물이 생기고
+- 탱크 구현

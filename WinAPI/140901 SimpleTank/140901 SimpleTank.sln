@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SimpleTank", "SimpleTank\SimpleTank.vcxproj", "{52A8E04E-BD12-4A4A-A348-E24D36A9F309}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RefactMiniWorld", "RefactMiniWorld\RefactMiniWorld.vcxproj", "{44A1FABC-A4AD-4B87-ADAE-F49836887FFF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{52A8E04E-BD12-4A4A-A348-E24D36A9F309}.Debug|Win32.ActiveCfg = Debug|Win32
+		{52A8E04E-BD12-4A4A-A348-E24D36A9F309}.Debug|Win32.Build.0 = Debug|Win32
+		{52A8E04E-BD12-4A4A-A348-E24D36A9F309}.Release|Win32.ActiveCfg = Release|Win32
+		{52A8E04E-BD12-4A4A-A348-E24D36A9F309}.Release|Win32.Build.0 = Release|Win32
+		{44A1FABC-A4AD-4B87-ADAE-F49836887FFF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{44A1FABC-A4AD-4B87-ADAE-F49836887FFF}.Debug|Win32.Build.0 = Debug|Win32
+		{44A1FABC-A4AD-4B87-ADAE-F49836887FFF}.Release|Win32.ActiveCfg = Release|Win32
+		{44A1FABC-A4AD-4B87-ADAE-F49836887FFF}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

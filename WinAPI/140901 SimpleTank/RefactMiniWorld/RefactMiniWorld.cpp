@@ -176,10 +176,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			hInst, NULL);
 		break;
 
-	case WM_ERASEBKGND:
-		return 1;
-		break;
-
 	case WM_KEYDOWN:
 		world.kbDown(wParam);
 		break;
@@ -229,6 +225,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		mx = LOWORD(lParam);
 		my = HIWORD(lParam);
 		world.mbRbuttonDowns(mx, my);
+		break;
+
+	case WM_ERASEBKGND:
+		return 1;
 		break;
 
 	case WM_PAINT:

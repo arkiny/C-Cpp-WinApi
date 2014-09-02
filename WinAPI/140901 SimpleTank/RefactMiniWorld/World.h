@@ -3,24 +3,27 @@
 	@git		https://github.com/arkiny/SGA-Learning-Heedong
 
 	WORLD 관리 클래스
-	Object들을 관리하며, Renderer에 필요한 정보들을 불러준다.
+	Object들을 관리하며 각 object간의 상호작용, 
 */
 
 #pragma once
 
 #include <Windows.h>
 #include <vector>
+#include <mutex>
 #include <queue>
 #include "Object.h"
 
+
 using std::vector;
 using std::queue;
+
 
 class World{
 public:
 	World(){
 		_player = new Player();
-		_cobjects.clear();
+		_vEnemy.clear();
 	}
 
 	World(int nRow, int nColumn){
@@ -32,14 +35,23 @@ public:
 
 	~World(){
 		Enemy* ptr;
-		while (!_cobjects.empty()){
-			ptr = _cobjects.back();
+		while (!_vEnemy.empty()){
+			ptr = _vEnemy.back();
 			if (ptr != nullptr){
 				delete ptr;
 			}
-			_cobjects.pop_back();
-			_cobjects.shrink_to_fit();		
+			_vEnemy.pop_back();
+			_vEnemy.shrink_to_fit();
 		}				
+
+		Bullet* bptr;
+		while (!_qbullets.empty()){
+			bptr = _qbullets.front();
+			if (bptr != nullptr){
+				delete bptr;
+			}
+			_qbullets.pop();			
+		}
 
 		if (_player != nullptr){
 			delete _player;
@@ -84,6 +96,9 @@ public:
 			_player->update(delta);
 		}
 
+		///////////
+		// 장대한 삽질의 결과... 쉽게 Array로 하려다가 시간만 버림
+		//////////
 		//Bullet* ptr = nullptr;
 		//if (_qbullets.size() <= 0){
 		//	ptr = new Bullet(_player->getPos().x, _player->getPos().y, _player->getLastdir());
@@ -99,50 +114,89 @@ public:
 		//}
 
 
-		if (!_vbullets.empty()){
-			for (int i = 0; i < _vbullets.size(); i++){
-				_vbullets[i]->update(delta);
-				//
-				if (!_cobjects.empty()){
-					for (int j = 0; j < _cobjects.size(); j++){
-						if (_cobjects[j]->isHittedbyBullet(*_vbullets[i])){
-							Enemy* ptr = _cobjects[j];
-							delete ptr;
-							ptr = nullptr;
-							_cobjects.erase(_cobjects.begin() + j);
-							
+		//if (!_vbullets.empty()){
+		//	for (int i = 0; i < _vbullets.size(); i++){
+		//		_vbullets[i]->update(delta);
+		//		//
+		//		if (!_cobjects.empty()){
+		//			for (int j = 0; j < _cobjects.size(); j++){
+		//				if (_cobjects[j] != NULL){						
+		//					if (_vbullets.size()>0 ){ // 이건 아무래도 동기화 에러인가 보다								
+		//						if (_cobjects[j]->isHittedbyBullet(*_vbullets[i])){
 
-							// 포탄 삭제처리해야함...
-							Bullet* ptr2 = _vbullets[i];
-							delete ptr2;
-							ptr2 = nullptr;
-							_vbullets.erase(_vbullets.begin() + i);												
-						}
-					}
-					_cobjects.shrink_to_fit(); // resizing after the loop
+		//							Enemy* ptr = _cobjects[j];
+		//							delete ptr;
+		//							ptr = nullptr;
+		//							_cobjects.erase(_cobjects.begin() + j);
+
+
+		//							// 포탄 삭제처리해야함...
+		//							if (_vbullets[i] != NULL){
+		//								Bullet* ptr2 = _vbullets[i];
+		//								delete ptr2;
+		//								ptr2 = nullptr;
+		//								_vbullets.erase(_vbullets.begin() + i);
+		//							}
+		//						}
+		//					}
+		//				}
+		//			}
+		//			_cobjects.shrink_to_fit(); // resizing after the loop
+		//		}
+		//	}
+		//	_vbullets.shrink_to_fit(); // resizing here, after the for loop
+		//}		
+
+		// queue와 stack을 이용한 데이터 주고받기를 통해 조건 업데이트 실시
+		// 가장 원초적인 건데 왜 안쓰려고 하고 있었을까.....
+		// updating and border check
+		Bullet* ptr = nullptr;
+		Enemy* eptr = nullptr;
+		while (!_qbullets.empty()){
+			ptr = _qbullets.front();
+			_qbullets.pop();
+			ptr->update(delta);
+			if (ptr->checkBound(_tileMap)){
+				delete ptr;
+			}
+			else{
+				_vbullets.push_back(ptr);
+			}
+
+			while (!_vEnemy.empty()){
+				eptr = _vEnemy.back();
+				_vEnemy.pop_back();
+				if (eptr->isHittedbyBullet(*ptr)){	
+					_vbullets.pop_back();
+					delete eptr;
+					delete ptr;
 				}
-				
-				// 게임화면 밖 처리
-				if (_vbullets.size()>0){
-					if (_vbullets[i] != NULL){
-						if (_vbullets[i]->checkBound(_tileMap)){
-							Bullet* ptr2 = _vbullets[i];
-							delete ptr2;
-							ptr2 = nullptr;
-							_vbullets.erase(_vbullets.begin() + i);
-						}
-					}
+				else {
+					_qEnemy.push(eptr);
 				}
 			}
-			_vbullets.shrink_to_fit(); // resizing here, after the for loop
-		}		
+
+			while (!_qEnemy.empty()){
+				eptr = _qEnemy.front();
+				_qEnemy.pop();
+				_vEnemy.push_back(eptr);
+			}
+		}
+		while (!_vbullets.empty()){
+			ptr = _vbullets.back();
+			_vbullets.pop_back();
+			_qbullets.push(ptr);
+		}
+
+		ptr = nullptr;
+		eptr = nullptr;
 	}
 
 	void render(HDC hdc){		
 		TCHAR in[20];
-		wsprintf(in, L"포탄수 : %d", _vbullets.size());
+		wsprintf(in, L"포탄수 : %d", _qbullets.size());
 		::TextOut(hdc, 828, 200, in, wcslen(in));
-		wsprintf(in, L"적타일 수 : %d", _cobjects.size());
+		wsprintf(in, L"적타일 수 : %d", _vEnemy.size());
 		::TextOut(hdc, 828, 220, in, wcslen(in));
 
 		for (int i = 0; i < getNumRow() - 1; i++){
@@ -169,11 +223,19 @@ public:
 
 		_player->render(hdc);
 
-		if (!_vbullets.empty()){
-			for (int i = 0; i < _vbullets.size(); i++){
-				_vbullets[i]->render(hdc);
-			}
+		Bullet* ptr = nullptr;
+		while (!_qbullets.empty()){
+			ptr = _qbullets.front();
+			_qbullets.pop();
+			ptr->render(hdc);
+
+			_vbullets.push_back(ptr);
 		}
+		while (!_vbullets.empty()){
+			ptr = _vbullets.back();
+			_vbullets.pop_back();
+			_qbullets.push(ptr);
+		}		
 	}
 
 
@@ -182,7 +244,7 @@ public:
 	RECT getTile(){	return _tile;}
 	int getNumRow(){ return _numRow; }
 	int getNumColumn(){	return _numColumn;	}
-	vector<Enemy*> getObjects(){ return _cobjects; }
+	vector<Enemy*> getObjects(){ return _vEnemy; }
 	BOOL isMoving(){ return move; }
 
 	//setter
@@ -220,7 +282,7 @@ public:
 		case VK_SPACE:
 			//맵 위에 총알 생성
 			Bullet* ptr = new Bullet(_player->getPos().x, _player->getPos().y, _player->getLastdir());
-			_vbullets.push_back(ptr);
+			_qbullets.push(ptr);			
 			ptr = nullptr;
 			break;
 		}
@@ -249,7 +311,7 @@ private:
 		{
 			Enemy* ptr = new Enemy(getTileRect(getTileCoordinate(x, y).x, getTileCoordinate(x, y).y));
 			ptr->setPos(getTileCoordinate(x, y));
-			_cobjects.push_back(ptr);
+			_vEnemy.push_back(ptr);
 			ptr = nullptr;
 		}
 	}
@@ -258,13 +320,13 @@ private:
 		POINT coordnate = getTileCoordinate(x, y);
 		void* ptr = nullptr;
 
-		for (int i = 0; i < _cobjects.size(); i++){
-			if (_cobjects[i]->getPos().x == coordnate.x &&
-				_cobjects[i]->getPos().y == coordnate.y){
-				ptr = _cobjects[i];
+		for (int i = 0; i < _vEnemy.size(); i++){
+			if (_vEnemy[i]->getPos().x == coordnate.x &&
+				_vEnemy[i]->getPos().y == coordnate.y){
+				ptr = _vEnemy[i];
 				delete[] ptr;
-				_cobjects.erase(_cobjects.begin() + i);
-				_cobjects.shrink_to_fit();
+				_vEnemy.erase(_vEnemy.begin() + i);
+				_vEnemy.shrink_to_fit();
 				break;
 			}
 		}
@@ -274,7 +336,7 @@ private:
 	void moveObject(int fx, int fy, int tx, int ty){
 		POINT coordnate = getTileCoordinate(fx, fy);
 		POINT tcoordnate = getTileCoordinate(tx, ty);
-		if (_cobjects.size() == 0){
+		if (_vEnemy.size() == 0){
 			addObject(tx, ty); // 오브젝트 db에 아무것도 없을경우
 		}
 		else{
@@ -319,19 +381,19 @@ private:
 
 	LPCOBJECT findObject(int x, int y){
 		POINT coordnate = getTileCoordinate(x, y);
-		for (int i = 0; i < _cobjects.size(); i++){
-			if (_cobjects[i]->getPos().x == coordnate.x &&
-				_cobjects[i]->getPos().y == coordnate.y){
-				return _cobjects[i];
+		for (int i = 0; i < _vEnemy.size(); i++){
+			if (_vEnemy[i]->getPos().x == coordnate.x &&
+				_vEnemy[i]->getPos().y == coordnate.y){
+				return _vEnemy[i];
 			}
 		}
 		return nullptr;
 	}
 
 	BOOL inList(int x, int y){
-		for (int i = 0; i < _cobjects.size(); i++){
-			if (_cobjects[i]->getPos().x == x &&
-				_cobjects[i]->getPos().y == y) return true;
+		for (int i = 0; i < _vEnemy.size(); i++){
+			if (_vEnemy[i]->getPos().x == x &&
+				_vEnemy[i]->getPos().y == y) return true;
 		}
 		return false;
 	}
@@ -347,8 +409,9 @@ private:
 
 	Player* _player;
 
-	vector<Enemy*> _cobjects;
-	vector<Bullet*> _vbullets;
-	queue<Bullet*> _qbullets;
+	vector<Enemy*> _vEnemy;
+	queue<Enemy*> _qEnemy;
+	vector<Bullet*> _vbullets;	
+	queue<Bullet*> _qbullets;  // 큐이용한 재활용은 도전했다 실패
 };
 
