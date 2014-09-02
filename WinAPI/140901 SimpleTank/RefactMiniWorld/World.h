@@ -150,6 +150,9 @@ public:
 		// queue와 stack을 이용한 데이터 주고받기를 통해 조건 업데이트 실시
 		// 가장 원초적인 건데 왜 안쓰려고 하고 있었을까.....
 		// updating and border check
+		// 강사님이 가르쳐준 다른 방법으로는
+		// 45개를 미리 queue에 넣어두고
+		// vector를 이용해서 그 45개를 순환시키는 방법이 있다.
 		Bullet* ptr = nullptr;
 		Enemy* eptr = nullptr;
 		while (!_qbullets.empty()){
