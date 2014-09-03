@@ -11,7 +11,15 @@ HINSTANCE hInst;								// 현재 인스턴스입니다.
 TCHAR szTitle[MAX_LOADSTRING];					// 제목 표시줄 텍스트입니다.
 TCHAR szWindowClass[MAX_LOADSTRING];			// 기본 창 클래스 이름입니다.
 
-POINT ball = { 300, 500 };
+POINT ball = { 20.0f, 300.0f };
+POINT checker = {};
+float jumpStartedPosY = ball.y;
+float VERT_X = 50.0f;
+float VERT_Y = 200.0f;
+float time = 0.0f;
+float total_time = 0.0f;
+TCHAR str[20] = L"";
+bool jump = false;
 
 // 이 코드 모듈에 들어 있는 함수의 정방향 선언입니다.
 ATOM				MyRegisterClass(HINSTANCE hInstance);
@@ -19,17 +27,10 @@ BOOL				InitInstance(HINSTANCE, int);
 LRESULT CALLBACK	WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK	About(HWND, UINT, WPARAM, LPARAM);
 
-float GetParabolaY(float x){
-	float VERT_X = 40.0f;
-	float VERT_Y = 100.0f;
+void render(HDC hdc, RECT winRect);
+void timer();
+float GetParabolaY(float x);
 
-	// 적당한 기울기 계수를 쓸순 있겠지만,
-	// 이렇게 식을 만들어 놓으면 위에 vert_x와 vert_y만 바꿈으로서 높이와 넓이를
-	// 조정할수 있다.
-	float a = VERT_Y / (-VERT_X*-VERT_X);
-	float y = a*((x - VERT_X)*(x - VERT_X)) + (-VERT_Y);
-	return y;
-}
 
 int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
@@ -142,24 +143,22 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	int wmId, wmEvent;
 	PAINTSTRUCT ps;
 	HDC hdc;
-	static float time = 0.0f;
-	static float jumpStartedPosY = 0.0f;
-	static bool jump = false;
+	RECT winRect = {};
+	::GetWindowRect(hWnd, &winRect);
+
+
 	switch (message)
 	{
-	case WM_KEYDOWN:
-		if (wParam == VK_SPACE){
-			jump = true;
-			time = 0.0f;
-			jumpStartedPosY = ball.x;
-		}
+	case WM_CREATE:
+		::SetTimer(hWnd, 101, 50, NULL);
+		jump = true;
+		time = 0.0f;
+		jumpStartedPosY = ball.y;
 		break;
-	case WM_LBUTTONDOWN:
-		// 점프하는 순간부터 시간으로 움직인다(x값)
-		if (jump){
-			time += 2.0f;
-		}
-		InvalidateRect(hWnd, NULL, TRUE);
+
+	case WM_TIMER:
+		timer();
+		::InvalidateRect(hWnd, NULL, TRUE);
 		break;
 
 	case WM_COMMAND:
@@ -180,18 +179,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		break;
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);
-		// todo
-		
-		if (jump){
-			ball.y = jumpStartedPosY + GetParabolaY(time);
-		}
-
-
-		::Ellipse(hdc, ball.x - 10, ball.y - 10, ball.x + 10, ball.y + 10);
-
+		// todo		
+		render(hdc, winRect);
 		EndPaint(hWnd, &ps);
 		break;
 	case WM_DESTROY:
+		::KillTimer(hWnd, 101);
 		PostQuitMessage(0);
 		break;
 	default:
@@ -218,4 +211,58 @@ INT_PTR CALLBACK About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 		break;
 	}
 	return (INT_PTR)FALSE;
+}
+
+
+void render(HDC hdc, RECT winRect){
+	::Rectangle(hdc, 0, 0, winRect.right, 310);
+
+	swprintf(str, L"%d, %d", ball.x, ball.y);
+	::TextOut(hdc, 100, 100, str, lstrlen(str));
+	::Ellipse(hdc, ball.x - 10, ball.y - 10, ball.x + 10, ball.y + 10);
+
+	::Rectangle(hdc, 0, 310, winRect.right, winRect.bottom);
+}
+
+float GetParabolaY(float x){
+	// 적당한 기울기 계수를 쓸순 있겠지만,
+	// 이렇게 식을 만들어 놓으면 위에 vert_x와 vert_y만 바꿈으로서 높이와 넓이를
+	// 조정할수 있다.
+	float a = VERT_Y / (-VERT_X*-VERT_X);
+	float y = a*((x - VERT_X)*(x - VERT_X)) + (-VERT_Y);
+	return y;
+}
+
+void timer(){
+
+	if (jump){
+		time += 2.0f;
+		total_time += 2.0f;
+		ball.x += 2.0f;		
+		ball.y = jumpStartedPosY + GetParabolaY(time);
+	}
+	float paraY = GetParabolaY(time);
+	if ( paraY >= 0){
+		time = 0.0f;
+		// h = h - ((g/2)*t^2)
+		if (VERT_Y < 1.0f){
+			VERT_Y = 0;
+		}
+		else{
+			VERT_Y = VERT_Y / 2;
+		}
+
+		if (VERT_X < 1.0f){
+			VERT_X = 1.0f;
+		}
+		else{
+			VERT_X = VERT_X - (VERT_X / 5);
+		}
+	}
+}
+
+float GetY(float x, POINT src, POINT target){
+	float m = (float)(target.y - src.y) / (float)(target.x - src.x);
+	float y = m * (x - src.x) + src.y;
+	return y;
 }
