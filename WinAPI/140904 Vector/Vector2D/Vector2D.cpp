@@ -246,13 +246,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		wsprintf(str, L"Normalized");
 		::TextOut(hdc, vDirNormalizedX * 100.0f, vDirNormalizedY * 100.0f, str, lstrlen(str));
 
-		/*float vPlayerX = player.x;
-		float vPlayerY = player.y;
+		/*float vPlayerX = player.getX();
+		float vPlayerY = player.getY();
 		::MoveToEx(hdc, 0, 0, NULL);
 		::LineTo(hdc, vPlayerX, vPlayerY);
 
-		float vTargetX = target.x;
-		float vTargetY = target.y;
+		float vTargetX = target.getX();
+		float vTargetY = target.getY();
 		::MoveToEx(hdc, 0, 0, NULL);
 		::LineTo(hdc, vTargetX, vTargetY);*/
 
