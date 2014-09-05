@@ -41,33 +41,4 @@ V3.Y = V1.Y - V2.Y;
 
 reflection vector (반사에서 쓸수 있음)
 
-
-
-
-
-
-
-
-
-
-typedef struct Vector2D{
-public:
-	Vector2D(float x, float y){
-		_x = x;
-		_y = x;
-	}
-
-	Vector2D operator-(const Vector2D& vec) const{
-		Vector2D ret(_x - vec._x, _y - vec._y);
-		return ret;	
-	}
-
-	Vector2D operator+(const Vector2D& vec) const{
-		Vector2D ret(_x + vec._x, _y + vec._y);
-		return ret;
-	}
-
-private:
-	float _x;
-	float _y;
-}VECTOR2D;
+3D에서는 위치 정보를 Vector로 저장한다.

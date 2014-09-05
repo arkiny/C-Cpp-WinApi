@@ -1,62 +1,33 @@
-========================================================================
-    WIN32 APPLICATION : VectorHomework Project Overview
-========================================================================
+	/*
+		1. 실습 탱크를 대충 중앙에 그린다
+		2. 탱크는 원과 직선(포신)
+		3. 마우스를 클릭한 방향으로 포신 설정
+		4. 마우스를 움직일때마다 마우스 포인트 방향으로 포신 설정
+		+. 포탑과 차량 부분 분리
+		+. 이동 디렉션과 포신 분리
+	*/
 
-AppWizard has created this VectorHomework application for you.
+	// 상수화 시켜놓은 벡터를 이용하여 방향을 설정할때
+	// 단위 벡터이면서 오른쪽 방향을 향하고 있는 백터
+	const vector2d vright(1, 0)
+	const vector2d vleft(-1, 0)
+	const vector2d vup(0, -1)
+	const vector2d vdown(0, 1)
 
-This file contains a summary of what you will find in each of the files that
-make up your VectorHomework application.
 
+	과제
 
-VectorHomework.vcxproj
-    This is the main project file for VC++ projects generated using an Application Wizard.
-    It contains information about the version of Visual C++ that generated the file, and
-    information about the platforms, configurations, and project features selected with the
-    Application Wizard.
+	벡터의 개념을 알면 스칼라처럼 쓸수 있다.
 
-VectorHomework.vcxproj.filters
-    This is the filters file for VC++ projects generated using an Application Wizard. 
-    It contains information about the association between the files in your project 
-    and the filters. This association is used in the IDE to show grouping of files with
-    similar extensions under a specific node (for e.g. ".cpp" files are associated with the
-    "Source Files" filter).
+	제자리에서
+	1. 탱크를 대충 중앙에 그린다
+	2. 탱크는 원과 직선(포신)
+	3. 화살표 방향대로 탱크 이동(좌우 상하)
+	4. 벡터 연산으로 이동 처리
 
-VectorHomework.cpp
-    This is the main application source file.
+	벡터를 가지고 포트폴리오 하는게 좋겠음
 
-/////////////////////////////////////////////////////////////////////////////
-AppWizard has created the following resources:
-
-VectorHomework.rc
-    This is a listing of all of the Microsoft Windows resources that the
-    program uses.  It includes the icons, bitmaps, and cursors that are stored
-    in the RES subdirectory.  This file can be directly edited in Microsoft
-    Visual C++.
-
-Resource.h
-    This is the standard header file, which defines new resource IDs.
-    Microsoft Visual C++ reads and updates this file.
-
-VectorHomework.ico
-    This is an icon file, which is used as the application's icon (32x32).
-    This icon is included by the main resource file VectorHomework.rc.
-
-small.ico
-    This is an icon file, which contains a smaller version (16x16)
-    of the application's icon. This icon is included by the main resource
-    file VectorHomework.rc.
-
-/////////////////////////////////////////////////////////////////////////////
-Other standard files:
-
-StdAfx.h, StdAfx.cpp
-    These files are used to build a precompiled header (PCH) file
-    named VectorHomework.pch and a precompiled types file named StdAfx.obj.
-
-/////////////////////////////////////////////////////////////////////////////
-Other notes:
-
-AppWizard uses "TODO:" comments to indicate parts of the source code you
-should add to or customize.
-
-/////////////////////////////////////////////////////////////////////////////
+	if (wParam == VK_RIGHT)
+	{
+		tank = tank + (vRight * moveDistanc); -> 탱크 벡터가 오른쪽으로 가게 바뀐다.
+	}

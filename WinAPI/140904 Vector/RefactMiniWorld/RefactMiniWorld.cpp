@@ -1,20 +1,30 @@
-// VectorHomework.cpp : Defines the entry point for the application.
-//
+/*
+	@author		Heedong Arkiny Lee
+	@git		https://github.com/arkiny/SGA-Learning-Heedong
+*/
 
 #include "stdafx.h"
-#include "VectorHomework.h"
-#include "cMain.h"
+#include "RefactMiniWorld.h"
+#include "World.h"
+#include "WorldRenderer.h"
 
 #define MAX_LOADSTRING 100
-#define TIME_INTERVAL 30.0f
-#define TIMER_ID 1
+
+//
+#define BTN_GAME_START 101
+#define BTN_GAME_EXIT 102
+
+#define ID_GAME 1
 
 // Global Variables:
 HINSTANCE hInst;								// current instance
 TCHAR szTitle[MAX_LOADSTRING];					// The title bar text
 TCHAR szWindowClass[MAX_LOADSTRING];			// the main window class name
-cMainGame* g_pMainGame;
-
+//
+World world = World(18,18);
+WorldRenderer worldrenderer = WorldRenderer(&world);
+HWND hBtnExitWnd;
+//
 
 // Forward declarations of functions included in this code module:
 ATOM				MyRegisterClass(HINSTANCE hInstance);
@@ -36,18 +46,16 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 
 	// Initialize global strings
 	LoadString(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
-	LoadString(hInstance, IDC_VECTORHOMEWORK, szWindowClass, MAX_LOADSTRING);
+	LoadString(hInstance, IDC_REFACTMINIWORLD, szWindowClass, MAX_LOADSTRING);
 	MyRegisterClass(hInstance);
-	//
-	g_pMainGame = new cMainGame;
-	//
+
 	// Perform application initialization:
 	if (!InitInstance (hInstance, nCmdShow))
 	{
 		return FALSE;
 	}
 
-	hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_VECTORHOMEWORK));
+	hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_REFACTMINIWORLD));
 
 	// Main message loop:
 	while (GetMessage(&msg, NULL, 0, 0))
@@ -80,10 +88,10 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
 	wcex.cbClsExtra		= 0;
 	wcex.cbWndExtra		= 0;
 	wcex.hInstance		= hInstance;
-	wcex.hIcon			= LoadIcon(hInstance, MAKEINTRESOURCE(IDI_VECTORHOMEWORK));
+	wcex.hIcon			= LoadIcon(hInstance, MAKEINTRESOURCE(IDI_REFACTMINIWORLD));
 	wcex.hCursor		= LoadCursor(NULL, IDC_ARROW);
 	wcex.hbrBackground	= (HBRUSH)(COLOR_WINDOW+1);
-	wcex.lpszMenuName	= MAKEINTRESOURCE(IDC_VECTORHOMEWORK);
+	wcex.lpszMenuName	= MAKEINTRESOURCE(IDC_REFACTMINIWORLD);
 	wcex.lpszClassName	= szWindowClass;
 	wcex.hIconSm		= LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
@@ -106,8 +114,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
    hInst = hInstance; // Store instance handle in our global variable
 
-   hWnd = CreateWindow(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, NULL, NULL, hInstance, NULL);
+   hWnd = CreateWindow(szWindowClass, szTitle, 
+	   WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX | WS_MAXIMIZEBOX,
+      CW_USEDEFAULT, 0, 1028, 768, NULL, NULL, hInstance, NULL);
 
    if (!hWnd)
    {
@@ -135,34 +144,57 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	int wmId, wmEvent;
 	PAINTSTRUCT ps;
 	HDC hdc;
-	float mx = 0.0f, my = 0.0f;
-	
+	int mx, my;
+	RECT winRect; 
+
+	//
+	RECT rect;
+	HDC backbuffDC;
+	HBITMAP backbuffer;
+	HBRUSH hBrush;
+	int width;
+	int height;
+	int savedDC;
+	//
+	//
+	::GetClientRect(hWnd, &winRect);	
+	world.updateMap(winRect);	
+	//
+
 	switch (message)
 	{
 	case WM_CREATE:
-		::SetTimer(hWnd, TIMER_ID, (UINT)TIME_INTERVAL, NULL);
+		// 타이머는 화면이 번쩍거려서 더블버퍼링 배우고 넣는걸로
+		::SetTimer(hWnd, ID_GAME, 50, NULL);
+		hBtnExitWnd = CreateWindow
+			(L"button",
+			L"Game Exit",
+			WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
+			winRect.right-200, winRect.bottom-100, 100, 25,
+			hWnd, // 부모 지정
+			(HMENU)BTN_GAME_EXIT,
+			hInst, NULL);
 		break;
-	case WM_TIMER:
-		g_pMainGame->update(TIME_INTERVAL / 1000.0f);
-		::InvalidateRect(hWnd, NULL, TRUE);
-		break;
+
 	case WM_KEYDOWN:
-		g_pMainGame->onKeyDown(wParam);
+		world.kbDown(wParam);
 		break;
+
 	case WM_KEYUP:
-		g_pMainGame->onKeyUp(wParam);
+		world.kbUp(wParam);
 		break;
-	case WM_LBUTTONDOWN:
-		mx = LOWORD(lParam);
-		my = HIWORD(lParam);
-		g_pMainGame->onclick(mx, my);
-		break;
+
 	case WM_COMMAND:
 		wmId    = LOWORD(wParam);
 		wmEvent = HIWORD(wParam);
 		// Parse the menu selections:
 		switch (wmId)
 		{
+		case BTN_GAME_EXIT:
+			//::KillTimer(hWnd, ID_GAME);
+			//PostQuitMessage(0);
+			DestroyWindow(hWnd);
+			break;
 		case IDM_ABOUT:
 			DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
 			break;
@@ -173,19 +205,65 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			return DefWindowProc(hWnd, message, wParam, lParam);
 		}
 		break;
+
+	case WM_TIMER:
+		world.update(50 / 1000.0f);
+		InvalidateRect(hWnd, NULL, true);
+		break;
+
+	case WM_SIZE:
+		InvalidateRect(hWnd, NULL, true);
+		break;
+
+	case WM_LBUTTONDOWN:
+		mx = LOWORD(lParam);
+		my = HIWORD(lParam);
+		world.mbLbuttonDown(mx, my);
+		break;
+
+	case WM_RBUTTONDOWN:
+		mx = LOWORD(lParam);
+		my = HIWORD(lParam);
+		world.mbRbuttonDowns(mx, my);
+		break;
+
+	case WM_ERASEBKGND:
+		return 1;
+		break;
+
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);
+		
+		GetClientRect(hWnd, &rect);
+		width = rect.right;
+		height = rect.bottom;
+		backbuffDC = CreateCompatibleDC(hdc);
+		backbuffer = CreateCompatibleBitmap(hdc, width, height);
+		savedDC = SaveDC(backbuffDC);
+		SelectObject(backbuffDC, backbuffer);
+		hBrush = CreateSolidBrush(RGB(255, 255, 255));
+		FillRect(backbuffDC, &rect, hBrush);
+		DeleteObject(hBrush);
 		//
-		g_pMainGame->render(hdc);
+		worldrenderer.render(backbuffDC);
+		//worldrenderer.render(hdc);
 		//
+		BitBlt(hdc, 0, 0, width, height, backbuffDC, 0, 0, SRCCOPY);
+		RestoreDC(backbuffDC, savedDC);
+	
+		DeleteObject(backbuffer);
+		DeleteDC(backbuffDC);		
 		EndPaint(hWnd, &ps);
 		break;
+	
 	case WM_DESTROY:
-		::KillTimer(hWnd, TIMER_ID);
+		::KillTimer(hWnd, ID_GAME);
 		PostQuitMessage(0);
 		break;
+
 	default:
 		return DefWindowProc(hWnd, message, wParam, lParam);
+		break;
 	}
 	return 0;
 }
