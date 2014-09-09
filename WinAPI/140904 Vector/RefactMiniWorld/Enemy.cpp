@@ -19,6 +19,8 @@ BOOL Enemy::isHittedbyBullet(Bullet &bullet){
 	return	(hRange <= hcollidingRange) && (vRange <= vcollidingRange);
 }
 
+
+
 void Enemy::getHitted(){
 	_hp--;
 }

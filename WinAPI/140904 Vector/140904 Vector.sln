@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2013 for Windows Desktop
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Vector2D", "Vector2D\Vector2D.vcxproj", "{C85CB18E-47B0-4F14-BBF0-E2DA0F3539F4}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Vector_Tank", "VectorHomework\VectorHomework.vcxproj", "{F4F05E02-21A7-4BCB-B38B-6EDA66CB33E9}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SimpleTank v0.1", "RefactMiniWorld\RefactMiniWorld.vcxproj", "{44A1FABC-A4AD-4B87-ADAE-F49836887FFF}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SimpleTank v0.2", "Vector_Tank_v0.2\Vector_Tank_v0.2.vcxproj", "{1ABE1997-2BA8-4B4F-B143-C91CBECB01F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{44A1FABC-A4AD-4B87-ADAE-F49836887FFF}.Debug|Win32.Build.0 = Debug|Win32
 		{44A1FABC-A4AD-4B87-ADAE-F49836887FFF}.Release|Win32.ActiveCfg = Release|Win32
 		{44A1FABC-A4AD-4B87-ADAE-F49836887FFF}.Release|Win32.Build.0 = Release|Win32
+		{1ABE1997-2BA8-4B4F-B143-C91CBECB01F9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1ABE1997-2BA8-4B4F-B143-C91CBECB01F9}.Debug|Win32.Build.0 = Debug|Win32
+		{1ABE1997-2BA8-4B4F-B143-C91CBECB01F9}.Release|Win32.ActiveCfg = Release|Win32
+		{1ABE1997-2BA8-4B4F-B143-C91CBECB01F9}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
