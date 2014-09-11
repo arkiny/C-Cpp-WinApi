@@ -48,6 +48,10 @@ BOOL				InitInstance(HINSTANCE, int);
 LRESULT CALLBACK	WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK	About(HWND, UINT, WPARAM, LPARAM);
 
+//void DrawBitmap(HDC hdc, int destX, int destY, int destWidth, int destHeight, HBITMAP hBit,
+//	int srcX, int srcY, int srcWidth, int srcHeight, );
+//RGB());
+
 void Update(float delta);
 void OnKeyDown(WPARAM wParam);
 void OnkeyUp(WPARAM wParam);
@@ -224,6 +228,17 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	case WM_PAINT:
 		hdc = BeginPaint(hWnd, &ps);
 
+		//DrawBitmap(
+		//hdc,
+		//destX, destY, destWidth, destHeight
+		//hBit,
+		//srcX, srcY, srcWidth,srcHeight,
+		//RGB());
+
+
+
+
+
 		//GetClientRect(hWnd, &rect);
 		//width = rect.right;
 		//height = rect.bottom;
@@ -234,13 +249,13 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		//hBrush = CreateSolidBrush(RGB(255, 255, 255));
 		//FillRect(backbuffDC, &rect, hBrush);
 		//DeleteObject(hBrush);
-		////
-		////g_world->render(backbuffDC);
-		//Render(backbuffDC);
-		////
+		//
+		//g_world->render(backbuffDC);
+		Render(hdc);
+		//
 		//BitBlt(hdc, 0, 0, width, height, backbuffDC, 0, 0, SRCCOPY);
 		//RestoreDC(backbuffDC, savedDC);
-		Render(hdc);
+		////Render(hdc);
 		//DeleteObject(backbuffer);
 		//DeleteDC(backbuffDC);
 
@@ -325,13 +340,18 @@ void Update(float delta)
 
 void Render(HDC hdc)
 {
+	//DrawBitmap(hdc,
+	//destX, destY, destWidth, destHeight
+	//srcX, srcY, srcWidth,srcHeight,
+	//RGB());
+
+
 	HDC MemDC = ::CreateCompatibleDC(hdc);
 	HBITMAP oldBit = (HBITMAP)::SelectObject(MemDC, bg);
 	::BitBlt(hdc, 0, 0, 1024, 768, MemDC, 0, 50, SRCCOPY);
-	::SelectObject(MemDC, oldBit);
-	::DeleteDC(MemDC);
-
-	MemDC = ::CreateCompatibleDC(hdc);	
+	//::SelectObject(MemDC, oldBit);
+	//::DeleteDC(MemDC);
+	//MemDC = ::CreateCompatibleDC(hdc);	
 	oldBit = (HBITMAP)::SelectObject(MemDC, hbit);
 
 	//::Rectangle(hdc, 0, 580, 1024, 768);
