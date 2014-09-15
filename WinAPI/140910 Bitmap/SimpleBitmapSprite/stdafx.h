@@ -20,3 +20,13 @@
 
 
 // TODO: reference additional headers your program requires here
+struct MYSPRITE
+{
+	MYSPRITE();
+	MYSPRITE(int _l, int _t, int _w, int _h);
+	~MYSPRITE();
+	int left;
+	int top;
+	int width;
+	int height;
+};
