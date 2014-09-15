@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C++ Express 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "D2D_Framework", "D2D_Framework\D2D_Framework.vcxproj", "{C3FE657B-408B-4690-A2FF-67AE2FDF29FD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C3FE657B-408B-4690-A2FF-67AE2FDF29FD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C3FE657B-408B-4690-A2FF-67AE2FDF29FD}.Debug|Win32.Build.0 = Debug|Win32
+		{C3FE657B-408B-4690-A2FF-67AE2FDF29FD}.Release|Win32.ActiveCfg = Release|Win32
+		{C3FE657B-408B-4690-A2FF-67AE2FDF29FD}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
