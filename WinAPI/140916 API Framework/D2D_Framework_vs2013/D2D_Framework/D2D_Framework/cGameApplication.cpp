@@ -1,4 +1,4 @@
-#include "StdAfx.h"
+#include "stdAfx.h"
 #include "cGameApplication.h"
 #include "cGameMgr.h"
 #include "cD2DRenderer.h"
@@ -155,23 +155,17 @@ void cGameApplication::Run()
 	DWORD accumTime = 0;
 	int   accumFrame = 0;
 
-	MSG msg;
-	
-	
+	MSG msg;	
 
 	// 기본 메시지 루프입니다.
 	while (true)
 	{		
-
 		if(PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
 		{
 			if(msg.message == WM_QUIT)
-				break;
-
-			
+				break;			
 			TranslateMessage(&msg);
-			DispatchMessage(&msg);
-			
+			DispatchMessage(&msg);			
 		}
 		else
 		{
@@ -181,11 +175,8 @@ void cGameApplication::Run()
 
 			accumTime += deltaTime;
 			accumFrame++;
-
 			
 			static WCHAR fpsString[20] = L"";
-
-
 
 			if( accumTime >= 1000 )
 			{
@@ -197,19 +188,11 @@ void cGameApplication::Run()
 		
 				swprintf( fpsString, L"FPS : %2.2f", _fps );
 				//SetWindowText(_hwnd,fpsString);
-			}
-
-		
+			}		
 			Update( deltaTime / 1000.0f);
-			Render();
-		
-			
-		}
-	
-		
-	}
-
-	
+			Render();			
+		}		
+	}	
 }
 
 void cGameApplication::Render()

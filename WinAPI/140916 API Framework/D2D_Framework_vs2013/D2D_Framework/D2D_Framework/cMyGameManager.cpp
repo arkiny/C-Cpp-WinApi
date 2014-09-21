@@ -54,6 +54,7 @@ void cMyGameManager::Render(cD2DRenderer& renderer)
 		renderer.GetRenderTarget()->SetTransform(D2D1::Matrix3x2F::Identity());
 	}
 
+
 	if (m_ipD2DBitmap != nullptr)
 	{
 		::D2D1_RECT_F dxArea = ::D2D1::RectF(x, y + 100.0f, x + 100.0f, y + 200.0f);
@@ -68,10 +69,28 @@ void cMyGameManager::Render(cD2DRenderer& renderer)
 
 		renderer.GetRenderTarget()->SetTransform(D2D1::Matrix3x2F::Identity());
 	}
+
+	wchar_t* wszText_ = L"Hello World using  DirectWrite!";
+	UINT32 cTextLength_ = (UINT32)wcslen(wszText_);
+
+	D2D1_RECT_F layoutRect = D2D1::RectF(
+		100,
+		300,
+		800,
+		400
+		);
+
+	renderer.GetRenderTarget()->DrawTextW(
+		wszText_,
+		cTextLength_,
+		renderer.GetTextFormat(),
+		layoutRect,
+		renderer.GetBrush());
 }
 
 void cMyGameManager::Update(float deltaTime)
 {
+	// 게임의 업데이트 처리
 	x += deltaTime* 50.0f;
 
 	m_fAngle += 10.0f;
@@ -83,9 +102,9 @@ void cMyGameManager::Update(float deltaTime)
 
 void cMyGameManager::MsgProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+	// 키 컨트롤 처리
 	switch (message)
-	{
-	
+	{	
 	case WM_KEYDOWN:
 		if(wParam == VK_ESCAPE)
 		{

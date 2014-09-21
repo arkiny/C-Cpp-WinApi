@@ -35,6 +35,13 @@ void cRenderer::DrawBitmap(
 			srcWidth,
 			srcHeight, //소스 Bitmap 영역
 			colorKey);
+
+		BLENDFUNCTION BlendFunction;
+		BlendFunction.AlphaFormat = 0;
+		BlendFunction.BlendFlags = 0;
+		BlendFunction.BlendOp = AC_SRC_OVER;
+		BlendFunction.SourceConstantAlpha = 255;
+		AlphaBlend(hdc, destX, destY, destWidth, destHeight, BackMemDC, 0, 0, srcWidth, srcHeight, BlendFunction);
 	}
 	else
 	{
